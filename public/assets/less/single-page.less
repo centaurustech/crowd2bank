@@ -1,0 +1,91 @@
+.page-title-blue {
+	.page-title;	
+}
+
+.page-title-small {
+	.page-title;
+}
+
+.sidebar {	
+	.sidebar-wrap {
+		background-color: @gray;
+		border: 1px solid @dark-gray;
+	}
+	hr {
+		margin: 0px;
+		border-color: @dark-gray;
+	}
+
+	.status-cont span, .page-title-blue {
+		color: @blue;
+	}
+	.footer-cont {
+		ul {
+			color: @font-gray;
+			font-weight: normal;
+			line-height: 1.2;
+			font-weight: bold;
+		}
+		span { float: none; }
+	}
+	.status-cont, .footer-cont, .support-item { padding: 15px; }
+	.btn-sidebar {
+		.btn-custom-blue;
+		.btn-block;
+		@media screen and (min-width: @screen-md-min) {
+			.btn-lg;
+		}
+	}
+
+	@media screen and (min-width: @screen-md-min) {
+		.page-title-blue {
+			font-size: 28px;
+		}	
+	}
+
+	@media screen and (min-width: @screen-sm-min) and (max-width: @screen-md-max) {
+		.page-title-blue {
+			font-size: 18px;
+		}	
+		.list-readable {
+			font-size: 12px;
+			padding-left: 15px;
+		}
+		.status-cont, .footer-cont, .support-item { padding: 10px; }
+	}
+}
+
+.count-likes {
+	.icon;
+	width: 55px;
+	height: 35px;
+	background-position: -331px -47px;
+}
+.support-title {
+	text-align: center;
+
+}
+.support-title, .support-sub-title {
+	margin-bottom: 10px;
+}
+
+
+.post-content {
+	.page-title {
+		margin-bottom: 10px;
+		margin-top: 20px;
+	}
+	p {
+		color: @font-gray;
+		line-height: 1.4;
+	}
+	.post-image-wrap {
+		overflow: hidden;
+		max-height: 400px;
+		margin-bottom: 15px;
+		.img-thumbnail;
+	}
+	.img-responsive {
+		width: 100%
+	}
+}

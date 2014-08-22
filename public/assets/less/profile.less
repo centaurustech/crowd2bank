@@ -1,0 +1,43 @@
+.table-custom {
+	table.table {
+		.text-center;
+		border: 1px solid @dark-gray;
+		a {
+			text-transform: uppercase;
+			text-decoration: none;
+			&.font-red:hover {
+				.font-dark-red;
+			}
+		}
+		thead {
+			background-color: @light-blue;
+			th { .text-center; }
+		}
+		tbody { color: @font-gray; }
+	}
+}
+
+.profile-page {
+	.img-wrap-thumbnail {
+		margin-bottom: 15px;
+		margin-right: 15px;
+		background-color: @light-blue;
+		max-width: 200px;
+		float: left;
+	}
+	.profile-list { overflow: hidden; }
+}
+
+.page-title-small {
+	.page-title;
+	font-size: 18px;
+}
+
+@media screen and (max-width: 419px) {
+	.profile-page {
+		.img-wrap-thumbnail {
+			max-width: 100px;
+			height: 100px;
+		}
+	}
+}
