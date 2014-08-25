@@ -12,10 +12,9 @@
 	<meta name="viewport" content="width=device-width">
 	@yield('meta')
 	
-	@section('style')
-		<link rel="stylesheet" href="{{ URL::asset('assets/styles/app.min.css') }}">
-	@show
-
+	<link rel="stylesheet" href="{{ URL::asset('assets/styles/app.min.css') }}">
+	<script data-main="assets/scripts/main" src="{{ URL::asset('assets/scripts/vendor/require.js') }}"></script>
+	
 	<!--[if lt IE 9]>
 	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -38,18 +37,8 @@
 	@include('sections/navigation')
 	@yield('body')
 	@include('sections/footer')
-
-	@section('script.footer')
-		<!-- Script Footer -->
-		<script>
-			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src='//www.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
-		</script>
-		
-	@show
- 
+	
+ 	
 </body>
 </html>
 

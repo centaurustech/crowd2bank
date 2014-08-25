@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		styles: 'public/assets/styles',
 		less: 'public/assets/less',
         scripts: 'public/assets/scripts',
-		bower_components: 'public/bower_components'
+		bower_components: 'bower_components'
 	};
 
     // 1. All configuration goes here
@@ -35,6 +35,28 @@ module.exports = function(grunt) {
         	}
         },
 
+        // Copy specific scripts from bower components to a scripts folder.
+        bowercopy: {
+            options: {
+                srcPrefix: 'bower_components',
+                color: true,
+            },
+            scripts: {
+                options: {
+                    destPrefix: '<%= globalConfig.scripts %>/vendor'
+                },
+                files: {
+                    'jquery.js': 'jquery/dist/jquery.min.js',
+                    'jquery.min.map': 'jquery/dist/jquery.min.map',
+                    'bootstrap.js': 'bootstrap/dist/js/bootstrap.min.js',
+                    'modernizr.js': 'modernizr/modernizr.js',
+                    'require.js': 'requirejs/require.js',
+                    'backbone.js': 'backbone/backbone.js',
+                    'underscore.js': 'underscore/underscore.js'
+                }
+            }
+        },
+
         // Watch files, trigger tasks and enable live reload
         watch: {
 			markup: {
@@ -51,18 +73,26 @@ module.exports = function(grunt) {
 				}
             },
             gruntjs: {
-                files: 'Gruntfile.js'
+                files: 'Gruntfile.js',
+                options: {
+                    livereload: true
+                }
             }
         }	
-
 
     });
 
     // 3. Where we tell Grunt we plan to use this plug-in.    
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-watch');    
+    grunt.loadNpmTasks('grunt-bowercopy');
+
+
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['watch']);
+
+    grunt.registerTask('copy', ['bowercopy'])
+
 
 };
