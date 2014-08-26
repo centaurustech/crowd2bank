@@ -23,11 +23,35 @@ require.config({
         	'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js',
         	'vendor/underscore'
         ]
+    },
+    shim: {
+        underscore: {
+            exports: '_'
+        },
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
+            exports: 'Backbone'
+        },
+        jquery: {
+            deps: [],
+            exports: '$'
+        }
     }
 });
 
 require([
-	'app',
-], function(App){
-	App.initialize();
+    'backbone',
+    'views/app',
+    'routers/router'
+], function (Backbone, AppView, Workspace) {
+    /*jshint nonew:false*/
+    // Initialize routing and start Backbone.history()
+    new Workspace();
+    Backbone.history.start();
+
+    // Initialize the application view
+    new AppView();
 });

@@ -34,7 +34,7 @@
  
 </head>
 <body>
-	@include('sections/navigation')
+	@include('sections/navigation')	
 	@yield('body')
 	@include('sections/footer')
 	
