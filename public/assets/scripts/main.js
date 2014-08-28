@@ -4,7 +4,7 @@ require.config({
     baseUrl: '/assets/scripts/',
     paths: {
         jquery: [
-        	'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+        	'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         	'vendor/jquery'
         ],
         modernizr:[
@@ -25,6 +25,9 @@ require.config({
         ]
     },
     shim: {
+        jquery: {            
+            exports: '$'
+        },
         underscore: {
             exports: '_'
         },
@@ -35,9 +38,10 @@ require.config({
             ],
             exports: 'Backbone'
         },
-        jquery: {
-            deps: [],
-            exports: '$'
+        bootstrap: {
+            deps: [
+                'jquery'
+            ]
         }
     }
 });

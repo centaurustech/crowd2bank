@@ -7,9 +7,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>@yield('title', 'Home Page')</title>
- 
+	<meta name="robots" content="noindex, nofollow"> 
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
+	<link rel="shortcut icon" href="{{ URL::asset('assets/favicon.ico') }}">
+
 	@yield('meta')
 	
 	<link rel="stylesheet" href="{{ URL::asset('assets/styles/app.min.css') }}">
@@ -33,12 +35,10 @@
 	@yield('script.header')
  
 </head>
-<body>
+<body id="app">
 	@include('sections/navigation')	
 	@yield('body')
 	@include('sections/footer')
-	
- 	
 </body>
 </html>
 
