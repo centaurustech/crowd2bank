@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
+ Route::get('/', array('as' => 'home', function()
 {
-	return View::make('index');
-});
+    return View::make('index');
+}));
 
 Route::get('/browse-a-project', function()
 {
