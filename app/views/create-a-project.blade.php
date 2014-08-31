@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('body')
+@section('content')
         <div id="content">        	
             <div class="container">
 				<h1>Create a Project</h1>

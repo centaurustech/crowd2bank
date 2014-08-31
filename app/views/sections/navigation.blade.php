@@ -9,7 +9,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a id="logo" href="{{ URL::to("/") }}">Crowd2Bank</a>
+                    <a id="logo" href="{{ URL::route("home") }}">Crowd2Bank</a>
                 </div>        
               </div>        
             </div>        
@@ -20,11 +20,11 @@
               <div class="container-custom">
                 <div class="">
                   <ul>
-                      <li class="{{ Request::is( '/') ? 'active' : '' }}"><a href="{{ URL::to("/") }}">Home</a></li>
-                      <li class="{{ Request::is( 'browse-a-project') ? 'active' : '' }}"><a href="{{ URL::to("browse-a-project") }}">Browse A Project</a></li>
-                      <li class="{{ Request::is( 'create-a-project') ? 'active' : '' }}"><a href="{{ URL::to("create-a-project") }}">Create A Project</a></li>
-                      <li class="{{ Request::is( 'about') ? 'active' : '' }}"><a href="{{ URL::to("about") }}">About</a></li>
-                      <li class="{{ Request::is( 'profile') ? 'active' : '' }}"><a href="{{ URL::to("profile") }}">Profile</a></li>                      
+                      <li class="{{ Request::is( '/') ? 'active' : '' }}"><a href="{{ URL::route("home") }}">Home</a></li>
+                      <li class="{{ Request::is( 'browse-a-project') ? 'active' : '' }}"><a href="{{ URL::route("browse-a-project") }}">Browse A Project</a></li>
+                      <li class="{{ Request::is( 'create-a-project') ? 'active' : '' }}"><a href="{{ URL::route("create-a-project") }}">Create A Project</a></li>
+                      <li class="{{ Request::is( 'about') ? 'active' : '' }}"><a href="{{ URL::route("about") }}">About</a></li>
+                      <li class="{{ Request::is( 'profile') ? 'active' : '' }}"><a href="{{ URL::route("profile") }}">Profile</a></li>                      
                       <li><a href="#">Logout</a></li>
                   </ul>
                 </div>            

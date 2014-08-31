@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('body')
+@section('content')
         <div id="content">
         	@include('sections/carousel')
             <div class="container">

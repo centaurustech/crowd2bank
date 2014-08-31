@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('body')
+@section('content')
         <div id="content">        	
             <div class="container">
                 <div class="row page-category">

@@ -37,7 +37,7 @@
 </head>
 <body id="app">
 	@include('sections/navigation')	
-	@yield('body')
+	@yield('content')
 	@include('sections/footer')
 </body>
 </html>

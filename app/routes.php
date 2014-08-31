@@ -16,27 +16,27 @@
     return View::make('index');
 }));
 
-Route::get('/browse-a-project', function()
+Route::get('browse-a-project', array( 'as' => 'browse-a-project', function()
 {
 	return View::make('browse-a-project');
-});
+}));
 
-Route::get('/create-a-project', function()
+Route::get('create-a-project', array( 'as' => 'create-a-project', function()
 {
 	return View::make('create-a-project');
-});
+}));
 
-Route::get('/about', function()
+Route::get('about', array( 'as' => 'about', function()
 {
 	return View::make('about');
-});
+}));
 
-Route::get('/profile', function()
+Route::get('profile', array( 'as' => 'profile', function()
 {
 	return View::make('profile');
-});
+}));
 
-Route::get('/single-page', function()
+Route::get('single-page', array( 'as' => 'single-page', function()
 {
 	return View::make('single-page');
-});
+}));
