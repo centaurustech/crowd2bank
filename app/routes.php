@@ -11,8 +11,10 @@
 |
 */
 
- Route::get('/', array('as' => 'home', function()
-{
+
+
+Route::get('/', array('as' => 'home', function()
+{	
     return View::make('index');
 }));
 
@@ -31,10 +33,8 @@ Route::get('about', array( 'as' => 'about', function()
 	return View::make('about');
 }));
 
-Route::get('profile', array( 'as' => 'profile', function()
-{
-	return View::make('profile');
-}));
+Route::get('profile', array('uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
+                                        'as' => 'profile'));
 
 Route::get('single-page', array( 'as' => 'single-page', function()
 {

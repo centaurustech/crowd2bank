@@ -1,8 +1,6 @@
 @extends('layouts/master')
 
 @section('content')
-        <div id="content">        	
-            <div class="container">
                 <div class="row page-category">
                     <div class="col-sm-12 no-padding">
                         <h2 class="page-title">Glass Bread Toaster<br /><small>project by: <a href="#">Anonymous</a></small></h2>
@@ -137,6 +135,4 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
 @stop

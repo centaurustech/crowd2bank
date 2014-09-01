@@ -24,8 +24,21 @@
                       <li class="{{ Request::is( 'browse-a-project') ? 'active' : '' }}"><a href="{{ URL::route("browse-a-project") }}">Browse A Project</a></li>
                       <li class="{{ Request::is( 'create-a-project') ? 'active' : '' }}"><a href="{{ URL::route("create-a-project") }}">Create A Project</a></li>
                       <li class="{{ Request::is( 'about') ? 'active' : '' }}"><a href="{{ URL::route("about") }}">About</a></li>
-                      <li class="{{ Request::is( 'profile') ? 'active' : '' }}"><a href="{{ URL::route("profile") }}">Profile</a></li>                      
-                      <li><a href="#">Logout</a></li>
+
+                      {{-- <li class="{{ Request::is( 'profile') ? 'active' : '' }}"><a href="{{ URL::route("profile") }}">Profile</a></li> --}}
+                      {{-- <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ URL::route("Sentinel\login") }}">Login</a></li> --}}
+                      {{-- <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ URL::to("register") }}">Sign Up</a></li> --}}
+                      
+
+                      @if (Sentry::check())
+                      {{-- <li {{ (Request::is('users/' . Session::get('userId') ) ? 'class="active"' : '') }}><a href="/users/{{ Session::get('userId') }}">Profile</a></li> --}}
+                      <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ URL::route('profile') }}">Profile</a></li>
+                      <li><a href="{{ URL::route('Sentinel\logout') }}">Logout</a></li>
+                      @else
+                      <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\login') }}">Login</a></li>
+                      <li {{ (Request::is('register') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\register') }}">Register</a></li>
+                      @endif
+
                   </ul>
                 </div>            
               </div>

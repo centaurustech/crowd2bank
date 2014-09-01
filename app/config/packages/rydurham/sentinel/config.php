@@ -44,7 +44,7 @@ return array(
 	| 
 	*/
 
-	'post_login' 	=> 'home',
+	'post_login' 	=> 'profile',
 
 	'post_logout' 	=> 'home',
 
@@ -77,7 +77,8 @@ return array(
 	| 
 	*/
 
-	'layout' => 'Sentinel::layouts.default',
+	//'layout' => 'Sentinel::layouts.default',
+	'layout' => 'layouts.master',
 
 
 	/*

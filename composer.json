@@ -21,7 +21,10 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
-		]
+		],
+		"psr-4": {
+			"Crowd2Bank\\": "app/Crowd2Bank"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": [

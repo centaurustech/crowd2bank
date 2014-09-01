@@ -1,3 +1,4 @@
+        @if ( Request::is( '/') ) 
             <div class="custom-carousel container-custom">
                 <div id="carousel-custom-carousel" class="custom-wrap carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -65,3 +66,4 @@
 
                 </div>
             </div>
+        @endif

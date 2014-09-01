@@ -1,11 +1,13 @@
 @extends('layouts/master')
 
 @section('content')
-        <div id="content">        	
-            <div class="container">
+
             	<div class="profile-page">
             		<div class="container">
             			<div class="col-sm-8 col-md-8 no-padding">
+                                    <pre>
+                                          {{ var_dump($users) }}
+                                    </pre>
             				<div class="page-category">
             					<h2 class="page-title">Welcome, Username</h2>
             				</div>
@@ -44,6 +46,4 @@
 
             		</div>
             	</div>
-            </div>
-        </div>
 @stop

@@ -36,8 +36,15 @@
  
 </head>
 <body id="app">
-	@include('sections/navigation')	
-	@yield('content')
+	@include('sections/navigation')
+	
+	@include('sections/carousel')
+	
+    <div id="content">        	
+        <div class="container">
+			@yield('content')
+        </div>
+    </div>
 	@include('sections/footer')
 </body>
 </html>
