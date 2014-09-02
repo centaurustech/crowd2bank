@@ -9,15 +9,15 @@
                                           {{ var_dump($users) }}
                                     </pre>
             				<div class="page-category">
-            					<h2 class="page-title">Welcome, @{{ $users-> }} </h2>
+            					<h2 class="page-title">Welcome, {{ $users['username'] }}</h2>
             				</div>
             				<div class="img-wrap img-wrap-thumbnail">
             				<img class="img-responsive" src="{{ URL::asset('assets/images/profile.png') }}">
             				</div>
             				<ul class="profile-list list-unstyled">
-            					<li><strong>Name:</strong> John Doe</li>
-            					<li><strong>Contact:</strong> 1234567890</li>
-            					<li><strong>Email:</strong> johndoe@gmail.com</li>
+            					<li><strong>Name:</strong> {{ $users['userFullname'] }}</li>
+                                          <li><strong>Email:</strong> {{ $users['email'] }}</li>
+            					<li><strong>Contact:</strong> 1234567890</li>            					
             					<li><strong>Company:</strong> JD Company</li>
             					<li><strong>Total Projects:</strong> 5</li>
             					<li><strong>Total Backers:</strong> 220</li>
