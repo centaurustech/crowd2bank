@@ -15,7 +15,7 @@ class UpdateUsersTable extends Migration {
 		Schema::table('users', function($table)
 		{			
 		    $table->string('company')->after('last_name')->nullable();
-		    $table->string('contact')->nullable();
+		    $table->string('contact')->after('last_name')->nullable();
 		});
 	}
 
