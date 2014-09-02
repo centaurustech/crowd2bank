@@ -37,11 +37,13 @@
 </head>
 <body id="app">
 	@include('sections/navigation')
-	
+	@include('template/notifications')
 	@include('sections/carousel')
 	
     <div id="content">        	
         <div class="container">
+			<!-- Notifications -->			
+			<!-- ./ notifications -->
 			@yield('content')
         </div>
     </div>

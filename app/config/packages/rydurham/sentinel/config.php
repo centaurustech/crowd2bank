@@ -129,7 +129,8 @@ return array(
 	*/
 
 	'additional_user_fields' => array(
-		//'field_name' => 'validation|rules'
+		'first_name' => 'required',
+		'last_name' => 'required'
 	),
 
 	/*

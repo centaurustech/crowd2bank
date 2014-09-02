@@ -19,10 +19,21 @@ Register
                 {{ ($errors->has('username') ? $errors->first('username') : '') }}
             </div>
 
+            <div class="form-group {{ ($errors->has('first_name')) ? 'has-error' : '' }}">
+                {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
+                {{ ($errors->has('first_name') ? $errors->first('first_name') : '') }}
+            </div>
+
+            <div class="form-group {{ ($errors->has('last_name')) ? 'has-error' : '' }}">
+                {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}
+                {{ ($errors->has('last_name') ? $errors->first('last_name') : '') }}
+            </div>
+
             <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
                 {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'E-mail')) }}
                 {{ ($errors->has('email') ? $errors->first('email') : '') }}
             </div>
+
 
             <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
                 {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')) }}

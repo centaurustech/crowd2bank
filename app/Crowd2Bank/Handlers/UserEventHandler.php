@@ -7,7 +7,7 @@ class UserEventHandler {
     // here is the listener
     public function subscribe($events)
     {
-        $events->listen('sentinel.user.login', 'Crowd2Bank\Handlers\UserEventHandler@getUser');
+        //$events->listen('sentinel.user.login', 'Crowd2Bank\Handlers\UserEventHandler@getUser');
     }
     
 }

@@ -51,6 +51,11 @@ App::error(function(Exception $exception, $code)
 	Log::error($exception);
 });
 
+App::error(function(\Cartalyst\Sentry\Users\UserAlreadyActivatedException $exception)
+{
+     return Redirect::route('profile');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

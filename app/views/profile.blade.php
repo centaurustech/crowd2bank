@@ -9,7 +9,7 @@
                                           {{ var_dump($users) }}
                                     </pre>
             				<div class="page-category">
-            					<h2 class="page-title">Welcome, Username</h2>
+            					<h2 class="page-title">Welcome, @{{ $users-> }} </h2>
             				</div>
             				<div class="img-wrap img-wrap-thumbnail">
             				<img class="img-responsive" src="{{ URL::asset('assets/images/profile.png') }}">
