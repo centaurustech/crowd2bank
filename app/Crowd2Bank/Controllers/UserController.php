@@ -1,16 +1,13 @@
 <?php namespace Crowd2Bank\Controllers;
 
-use View;
-use Event;
-use Session;
-use BaseController;
+use BaseController, Session, Event, View;
 
 class UserController extends BaseController {
-
+	
 	public function getProfile()
-	{			
+	{
 		$users = Session::all();
-		return View::make('profile', ['users' => $users]);
+		return View::make('profile', ['users' => $users]);		
 	}
 
 }

@@ -1,17 +1,13 @@
 <?php namespace Crowd2Bank\Handlers;
 
+use Session, Event;
+
 class UserEventHandler {
 
     // here is the listener
     public function subscribe($events)
     {
-        $events->listen('user.profile', 'Crowd2Bank\Handlers\UserEventHandler@getProfile');
+        $events->listen('sentinel.user.login', 'Crowd2Bank\Handlers\UserEventHandler@getUser');
     }
     
-    // happens when the user logs in
-    public function getProfile()
-    {
-        echo 'The user just logged in';
-    }
-
 }
