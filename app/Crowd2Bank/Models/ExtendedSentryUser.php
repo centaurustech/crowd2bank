@@ -1,5 +1,7 @@
 <?php namespace Crowd2Bank\Models;
 
-class ExtendedSentryUser {
+use Eloquent;
+
+class ExtendedSentryUser extends Eloquent {
 	
 }

@@ -130,7 +130,9 @@ return array(
 
 	'additional_user_fields' => array(
 		'first_name' => 'required',
-		'last_name' => 'required'
+		'last_name' => 'required',
+		'contact' => 'required',
+		'company' => 'required'
 	),
 
 	/*
