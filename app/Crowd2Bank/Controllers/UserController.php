@@ -1,13 +1,19 @@
 <?php namespace Crowd2Bank\Controllers;
 
-use BaseController, Session, Event, View;
+use Crowd2Bank\Repo\User\UserRepositoryInterface;
+use BaseController, View;
 
 class UserController extends BaseController {
-	
+
+	public function __construct(UserRepositoryInterface $user)
+	{
+		$this->user = $user;
+	}
+
 	public function getProfile()
 	{		
-		$users = Session::all();		
-		return View::make('profile', ['users' => $users]);		
+		$profile = array('profile' => $this->user->getProfile());
+		return View::make('profile', $profile);
 	}
 
 }

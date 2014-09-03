@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Sentinel\SentinelServiceProvider',
+		'Crowd2Bank\AppServiceProvider',
 
 	),
 

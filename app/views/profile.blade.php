@@ -5,17 +5,17 @@
             	<div class="profile-page">
             		<div class="container">
             			<div class="col-sm-8 col-md-8 no-padding">
-            				<div class="page-category">
-            					<h2 class="page-title">Welcome, {{ $users['username'] }}</h2>
+            				<div class="page-category">                                          
+            					<h2 class="page-title">Welcome, {{ $profile['username'] }}</h2>
             				</div>
             				<div class="img-wrap img-wrap-thumbnail">
             				<img class="img-responsive" src="{{ URL::asset('assets/images/profile.png') }}">
             				</div>
             				<ul class="profile-list list-unstyled">
-            					<li><strong>Name:</strong> {{ $users['userFullname'] }}</li>
-                                          <li><strong>Email:</strong> {{ $users['email'] }}</li>
-            					<li><strong>Contact:</strong> 1234567890</li>
-            					<li><strong>Company:</strong> JD Company</li>
+            					<li><strong>Name</strong> {{ $profile['fullname'] }}</li>
+                                          <li><strong>Email:</strong> {{ $profile['email'] }}</li>
+            					<li><strong>Contact:</strong> {{ $profile['contact'] }}</li>
+            					<li><strong>Company:</strong> {{ $profile['company'] }}</li>
             					<li><strong>Total Projects:</strong> 5</li>
             					<li><strong>Total Backers:</strong> 220</li>
             					<li><strong>Type of Membership</strong> Regular Member <a href="#">(Upgrade to Premium click here)</a></li>
