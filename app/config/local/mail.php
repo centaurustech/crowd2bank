@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'mail.thecodingwhale.com',
+	'host' => getenv('MAIL_HOST'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 465,
+	'port' => getenv('MAIL_PORT'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'me@thecodingwhale.com', 'name' => 'Crowd2Bank'),
+	'from' => array('address' => getenv('MAIL_EMAIL'), 'name' => getenv('MAIL_SUBJECT')),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'ssl',
+	'encryption' => getenv('MAIL_ENCRYPTION'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'me@thecodingwhale.com',
+	'username' => getenv('MAIL_EMAIL'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'd2tnu6ug9dtg92763418',
+	'password' => getenv('MAIL_EMAIL'),
 
 	/*
 	|--------------------------------------------------------------------------
