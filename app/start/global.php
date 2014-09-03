@@ -85,4 +85,4 @@ App::down(function()
 
 require app_path().'/filters.php';
 
-Event::subscribe('Crowd2Bank\Handlers\UserEventHandler');
+Event::subscribe('\Crowd2Bank\Handlers\UserEventHandler');

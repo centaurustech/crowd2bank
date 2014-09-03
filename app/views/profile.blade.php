@@ -16,8 +16,8 @@
                                           <li><strong>Email:</strong> {{ $profile['email'] }}</li>
             					<li><strong>Contact:</strong> {{ $profile['contact'] }}</li>
             					<li><strong>Company:</strong> {{ $profile['company'] }}</li>
-            					<li><strong>Total Projects:</strong> 5</li>
-            					<li><strong>Total Backers:</strong> 220</li>
+            					<li><strong>Total Projects:</strong> {{ $profile['projects'] }}</li>
+            					<li><strong>Total Backers:</strong> {{ $profile['backers'] }}</li>
             					<li><strong>Type of Membership</strong> Regular Member <a href="#">(Upgrade to Premium click here)</a></li>
             					<li>
             						<ul class="list-unstyle list-inline">

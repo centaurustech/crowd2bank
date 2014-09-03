@@ -1,11 +1,11 @@
 <?php namespace Crowd2Bank\Controllers;
 
-use Crowd2Bank\Repo\User\UserRepositoryInterface;
+use Crowd2Bank\Repos\Users\UserRepositoryInterface as User;
 use BaseController, View;
 
 class UserController extends BaseController {
 
-	public function __construct(UserRepositoryInterface $user)
+	public function __construct(User $user)
 	{
 		$this->user = $user;
 	}

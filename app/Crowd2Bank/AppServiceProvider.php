@@ -6,13 +6,10 @@ class AppServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $app = $this->app;
-
-        // Event
-        $app->events->subscribe(new \Crowd2Bank\Handlers\UserEventHandler);
 
         // Service Providers
-        $app->bind('\Crowd2Bank\Repo\User\UserRepositoryInterface', '\Crowd2Bank\Repo\User\UserRepository');
+        $this->app->bind('\Crowd2Bank\Repos\Users\UserRepositoryInterface', '\Crowd2Bank\Repos\Users\UserRepository');
+        $this->app->bind('\Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface', '\Crowd2Bank\Repos\Projects\ProjectsRepository');
     }
 
 }
