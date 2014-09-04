@@ -13,14 +13,15 @@ class UserRepository implements UserRepositoryInterface {
 	public function getProfile()
 	{					
 		return [
-			'username'      => Session::get('username'),
-			'fullname'      => Session::get('userFullname'),
-			'email'         => Session::get('email'),
-			'contact'       => Session::get('contact'),
-			'company'       => Session::get('company'),
-			'projects' => Session::get('totalProjects'),
-			'backers'  => Session::get('totalBackers')
-		];
+			'username'       => 'thecodingwhale',
+			'fullname'       => 'Aldren Terante',
+			'email'          => 'me@thecodingwhale.com',
+			'contact'        => 9865340712,
+			'company'        => 'Integreon',
+			'total_projects' => 5,
+			'total_backers'  => 5,
+			'membership'     => 'Regular Memasdber'
+		];		
 	}
 
 }

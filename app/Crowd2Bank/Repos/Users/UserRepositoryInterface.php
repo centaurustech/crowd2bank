@@ -16,4 +16,5 @@ interface UserRepositoryInterface {
 	 */
 	public function getProfile();
 
+	
 }

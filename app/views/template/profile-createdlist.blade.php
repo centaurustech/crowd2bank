@@ -16,27 +16,15 @@
             									</tr>
             								</thead>
             								<tbody>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td>July 6, 2014</td>
-            										<td><span class="font-ligth-blue">5 Days | 3 Hours | 40 Mins</span></td>
-            										<td>US$ 2500</td>
-            										<td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
-            									</tr>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td>July 6, 2014</td>
-            										<td><span class="font-ligth-blue">5 Days | 3 Hours | 40 Mins</span></td>
-            										<td>US$ 2500</td>
-            										<td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
-            									</tr>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td>July 6, 2014</td>
-            										<td><span class="font-ligth-blue">5 Days | 3 Hours | 40 Mins</span></td>
-            										<td>US$ 2500</td>
-            										<td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
-            									</tr>
+                                                                  @foreach ($current_projects as $current_project)
+                                                                        <tr>
+                                                                              <td><a href="/single-page.html">{{ $current_project['title_project'] }}</a></td>
+                                                                              <td>{{ $current_project['date'] }}</td>
+                                                                              <td><span class="font-ligth-blue">{{ $current_project['status'] }}</span></td>
+                                                                              <td>{{ $current_project['total_funds'] }}</td>
+                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
+                                                                        </tr>
+                                                                  @endforeach
             								</tbody>
             							</table>                            
             						</div>                            

@@ -3,17 +3,17 @@
 interface ProjectsRepositoryInterface {
 
 	/**
-	 * Get total projects by user id
+	 * All current projects by user id
 	 *
 	 * @return Response
-	 */
-	public function totalProjects();
+	 */	
+	public function currentProjects();
 
 	/**
-	 * Get total backers by user id
+	 * Sponsored Projects by user id
 	 *
 	 * @return Response
-	 */
-	public function totalBackers();
+	 */	
+	public function sponsoredProjects();
 
 }
