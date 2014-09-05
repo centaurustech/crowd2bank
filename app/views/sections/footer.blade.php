@@ -1,4 +1,5 @@
         <div id="footer">
+            @unless (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
             <div class="container">
                 <img class="img-responsive" src="{{ URL::asset('assets/images/ads.png') }}" alt="Mobile Apps">
             </div>
@@ -16,9 +17,13 @@
                         andylo@socialworkersnetwork.org
                     </p>
                 </div>
-            </div>
+            </div>             
+            @endunless
+       
+        
             <div class="lower">
                 <div class="container">
+                    @unless (Sentry::check() && Sentry::getUser()->hasAccess('admin'))                    
                     <ul class="list-custom-pagination list-unstlyed list-inline">
                         <li class="active"><a href="#">home</a></li>
                         <li><a href="#">browse a project</a></li>
@@ -27,7 +32,8 @@
                         <li><a href="#">terms and conditions</a></li>
                         <li><a href="#">faq</a></li>
                         <li><a href="#">contact us</a></li>
-                    </ul>                        
+                    </ul>  
+                    @endunless             
                     <p>
                         <a class="logo" href="#"><span>Crowd2Bank | a crowdfunding platform</span></a>
                     </p>

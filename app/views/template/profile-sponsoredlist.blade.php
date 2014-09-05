@@ -26,6 +26,7 @@
             										<th>Title Project</th>
             										<th>Project By</th>
             										<th>Status</th>
+<<<<<<< HEAD
             										<th>Total Funds</th>
             										<th>Date</th>
             									</tr>
@@ -52,6 +53,22 @@
             										<td>US$ 2500</td>
             										<td>July 6, 2014</td>
             									</tr>
+=======
+            										<th>Date</th>
+            										<th>Actions</th>
+            									</tr>
+            								</thead>
+            								<tbody>
+                                                                  @foreach ($sponsored_projects as $sponsored_project)
+                                                                        <tr>
+                                                                              <td><a href="/single-page.html">{{ $sponsored_project['title_project'] }}</a></td>
+                                                                              <td>{{ $sponsored_project['project_by'] }}</td>
+                                                                              <td><span class="font-ligth-blue">{{ $sponsored_project['status'] }}</span></td>
+                                                                              <td>{{ $sponsored_project['date'] }}</td>
+                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
+                                                                        </tr>
+                                                                  @endforeach
+>>>>>>> edfeffa10b2ec18768b39abe7ed24b4575f05db0
             								</tbody>
             							</table>                            
             						</div>                            

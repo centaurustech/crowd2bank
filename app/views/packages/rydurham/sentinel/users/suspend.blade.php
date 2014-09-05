@@ -9,7 +9,7 @@ Suspend User
 {{-- Content --}}
 @section('content')
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-12">
         {{ Form::open(array('action' => array('Sentinel\UserController@suspend', $user->id), 'method' => 'post')) }}
  
             <h2>Suspend {{ $user->email }}</h2>

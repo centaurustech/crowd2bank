@@ -33,8 +33,9 @@ Route::get('about', array( 'as' => 'about', function()
 	return View::make('about');
 }));
 
-Route::get('profile', array('uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
-                                        'as' => 'profile'));
+Route::get('profile', array('before' => 'Sentinel\auth',
+							'uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
+							'as' => 'profile'));
 
 Route::get('single-page', array( 'as' => 'single-page', function()
 {
