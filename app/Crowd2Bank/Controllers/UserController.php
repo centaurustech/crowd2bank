@@ -14,15 +14,8 @@ class UserController extends BaseController {
 
 	public function getProfile()
 	{	
-		if($this->user->isAdmin())
-		{
-			return Redirect::to('users');
-		}
-		else
-		{			
-			$data = $this->user->getProfile();
-			return View::make('profile')->with('data', $data);
-		}
+		$data = $this->user->getProfile();
+		return View::make('profile')->with('data', $data);
 
 	}
 
