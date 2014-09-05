@@ -9,7 +9,7 @@ Edit Group
 {{-- Content --}}
 @section('content')
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-12">
 	{{ Form::open(array('action' =>  array('Sentinel\GroupController@update', $group->id), 'method' => 'put')) }}
         <h2>Edit Group</h2>
     

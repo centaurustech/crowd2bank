@@ -9,7 +9,7 @@ Create Group
 {{-- Content --}}
 @section('content')
 <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-12">
 	{{ Form::open(array('action' => 'Sentinel\GroupController@store')) }}
         <h2>Create New Group</h2>
     

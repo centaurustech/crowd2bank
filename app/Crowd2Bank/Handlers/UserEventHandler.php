@@ -1,6 +1,7 @@
 <?php namespace Crowd2Bank\Handlers;
 
 use Session;
+use Cartalyst\Sentry\Sentry;
 
 class UserEventHandler {
 
@@ -10,7 +11,7 @@ class UserEventHandler {
     }
 
     public function getId($user)
-    {
+    {    	
         return $user->id;
     }
 
