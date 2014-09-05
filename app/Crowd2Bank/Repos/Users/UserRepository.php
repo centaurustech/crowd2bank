@@ -13,17 +13,6 @@ class UserRepository implements UserRepositoryInterface {
 		$this->project = $project;
 	}
 
-	public function getId()
-	{
-		return [
-			'userId' => Session::get('id')
-		];
-	}
-
-	public function getAccess()
-	{
-
-	}
 
 	public function getProfile()
 	{			

@@ -7,20 +7,6 @@ interface UserRepositoryInterface {
 	 *
 	 * @return Response
 	 */
-	public function getId();
-
-	/**
-	 * Get profile details.
-	 *
-	 * @return Response
-	 */
-	public function getAccess();
-
-	/**
-	 * Get profile details.
-	 *
-	 * @return Response
-	 */
 	public function getProfile();
 
 	/**
