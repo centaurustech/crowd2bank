@@ -13,10 +13,13 @@ class UserController extends BaseController {
 	}
 
 	public function getProfile()
-	{	
+	{
 		$data = $this->user->getProfile();
+		if( $this->user->isAdmin() )
+		{
+			return View::make('dashboard')->with('data', $data);
+		}
 		return View::make('profile')->with('data', $data);
-
 	}
 
 }

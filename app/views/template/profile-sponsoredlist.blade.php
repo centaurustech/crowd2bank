@@ -26,34 +26,6 @@
             										<th>Title Project</th>
             										<th>Project By</th>
             										<th>Status</th>
-<<<<<<< HEAD
-            										<th>Total Funds</th>
-            										<th>Date</th>
-            									</tr>
-            								</thead>
-            								<tbody>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td><a href="#">Jane Dane</a></td>
-            										<td><span class="font-ligth-blue">5 Days | 3 Hours | 40 Mins</span></td>
-            										<td>US$ 2500</td>
-            										<td>July 6, 2014</td>
-            									</tr>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td><a href="#">Jane Dane</a></td>
-            										<td><span class="font-ligth-blue">Completed</span></td>
-            										<td>US$ 2500</td>
-            										<td>July 6, 2014</td>
-            									</tr>
-            									<tr>
-            										<td><a href="/single-page.html">Glass Bread Toaster</a></td>
-            										<td><a href="#">Jane Dane</a></td>
-            										<td><span class="font-ligth-blue">Completed</span></td>
-            										<td>US$ 2500</td>
-            										<td>July 6, 2014</td>
-            									</tr>
-=======
             										<th>Date</th>
             										<th>Actions</th>
             									</tr>
@@ -62,13 +34,12 @@
                                                                   @foreach ($sponsored_projects as $sponsored_project)
                                                                         <tr>
                                                                               <td><a href="/single-page.html">{{ $sponsored_project['title_project'] }}</a></td>
-                                                                              <td>{{ $sponsored_project['project_by'] }}</td>
+                                                                              <td><a href="#">{{ $sponsored_project['project_by'] }}</a></td>
                                                                               <td><span class="font-ligth-blue">{{ $sponsored_project['status'] }}</span></td>
                                                                               <td>{{ $sponsored_project['date'] }}</td>
                                                                               <td><a href="#">Edit</a> | <a href="#" class="font-red">Delete</a></td>
                                                                         </tr>
                                                                   @endforeach
->>>>>>> edfeffa10b2ec18768b39abe7ed24b4575f05db0
             								</tbody>
             							</table>                            
             						</div>                            

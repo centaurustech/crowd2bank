@@ -36,6 +36,10 @@ Route::get('profile', array('before' => 'Sentinel\auth',
 							'uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
 							'as' => 'profile'));
 
+Route::get('dashboard', array('before' => 'Sentinel\auth',
+							'uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
+							'as' => 'dashboard'));
+
 Route::get('single-page', array( 'as' => 'single-page', function()
 {
 	return View::make('single-page');

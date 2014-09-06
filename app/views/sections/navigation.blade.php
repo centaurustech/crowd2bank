@@ -20,7 +20,7 @@
               <div class="container-custom">                  
                       @if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
                       <ul>
-                        <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ URL::route('profile') }}">Profile</a></li>
+                        <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="{{ URL::route('dashboard') }}">Dashboard</a></li>
                         <li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
                         <li {{ (Request::is('groups*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>                        
                       @else
