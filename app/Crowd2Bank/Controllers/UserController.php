@@ -22,4 +22,9 @@ class UserController extends BaseController {
 		return View::make('profile')->with('data', $data);
 	}
 
+	public function createProject()
+	{
+		return View::make('create-a-project');
+	}
+
 }
