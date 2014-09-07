@@ -36,6 +36,8 @@
  
 </head>
 <body id="app">
+<?php
+/*
 	<div class="under-construction">
 	    <div class="row-custom">
 	        <div class="container-custom">
@@ -43,6 +45,8 @@
 	        </div>
 	    </div>                
 	</div>
+ */
+?>
 	@include('sections/navigation')
 	@include('template/notifications')
 	@include('sections/carousel')
