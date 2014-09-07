@@ -125,6 +125,14 @@
 
 		</div>
 	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2"></label>
+		<div class="col-sm-10">
+			<input class="btn btn-primary" type="submit" value="Create A Project">	
+		</div>
+
+	</div>
 </form>	
 </div>
 
