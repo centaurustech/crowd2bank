@@ -19,14 +19,14 @@ class UserRepository implements UserRepositoryInterface {
 
 		$data = [
 			'profile' => [
-				'username'       => 'thecodingwhale',
-				'fullname'       => 'Aldren Terante',
-				'email'          => 'me@thecodingwhale.com',
+				'username'       => 'johndoe',
+				'fullname'       => 'John Doe',
+				'email'          => 'johndoe@mail.com',
 				'contact'        => 9865340712,
-				'company'        => 'Integreon',
+				'company'        => 'My Company',
 				'total_projects' => 5,
 				'total_backers'  => 5,
-				'membership'     => 'Regular Memasdber'
+				'membership'     => 'Regular Member'
 			],
 			'current_projects' => $this->project->currentProjects(),
 			'sponsored_projects' => $this->project->sponsoredProjects()
