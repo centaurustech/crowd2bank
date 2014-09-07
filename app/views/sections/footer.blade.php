@@ -25,13 +25,13 @@
                 <div class="container">
                     @unless (Sentry::check() && Sentry::getUser()->hasAccess('admin'))                    
                     <ul class="list-custom-pagination list-unstlyed list-inline">
-                        <li class="active"><a href="#">home</a></li>
-                        <li><a href="#">browse a project</a></li>
-                        <li><a href="#">create a project</a></li>
-                        <li><a href="#">about</a></li>
-                        <li><a href="#">terms and conditions</a></li>
-                        <li><a href="#">faq</a></li>
-                        <li><a href="#">contact us</a></li>
+                        <li class="active"><a href="{{ route('home') }}">home</a></li>
+                        <li><a href="{{ route('browse-a-project') }}">browse a project</a></li>
+                        <li><a href="{{ route('create-a-project') }}">create a project</a></li>
+                        <li><a href="{{ route('about') }}">about</a></li>
+                        <li><a href="{{ route('terms-and-conditions') }}">terms and conditions</a></li>
+                        <li><a href="{{ route('faq') }}">faq</a></li>
+                        <li><a href="{{ route('contact-us') }}">contact us</a></li>
                     </ul>  
                     @endunless             
                     <p>

@@ -3,7 +3,7 @@
 use Crowd2Bank\Repos\Users\UserRepositoryInterface as User;
 use BaseController, View, Redirect;
 
-class UserController extends BaseController {
+class UsersController extends BaseController {
 
 	protected $user;
 		

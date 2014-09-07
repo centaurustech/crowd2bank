@@ -12,15 +12,27 @@
 */
 
 
-Route::get('/', array('as' => 'home', function()
+Route::group(array('before' => 'Sentinel\auth'), function()
 {
-    return View::make('index');
-}));
+	Route::get('profile', array('uses' => 'Crowd2Bank\Controllers\UsersController@getProfile',
+								'as' => 'profile'));
 
-Route::get('browse-a-project', array( 'as' => 'browse-a-project', function()
-{
-	return View::make('browse-a-project');
-}));
+	Route::get('dashboard', array('uses' => 'Crowd2Bank\Controllers\UsersController@getProfile',
+								'as' => 'dashboard'));
+
+	Route::get('create-a-project', array('uses' => 'Crowd2Bank\Controllers\UsersController@createProject',
+										'as' => 'create-a-project'));
+});
+
+
+
+Route::get('/', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getProjectsByCurrentCompleted',
+									'as' => 'home'));
+
+Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getCurrentCompletedProjects',
+									'as' => 'browse-a-project'));
+
+
 
 Route::get('about', array( 'as' => 'about', function()
 {
@@ -32,16 +44,17 @@ Route::get('single-page', array( 'as' => 'single-page', function()
 	return View::make('single-page');
 }));
 
-
-
-Route::group(array('before' => 'Sentinel\auth'), function()
+Route::get('terms-and-conditions', array( 'as' => 'terms-and-conditions', function()
 {
-	Route::get('profile', array('uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
-								'as' => 'profile'));
+	return View::make('terms-and-conditions');
+}));
 
-	Route::get('dashboard', array('uses' => 'Crowd2Bank\Controllers\UserController@getProfile',
-								'as' => 'dashboard'));
+Route::get('faq', array( 'as' => 'faq', function()
+{
+	return View::make('faq');
+}));
 
-	Route::get('create-a-project', array('uses' => 'Crowd2Bank\Controllers\UserController@createProject',
-										'as' => 'create-a-project'));
-});
+Route::get('contact-us', array( 'as' => 'contact-us', function()
+{
+	return View::make('contact-us');
+}));
