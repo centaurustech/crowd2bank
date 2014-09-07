@@ -36,6 +36,13 @@
  
 </head>
 <body id="app">
+	<div class="under-construction">
+	    <div class="row-custom">
+	        <div class="container-custom">
+	            website under construction
+	        </div>
+	    </div>                
+	</div>
 	@include('sections/navigation')
 	@include('template/notifications')
 	@include('sections/carousel')
