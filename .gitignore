@@ -1,6 +1,5 @@
 /bootstrap/compiled.php
 /vendor
-/public/assets/less
 composer.phar
 composer.lock
 .env.*.php

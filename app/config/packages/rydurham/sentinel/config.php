@@ -132,7 +132,8 @@ return array(
 		'first_name' => 'required',
 		'last_name' => 'required',
 		'contact' => 'required',
-		'company' => 'required'
+		'company' => 'required',
+		'username' => 'required'
 	),
 
 	/*
