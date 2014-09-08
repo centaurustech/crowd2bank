@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +57,9 @@ Route::get('faq', array( 'as' => 'faq', function()
 Route::get('contact-us', array( 'as' => 'contact-us', function()
 {
 	return View::make('contact-us');
+}));
+
+Route::get('test', array( 'as' => 'test', function()
+{
+	return View::make('test');
 }));

@@ -33,8 +33,9 @@ Log In
 
                 {{ Form::submit('Sign In', array('class' => 'btn btn-primary'))}}
                 <hr>
-                <p><a href="{{ route('Sentinel\login') }}">Don't have an account? Register here</a></p>
+                <p><a href="{{ route('Sentinel\register') }}">Don't have an account? Register here</a></p>
                 <p><a href="{{ route('Sentinel\forgotPasswordForm') }}">Forgot your password</a></p>
+                
             {{ Form::close() }}  
         </div>
     </div>
