@@ -1,7 +1,7 @@
 <?php namespace Crowd2Bank\Handlers;
 
-use Session;
 use Cartalyst\Sentry\Sentry;
+use Response, Mail;
 
 class UserEventHandler {
 
@@ -18,10 +18,25 @@ class UserEventHandler {
 
     public function notifitionEmailForAdmin($data)
     {
-		Mail::queue('emails.welcome', $data, function($message)
-		{
-		    $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
-		});
+
+        $email_data = array(
+            'recipient' => 'dev@crowd2bank.com',
+            'subject' => 'Crowd2Bank: Newly Register Notification'
+        );
+
+        $view_data = array(
+            'name'     => ucfirst($data->first_name) . ' ' . ucfirst($data->last_name),
+            'contact'  => $data->contact,
+            'company'  => $data->company,
+            'email'    => $data->email,
+            'username' => $data->username,
+        );
+
+        Mail::queue('emails.admin-notification-register', $view_data, function($message) use ($email_data) {
+            $message->to( $email_data['recipient'] )
+                    ->subject( $email_data['subject'] );
+        });
+
     }
 
 }

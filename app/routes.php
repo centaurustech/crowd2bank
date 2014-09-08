@@ -61,5 +61,5 @@ Route::get('contact-us', array( 'as' => 'contact-us', function()
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	return View::make('test');
+		return View::make('test');
 }));
