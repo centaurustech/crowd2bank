@@ -57,6 +57,18 @@ module.exports = function(grunt) {
             }
         },
 
+        uglify: {
+            options: {
+                mangle: false
+            },
+            build: {
+                files: {
+                    '<%= globalConfig.scripts %>/vendor/backbone.min.js': ['<%= globalConfig.scripts %>/vendor/backbone.js'],
+                    '<%= globalConfig.scripts %>/vendor/jquery.min.js': ['<%= globalConfig.scripts %>/vendor/jquery.js']
+                }
+            }
+        },
+
         // Watch files, trigger tasks and enable live reload
         watch: {
 			markup: {
@@ -86,13 +98,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');    
     grunt.loadNpmTasks('grunt-bowercopy');
-
-
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['watch']);
 
-    grunt.registerTask('copy', ['bowercopy'])
+    grunt.registerTask('copy', ['bowercopy', 'uglify'])
 
 
 };
