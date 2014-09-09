@@ -5,23 +5,23 @@ require.config({
     paths: {
         jquery: [
         	'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        	'vendor/jquery'
+        	'vendor/jquery.min'
         ],
         modernizr:[
         	'//ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.6.2.js',
-        	'vendor/modernizr'
+        	'vendor/modernizr.min'
         ],
         bootstrap: [
         	'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js',
-        	'vendor/bootstrap'
+        	'vendor/bootstrap.min'
         ],
         backbone: [
         	'//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js',
-        	'vendor/backbone'
+        	'vendor/backbone.min'
         ],
         underscore: [
         	'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js',
-        	'vendor/underscore'
+        	'vendor/underscore.min'
         ]
     },
     shim: {

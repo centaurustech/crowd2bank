@@ -46,13 +46,7 @@ module.exports = function(grunt) {
                     destPrefix: '<%= globalConfig.scripts %>/vendor'
                 },
                 files: {
-                    'jquery.js': 'jquery/dist/jquery.min.js',
                     'jquery.min.map': 'jquery/dist/jquery.min.map',
-                    'bootstrap.js': 'bootstrap/dist/js/bootstrap.min.js',
-                    'modernizr.js': 'modernizr/modernizr.js',
-                    'require.js': 'requirejs/require.js',
-                    'backbone.js': 'backbone/backbone.js',
-                    'underscore.js': 'underscore/underscore.js'
                 }
             }
         },
@@ -63,8 +57,12 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    '<%= globalConfig.scripts %>/vendor/backbone.min.js': ['<%= globalConfig.scripts %>/vendor/backbone.js'],
-                    '<%= globalConfig.scripts %>/vendor/jquery.min.js': ['<%= globalConfig.scripts %>/vendor/jquery.js']
+                    '<%= globalConfig.scripts %>/vendor/backbone.min.js': ['<%= globalConfig.bower_components %>/backbone/backbone.js'],
+                    '<%= globalConfig.scripts %>/vendor/jquery.min.js': ['<%= globalConfig.bower_components %>/jquery/dist/jquery.js'],
+                    '<%= globalConfig.scripts %>/vendor/modernizr.min.js': ['<%= globalConfig.bower_components %>/modernizr/modernizr.js'],
+                    '<%= globalConfig.scripts %>/vendor/bootstrap.min.js': ['<%= globalConfig.bower_components %>/bootstrap/dist/js/bootstrap.js'],
+                    '<%= globalConfig.scripts %>/vendor/underscore.min.js': ['<%= globalConfig.bower_components %>/underscore/underscore.js'],
+                    '<%= globalConfig.scripts %>/vendor/require.js': ['<%= globalConfig.bower_components %>/requirejs/require.js'],
                 }
             }
         },
