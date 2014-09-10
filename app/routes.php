@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('test', array( 'as' => 'test', function()
+{
+		return View::make('test');
+}));
+
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
@@ -32,7 +37,10 @@ Route::get('/', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getPr
 Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getAllProecjts',
 									'as' => 'browse-a-project'));
 
-
+Route::get('current-projects', array( 'as' => 'about', function()
+{
+	return View::make('about');
+}));
 
 Route::get('about', array( 'as' => 'about', function()
 {
@@ -57,9 +65,4 @@ Route::get('faq', array( 'as' => 'faq', function()
 Route::get('contact-us', array( 'as' => 'contact-us', function()
 {
 	return View::make('contact-us');
-}));
-
-Route::get('test', array( 'as' => 'test', function()
-{
-		return View::make('test');
 }));

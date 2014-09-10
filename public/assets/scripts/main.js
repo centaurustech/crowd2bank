@@ -22,6 +22,9 @@ require.config({
         underscore: [
         	'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js',
         	'vendor/underscore.min'
+        ],
+        countdown: [            
+            'vendor/jquery.countdown.min'
         ]
     },
     shim: {
@@ -39,6 +42,11 @@ require.config({
             exports: 'Backbone'
         },
         bootstrap: {
+            deps: [
+                'jquery'
+            ]
+        },
+        countdown: {
             deps: [
                 'jquery'
             ]

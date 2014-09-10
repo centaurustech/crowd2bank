@@ -48,10 +48,9 @@
  */
 ?>
 	@include('sections/navigation')
-	@include('template/notifications')
-	@include('sections/carousel')
-	
-    <div id="content">        	
+	@include('template/notifications')		
+    <div id="content">
+		@include('sections/carousel')
         <div class="container">
 			<!-- Notifications -->			
 			<!-- ./ notifications -->

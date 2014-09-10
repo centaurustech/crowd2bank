@@ -13,11 +13,12 @@
                                             <h2 class="page-title">Glass Bread Toaster</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam in laborum culpa, voluptas totam modi quas reiciendis, iste sit ipsa commodi voluptates alias eaque? Numquam, voluptate facilis beatae iste quidem!</p>
                                         </div>
-                                        <a href="#" class="btn-view-project">View Project</a>
+                                        <a href="{{ URL::route('single-page') }}" class="btn-view-project">View Project</a>
                                     </div>
                                 </div>                                
                             </div>                     
                         </div>
+                    @for ($i = 0; $i < 2; $i++)
                         <div class="item">
                             <div class="custom-wrap-item">
                                 <a href="#" class="wrap-image">
@@ -29,27 +30,12 @@
                                             <h2 class="page-title">Glass Bread Toaster</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam in laborum culpa, voluptas totam modi quas reiciendis, iste sit ipsa commodi voluptates alias eaque? Numquam, voluptate facilis beatae iste quidem!</p>
                                         </div>
-                                        <a href="#" class="btn-view-project">View Project</a>
+                                        <a href="{{ URL::route('single-page') }}" class="btn-view-project">View Project</a>
                                     </div>
                                 </div>                                
                             </div>                     
                         </div>
-                        <div class="item">
-                            <div class="custom-wrap-item">
-                                <a href="#" class="wrap-image">
-                                    <img class="img-responsive" src="{{ URL::asset('assets/images/slider1.png') }}">
-                                </a>                
-                                <div class="wrap-details">
-                                    <div class="details">
-                                        <div class="top">
-                                            <h2 class="page-title">Glass Bread Toaster</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam in laborum culpa, voluptas totam modi quas reiciendis, iste sit ipsa commodi voluptates alias eaque? Numquam, voluptate facilis beatae iste quidem!</p>
-                                        </div>
-                                        <a href="#" class="btn-view-project">View Project</a>
-                                    </div>
-                                </div>                                
-                            </div>                     
-                        </div>
+                    @endfor
                     </div>
 
                     <div class="lower-note">

@@ -1,6 +1,7 @@
 define([
 	'jquery',
-	'bootstrap',	
+	'bootstrap',
+    'countdown'
 ], function ($) {
    
     var App = {
@@ -101,8 +102,24 @@ define([
 
         });
 
+        $('[data-countdown]').each(function() {
+            var $this = $(this),
+                finalDate = $(this).data('countdown');
+
+                $this.countdown(finalDate, function(event) {
+
+                    var format ='<li><strong>Status:</strong></li>' +
+                                '<li><span>%D day%!D</span></li>' +
+                                '<li><span>%H hour%!H</span></li>' +
+                                '<li><span>%M min%!M</span></li>'; 
+
+                        $(this).html(event.strftime(format));
+                })
+                .on('update.countdown', function(event) {
+                    $this.countdown('stop');
+                });
+        });
+
     });
-
-
 
 });

@@ -22,11 +22,8 @@
                     <div class="col-sm-6 col-md-3 item-display">
                         <div class="crowd-box">
                             <div class="status-cont">
-                                <ul class="list-custom-inline list-unstyled list-inline">
-                                    <li><strong>Status:</strong></li>
-                                    <li><span>05 days</span></li>
-                                    <li><span>3 hours</span></li>
-                                    <li><span>40 mins</span></li>
+                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="2014/09/15">
+                                    <li><strong>Status:</strong></li>                                                                        
                                 </ul>
                             </div>
 

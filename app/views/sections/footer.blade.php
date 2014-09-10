@@ -1,7 +1,7 @@
         <div id="footer">
             @unless (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
             <div class="container">
-                <img class="img-responsive" src="{{ URL::asset('assets/images/ads.png') }}" alt="Mobile Apps">
+                <a href="{{ URL::route('contact-us') }}"><img class="img-responsive" src="{{ URL::asset('assets/images/ads.png') }}" alt="Mobile Apps"></a>
             </div>
             <div class="upper">
                 <div class="container">
