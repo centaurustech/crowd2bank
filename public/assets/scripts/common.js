@@ -114,9 +114,6 @@ define([
                                 '<li><span>%M min%!M</span></li>'; 
 
                         $(this).html(event.strftime(format));
-                })
-                .on('update.countdown', function(event) {
-                    $this.countdown('stop');
                 });
         });
 
