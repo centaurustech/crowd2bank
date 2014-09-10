@@ -1,19 +1,34 @@
                 <div class="row page-category">
-                    <div class="col-sm-6 col-md-9 no-padding">
+                    <div class="col-sm-6 col-md-8 no-padding">
                         <h2 class="page-title">{{{ $title }}} <br /><small>{{{ $subtitle or 'support and share new projects or inventions' }}}</small></h2>
                     </div>
                     @if( isset($nav) && ($nav == 'all') )
-                    <div class="col-sm-6 col-md-3 no-padding">
-                        <div id="dropdown-custom-trigger" class="dropdown dropdown-custom">
-                          <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            Sorted By
-                            <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                          </ul>
+                    <div class="col-sm-6 col-md-4 no-padding">
+                        <div>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Project  By <span class="caret"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Current</a></li>
+                                <li><a href="#">Completed</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category By <span class="caret"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Status</a></li>
+                                <li><a href="#">Title</a></li>
+                                <li><a href="#">Funded</a></li>
+                                <li><a href="#">Target Fund</a></li>
+                              </ul>
+                            </div>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sorted By <span class="caret"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Ascending</a></li>
+                                <li><a href="#">Descending</a></li>
+                              </ul>
+                            </div>
                         </div>
                     </div>   
                     @endif                 
