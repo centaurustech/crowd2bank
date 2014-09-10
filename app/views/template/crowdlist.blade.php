@@ -2,6 +2,7 @@
                     <div class="col-sm-6 col-md-9 no-padding">
                         <h2 class="page-title">{{{ $title }}} <br /><small>{{{ $subtitle or 'support and share new projects or inventions' }}}</small></h2>
                     </div>
+                    @if( isset($nav) && ($nav == 'all') )
                     <div class="col-sm-6 col-md-3 no-padding">
                         <div id="dropdown-custom-trigger" class="dropdown dropdown-custom">
                           <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -14,7 +15,8 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
                           </ul>
                         </div>
-                    </div>                    
+                    </div>   
+                    @endif                 
                 </div>                
 			@for ($i = 0; $i < 2; $i++)
                 <div class="row crowd-list">
@@ -79,7 +81,7 @@
                             <li><a href="#">prev</a></li>
                         </ul>
                     @else
-                        <a class="pull-right" href="#">View All</a>
+                        <a class="pull-right" href="{{ URL::route('browse-a-project') }}">View All</a>
                     @endif  
                     </div>
                 </div>
