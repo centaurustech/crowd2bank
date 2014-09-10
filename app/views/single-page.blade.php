@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="post-content col-sm-8 col-md-8">
                       <div class="post-image-wrap">
-                        <img class="img-responsive" src="https://placeimg.com/640/480/nature">
+                        <img class="img-responsive" src="https://placeimg.com/800/480/nature">
                       </div>
                       <div class="inline-social-links">
                         <span class="title">Help by sharing this to your friends:</span>
@@ -75,7 +75,7 @@
                       <div class="sidebar-wrap">
                         <div class="status-cont text-center">
                           <p class="page-title-blue">US$ 2800</p>
-                          <ul class="list-custom-inline list-unstyled list-inline">
+                          <ul class="list-custom-inline list-unstyled list-inline" data-countdown="2014/09/15">
                               <li><strong>Status:</strong></li>
                               <li><span>05 days</span></li>
                               <li><span>3 hours</span></li>

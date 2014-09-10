@@ -29,6 +29,9 @@
                                 <li><a href="#">Descending</a></li>
                               </ul>
                             </div>
+                            <div class="btn-group">
+                                <a class="btn btn-primary" href="#">Sort</a>
+                            </div>
                         </div>
                     </div>   
                     @endif                 
