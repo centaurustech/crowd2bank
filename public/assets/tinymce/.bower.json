@@ -1,0 +1,19 @@
+{
+  "name": "tinyMCE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/thomaswelton/bower-tinymce-amd",
+  "_release": "678e770060",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "678e770060bb65f7071eae8d2697ebd7f5020418"
+  },
+  "_source": "git://github.com/thomaswelton/bower-tinymce-amd.git",
+  "_target": "*",
+  "_originalSource": "bower-tinymce-amd",
+  "_direct": true
+}

@@ -9,9 +9,15 @@ class ProjectsController extends BaseController {
 		return View::make('index');
 	}
 
-	public function getAllProecjts()
+	public function getAllProjects()
 	{
 		return View::make('browse-a-project');
+	}
+
+	public function pledgeAProject()
+	{
+		return View::make('pledge-a-project');
+		
 	}
 
 }

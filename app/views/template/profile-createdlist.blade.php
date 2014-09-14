@@ -1,4 +1,6 @@
+                              
                               <div class="row page-category">
+                              <hr>
                                     <div class="col-sm-6 col-md-9 no-padding">
                                           <h2 class="page-title">Current Project<br /><small>support and share new projects or inventions</small></h2>
                                     </div>

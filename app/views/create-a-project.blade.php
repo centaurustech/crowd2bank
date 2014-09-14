@@ -9,7 +9,9 @@
 <div class="well">
 <form class="form-horizontal" role="form">
 	<div class="form-group">
-		<p class="col-sm-2 control-label"><strong>About Your Project</strong></p>
+		<div class="col-sm-12">
+			<h3>About Your Project</h3>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputTtile" class="col-sm-2 control-label">Title</label>
@@ -41,15 +43,58 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="inputTargetAmount" class="col-sm-2 control-label">Target Date</label>
+		<div class="col-sm-10">
+			<ul class="list-inline list-unstyled">
+				<li>
+					<select id="select01" class="form-control">
+						<option>Month</option>
+						<option>January</option>
+						<option>February</option>
+						<option>March</option>
+						<option>April</option>
+						<option>May</option>
+						<option>June</option>
+						<option>July</option>
+						<option>August</option>
+						<option>September</option>
+						<option>October</option>
+						<option>November</option>
+						<option>December</option>
+					</select>					
+				</li>
+				<li>
+					<select id="select01" class="form-control">
+						<option>Date</option>
+					@for ($i = 0; $i < 31; $i++)
+						<option>{{ $i + 1 }}</option>
+					@endfor
+					</select>					
+				</li>
+				<li>
+					<select id="select01" class="form-control">
+						<option>Year</option>
+					@for ($i = 0; $i < 31; $i++)
+						<option>20{{ 14 + $i }}</option>
+					@endfor				
+					</select>					
+				</li>
+			</ul>
+
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="inputTargetAmount" class="col-sm-2 control-label">Target Amount</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTargetAmount" placeholder="Target Amount">
 			<p class="help-block">Amount should be in Dollars($), and there is no need to add commas on the digits.</p>
 		</div>
-	</div>
+	</div>	
 	<hr>
 	<div class="form-group">
-		<p class="col-sm-2 control-label"><strong>Introduction</strong></p>
+		<div class="col-sm-12">
+			<h3>Introduction</h3>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="textareaShortDescription" class="col-sm-2 control-label">Short Description</label>
@@ -66,18 +111,23 @@
 	</div>
 	<hr>
 	<div class="form-group">
-		<label for="textareaProjectDescription" class="control-label">Project Description</label>
-		<textarea id="textareaProjectDescription" class="form-control" rows="3"></textarea>
+
+		<label for="textareaProjectDescription" class="col-sm-2 control-label">Project Description</label>
+		<div class="col-sm-10">
+			<textarea id="textareaProjectDescription" class="mceEditor form-control"></textarea>
+		</div>
 	</div>
 	<hr>
 	<div class="form-group">
-		<p class="col-sm-2 control-label"><strong>Incentives for supporters</strong></p>
+		<div class="col-sm-12">
+			<h3>Incentives for supporters</h3>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="textareaIncentives" class="col-sm-2 control-label">Incentives</label>
 		<div class="col-sm-10">
 			<textarea id="textareaIncentives" class="form-control" rows="5"></textarea>
-			<p class="help-block"><a href="#">-Remove</a></p>
+			<p class="help-block"><a href="#" class="btn btn-primary">Remove</a></p>
 		</div>
 	</div>
 	<div class="form-group">
@@ -91,12 +141,8 @@
 		<label for="textareaIncentivesDetails" class="col-sm-2 control-label">Incentives Details</label>
 		<div class="col-sm-10">
 			<textarea id="textareaIncentivesDetails" class="form-control" rows="5"></textarea>
-			<p class="help-block"><a href="#">-Add More</a></p>
+			<p class="help-block"><a href="#" class="btn btn-primary">Add More</a></p>
 		</div>
-	</div>
-	<hr>
-	<div class="form-group">
-		<p class="col-sm-2 control-label"><strong>Published</strong></p>
 	</div>
 	<div class="form-group">
 		<label for="textareaIncentivesDetails" class="col-sm-2 control-label">Incentives Details</label>
@@ -110,7 +156,9 @@
 	</div>
 	<hr>
 	<div class="form-group">
-		<p class="col-sm-2 control-label"><strong>Contact Information</strong></p>
+		<div class="col-sm-12">
+			<h3>Contact Information</h3>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="inputContactName" class="col-sm-2 control-label">Contact Name</label>

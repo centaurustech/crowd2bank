@@ -15,7 +15,7 @@
 	@yield('meta')
 	
 	<link rel="stylesheet" href="{{ URL::asset('assets/styles/app.min.css') }}">
-	<script data-main="assets/scripts/main" src="{{ URL::asset('assets/scripts/vendor/require.js') }}"></script>
+	
 	
 	<!--[if lt IE 9]>
 	    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -58,6 +58,7 @@
         </div>
     </div>
 	@include('sections/footer')
+	<script data-main="assets/scripts/main" src="{{ URL::asset('assets/scripts/vendor/require.js') }}"></script>
 </body>
 </html>
 

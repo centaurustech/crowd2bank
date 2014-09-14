@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     '<%= globalConfig.scripts %>/vendor/backbone.min.js': ['<%= globalConfig.bower_components %>/backbone/backbone.js'],
-                    '<%= globalConfig.scripts %>/vendor/jquery.min.js': ['<%= globalConfig.bower_components %>/jquery/dist/jquery.js'],
+                    '<%= globalConfig.scripts %>/vendor/jquery.min.js': ['<%= globalConfig.bower_components %>/jquery-legacy/dist/jquery.js'],
                     '<%= globalConfig.scripts %>/vendor/modernizr.min.js': ['<%= globalConfig.bower_components %>/modernizr/modernizr.js'],
                     '<%= globalConfig.scripts %>/vendor/bootstrap.min.js': ['<%= globalConfig.bower_components %>/bootstrap/dist/js/bootstrap.js'],
                     '<%= globalConfig.scripts %>/vendor/underscore.min.js': ['<%= globalConfig.bower_components %>/underscore/underscore.js'],

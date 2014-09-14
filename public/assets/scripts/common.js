@@ -1,6 +1,7 @@
 define([
 	'jquery',
 	'bootstrap',
+    'tinyMCE',
     'countdown'
 ], function ($) {
    
@@ -34,6 +35,8 @@ define([
         topH = $('#header .top').height(),
         menuH = ( topH + offCanH),
         winH = $(window).height();
+
+
 
 
     if( !$("#off-canvas").hasClass("in") ) {
@@ -74,7 +77,6 @@ define([
 
     });
 
-
     $(document).ready(function () {
 
         var dropDownCustom = $('.dropdown-custom').width();
@@ -83,6 +85,27 @@ define([
                     "min-width": dropDownCustom
             });
 
+        var bank_detals = $('#bankDetails');
+
+        $('#paymentMode').change(function(){
+
+            if($(this).val() == "bank_to_bank" )
+            {
+                bank_detals.show();
+            }
+            else
+            {
+                bank_detals.hide();
+            }
+
+        });
+
+        tinyMCE.init({
+                mode : "textareas",
+                editor_selector : "mceEditor",
+                editor_deselector : "mceNoEditor",
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
 
         $('.navbar-toggle').on('click', function () {
             $(this).toggleClass('pressed');

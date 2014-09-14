@@ -34,8 +34,14 @@ Route::group(array('before' => 'Sentinel\auth'), function()
 Route::get('/', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getProjectsByCurrentCompleted',
 									'as' => 'home'));
 
-Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getAllProecjts',
+Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getAllProjects',
 									'as' => 'browse-a-project'));
+
+Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@pledgeAProject',
+									'as' => 'pledge-a-project'));
+
+/*--------------------------------------------------------------------------
+ --------------------------------------------------------------------------*/
 
 Route::get('current-projects', array( 'as' => 'about', function()
 {

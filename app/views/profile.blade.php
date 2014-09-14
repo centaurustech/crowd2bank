@@ -38,6 +38,7 @@
             					<div class='responsive-video-wrapper'><iframe src='http://player.vimeo.com/video/99462237' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
             				</div>
             			</div>
+
                               @include('template/profile-createdlist', array('current_projects' => $data['current_projects']))
                               @include('template/profile-sponsoredlist', array('sponsored_projects' => $data['sponsored_projects']))
                         @endunless

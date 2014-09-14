@@ -41,7 +41,7 @@ Register
                         </div>
                     </div>
 
-                    <div class="form-group {{ ($errors->has('contact')) ? 'has-error' : '' }}">
+                    {{--<div class="form-group {{ ($errors->has('contact')) ? 'has-error' : '' }}">
                         <label for="inputContact" class="col-sm-2 control-label">Contact</label>
                         <div class="col-sm-5">
                             {{ Form::text('contact', null, array('class' => 'form-control', 'placeholder' => 'Contact')) }}                            
@@ -51,9 +51,9 @@ Register
                                 {{ ($errors->has('contact') ? $errors->first('contact') : '') }}
                             </p>
                         </div>
-                    </div>
+                    </div>--}}
 
-                    <div class="form-group {{ ($errors->has('company')) ? 'has-error' : '' }}">
+                    {{--<div class="form-group {{ ($errors->has('company')) ? 'has-error' : '' }}">
                         <label for="inputCompany" class="col-sm-2 control-label">Company</label>
                         <div class="col-sm-5">
                             {{ Form::text('company', null, array('class' => 'form-control', 'placeholder' => 'Company')) }}
@@ -64,80 +64,73 @@ Register
                             </p>
                         </div>
                     </div>
+                </div>--}}
+
+                <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">                                           
+                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-5">
+                        {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'E-mail')) }}
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="text-danger">
+                            {{ ($errors->has('email') ? $errors->first('email') : '') }}
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col-sm-12">
+                {{--<div class="form-group {{ ($errors->has('username')) ? 'has-error' : '' }}">
+                    <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-5">
+                        {{ Form::text('username', null, array('class' => 'form-control', 'placeholder' => 'Username')) }}                            
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="text-danger">
+                            {{ ($errors->has('username') ? $errors->first('username') : '') }}
+                        </p>
+                    </div>
+                </div>--}}
+
+                <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
+                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-5">
+                        {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')) }}                            
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="text-danger">
+                            {{ ($errors->has('password') ?  $errors->first('password') : '') }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group {{ ($errors->has('password_confirmation')) ? 'has-error' : '' }}">
+                    <label for="inputConfirmPassword" class="col-sm-2 control-label">Confirm Password</label>
+                    <div class="col-sm-5">
+                        {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirm Password')) }}                            
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="text-danger">
+                            {{ ($errors->has('password_confirmation') ?  $errors->first('password_confirmation') : '') }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2"></label>
+                    <div class="col-sm-5">
+                        {{ Form::submit('Sign Up', array('class' => 'btn btn-primary')) }}
+                    </div>
+                </div>
+
                 <hr>
-                    <div class="form-group">                                           
-                        <p class="col-sm-2 control-label"><strong>Account Information</strong></p>
+
+                <div class="form-group">
+                    <label class="col-sm-2"></label>
+                    <div class="col-sm-5">
+                        <p><a href="{{ URL::route('Sentinel\login') }}">Already have an account? Sign in now</a></p>
+                        <p><a href="{{ URL::route('Sentinel\forgotPasswordForm') }}">Forgot your password</a></p>
                     </div>
-
-                    <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">                                           
-                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-5">
-                            {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'E-mail')) }}
-                        </div>
-                        <div class="col-sm-5">
-                            <p class="text-danger">
-                                {{ ($errors->has('email') ? $errors->first('email') : '') }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="form-group {{ ($errors->has('username')) ? 'has-error' : '' }}">
-                        <label for="inputUsername" class="col-sm-2 control-label">Username</label>
-                        <div class="col-sm-5">
-                            {{ Form::text('username', null, array('class' => 'form-control', 'placeholder' => 'Username')) }}                            
-                        </div>
-                        <div class="col-sm-5">
-                            <p class="text-danger">
-                                {{ ($errors->has('username') ? $errors->first('username') : '') }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="form-group {{ ($errors->has('password')) ? 'has-error' : '' }}">
-                        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-5">
-                            {{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')) }}                            
-                        </div>
-                        <div class="col-sm-5">
-                            <p class="text-danger">
-                                {{ ($errors->has('password') ?  $errors->first('password') : '') }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="form-group {{ ($errors->has('password_confirmation')) ? 'has-error' : '' }}">
-                        <label for="inputConfirmPassword" class="col-sm-2 control-label">Confirm Password</label>
-                        <div class="col-sm-5">
-                            {{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => 'Confirm Password')) }}                            
-                        </div>
-                        <div class="col-sm-5">
-                            <p class="text-danger">
-                                {{ ($errors->has('password_confirmation') ?  $errors->first('password_confirmation') : '') }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2"></label>
-                        <div class="col-sm-5">
-                            {{ Form::submit('Sign Up', array('class' => 'btn btn-primary')) }}
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="form-group">
-                        <label class="col-sm-2"></label>
-                        <div class="col-sm-5">
-                            <p><a href="{{ URL::route('Sentinel\login') }}">Already have an account? Sign in now</a></p>
-                            <p><a href="{{ URL::route('Sentinel\forgotPasswordForm') }}">Forgot your password</a></p>
-                        </div>
-                    </div>
-
                 </div>
+
             </div>     
         {{ Form::close() }}
         </div>

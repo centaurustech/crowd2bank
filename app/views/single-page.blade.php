@@ -117,7 +117,7 @@
                             <li>reiciendis animi delectus nostrum reprehenderit natus</li>
                             <li>officiis voluptates, ad unde, tempore dolor explicabo ipsa?</li>
                           </ul>
-                          <a class="btn-sidebar" href="#">Support this amount</a>
+                          <a class="btn-sidebar" href="{{ URL::route('pledge-a-project') }}">Support this amount</a>
                         </div>          
                         <hr>
                         <div class="support-item">
@@ -129,7 +129,7 @@
                             <li>reiciendis animi delectus nostrum reprehenderit natus</li>
                             <li>officiis voluptates, ad unde, tempore dolor explicabo ipsa?</li>
                           </ul>
-                          <a class="btn-sidebar" href="#">Support this amount</a>
+                          <a class="btn-sidebar" href="{{ URL::route('pledge-a-project')}}">Support this amount</a>
                         </div>                
                       </div>
 
