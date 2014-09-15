@@ -49,6 +49,7 @@
 ?>
 	@include('sections/navigation')
 	@include('template/notifications')		
+	@include('template/modal')
     <div id="content">
 		@include('sections/carousel')
         <div class="container">

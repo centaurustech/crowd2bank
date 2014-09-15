@@ -1,7 +1,7 @@
 @extends('layouts/master')
 
 @section('content')
-
+                  
             	<div class="profile-page">
             		<div class="container">
             			<div class="col-sm-8 col-md-8 no-padding">
@@ -22,7 +22,7 @@
                                           <li>
                                                 <ul class="list-unstyle list-inline">
                                                       <li><a href="#">Edit Profile</a></li>
-                                                      <li><a href="#">Create a Project</a></li>
+                                                      <li><a href="{{ URL::route('create-a-project') }}">Create a Project</a></li>
                                                       <li><a href="#">Members Scope</a></li>
                                                       <li><a href="#">Remove Account</a></li>
                                                 </ul>

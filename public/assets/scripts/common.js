@@ -5,6 +5,8 @@ define([
     'countdown'
 ], function ($) {
    
+    console.log('Loaded Common Script');
+
     var App = {
     	init: function () {
     		this.cacheElements();
