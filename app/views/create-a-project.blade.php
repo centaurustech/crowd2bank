@@ -123,13 +123,13 @@
 			<h3>Incentives for supporters</h3>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="textareaIncentives" class="col-sm-2 control-label">Incentives</label>
-		<div class="col-sm-10">
-			<textarea id="textareaIncentives" class="form-control" rows="5"></textarea>
-			<p class="help-block"><a href="#" class="btn btn-primary">Remove</a></p>
-		</div>
-	</div>
+	{{--<div class="form-group">
+				<label for="textareaIncentives" class="col-sm-2 control-label">Incentives</label>
+				<div class="col-sm-10">
+					<textarea id="textareaIncentives" class="form-control" rows="5"></textarea>
+					<p class="help-block"><a href="#" class="btn btn-primary">Remove</a></p>
+				</div>
+			</div>--}}
 	<div class="form-group">
 		<label for="inputAmountSupported" class="col-sm-2 control-label">Amount Supported</label>
 		<div class="col-sm-10">
