@@ -41,8 +41,39 @@
                 @for ($a = 0; $a < 4; $a++)
                     <div class="col-sm-6 col-md-3 item-display">
                         <div class="crowd-box">
+                        <?php
+                            $date = array('2014/12/15', '2014/09/15');     
+                            $progress_bar = 'progress-bar-blue';
+                            $percentage = rand(1, 99);
+                            $completed = $percentage . '%';
+
+                            $details = [
+                                [
+                                    'bar' => 'progress-bar-danger',
+                                    'status' => 'Uncompleted'
+                                ],
+                                [
+                                    'bar' => 'progress-bar-success',
+                                    'status' => 'Successful'
+                                ]
+                            ];
+
+                            $random = array_rand($date);                           
+
+                            if($random)
+                            {
+                                $rand = $details[array_rand($details)];
+
+                                $progress_bar = $rand['bar'];
+                                $completed = $rand['status'];
+                                $percentage = ($progress_bar == 'progress-bar-danger') ? rand(1, 99) : 100;
+
+                            }
+
+
+                        ?>
                             <div class="status-cont">
-                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="2014/09/15">
+                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $date[$random] }}">
                                     <li><strong>Status:</strong></li>                                                                        
                                 </ul>
                             </div>
@@ -56,10 +87,10 @@
                             </div>
                             <div class="footer-cont">
                                 <div class="completed">
-                                    <p>Completed: 60%</p>
+                                    <p>Completed: {{ $completed }}</p>
                                     <div class="progress-plain progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="hide">60%</span>
+                                        <div class="progress-bar {{ $progress_bar }}" role="progressbar" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $percentage }}%;">
+                                        <span class="hide">{{ $percentage }}%</span>
                                         </div>
                                     </div>
                                 </div>

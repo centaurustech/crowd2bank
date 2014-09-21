@@ -139,6 +139,15 @@ define([
                                 '<li><span>%M min%!M</span></li>'; 
 
                         $(this).html(event.strftime(format));
+
+
+                })
+                .on('finish.countdown', function(event){
+
+                    var format ='<li><strong>Status:</strong></li>' +
+                                '<li><span>This offer has expired!</span></li>'; 
+
+                    $(this).html(format);
                 });
         });
 
