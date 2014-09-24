@@ -1,4 +1,4 @@
-<?php namespace  Crowd2Bank\Repos\Users;
+<?php namespace Crowd2Bank\Repos\Users;
 
 interface UserRepositoryInterface {
 

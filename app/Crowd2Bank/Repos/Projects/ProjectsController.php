@@ -1,4 +1,4 @@
-<?php namespace Crowd2Bank\Controllers;
+<?php namespace Crowd2Bank\Repos\Projects;
 
 use BaseController, View, Redirect;
 

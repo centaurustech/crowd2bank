@@ -2,7 +2,7 @@
 
 use Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface as Project;
 use Cartalyst\Sentry\Facades\Laravel\Sentry as Sentry;
-use Session;
+use Response, Session;
 
 class UserRepository implements UserRepositoryInterface {
 
@@ -13,17 +13,16 @@ class UserRepository implements UserRepositoryInterface {
 		$this->project = $project;
 	}
 
-
 	public function getProfile()
-	{			
+	{
 
 		$data = [
 			'profile' => [
-				'username'       => 'johndoe',
-				'fullname'       => 'John Doe',
-				'email'          => 'johndoe@mail.com',
-				'contact'        => 9865340712,
-				'company'        => 'My Company',
+				'username'       => Session::get('user.username'),
+				'fullname'       => Session::get('user.fullname'),
+				'email'          => Session::get('user.email'),
+				'contact'        => Session::get('user.contact'),
+				'company'        => Session::get('user.company'),
 				'total_projects' => 5,
 				'total_backers'  => 5,
 				'membership'     => 'Regular Member'

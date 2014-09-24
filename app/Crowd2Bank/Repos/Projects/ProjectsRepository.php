@@ -21,6 +21,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 				'total_funds'   => 'US$ 2500'
 		]];
 	}
+
 	public function sponsoredProjects()
 	{
 		return [[
@@ -40,4 +41,5 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 				'date'          => 'July 6, 2014'
 		]];
 	}
+	
 }

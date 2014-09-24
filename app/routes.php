@@ -19,25 +19,25 @@ Route::get('test', array( 'as' => 'test', function()
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
-	Route::get('profile', array('uses' => 'Crowd2Bank\Controllers\UsersController@getProfile',
+	Route::get('profile', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
 								'as' => 'profile'));
 
-	Route::get('dashboard', array('uses' => 'Crowd2Bank\Controllers\UsersController@getProfile',
+	Route::get('dashboard', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
 								'as' => 'dashboard'));
 
-	Route::get('create-a-project', array('uses' => 'Crowd2Bank\Controllers\UsersController@createProject',
+	Route::get('create-a-project', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@createProject',
 										'as' => 'create-a-project'));
 });
 
 
 
-Route::get('/', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getProjectsByCurrentCompleted',
+Route::get('/', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@getProjectsByCurrentCompleted',
 									'as' => 'home'));
 
-Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@getAllProjects',
+Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@getAllProjects',
 									'as' => 'browse-a-project'));
 
-Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Controllers\ProjectsController@pledgeAProject',
+Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@pledgeAProject',
 									'as' => 'pledge-a-project'));
 
 /*--------------------------------------------------------------------------
