@@ -4,7 +4,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
 
-	protected $defer = true;
+	protected $defer = false;
 
     public function register()
     {

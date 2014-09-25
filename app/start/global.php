@@ -86,3 +86,6 @@ App::down(function()
 require app_path().'/filters.php';
 
 Event::subscribe('\Crowd2Bank\Handlers\UserEventHandler');
+
+App::bind('\Crowd2Bank\Repos\Users\UserRepositoryInterface', '\Crowd2Bank\Repos\Users\UserRepository');
+App::bind('\Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface', '\Crowd2Bank\Repos\Projects\ProjectsRepository');
