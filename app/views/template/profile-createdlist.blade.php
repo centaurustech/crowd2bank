@@ -24,7 +24,7 @@
                                                                               <td>{{ $current_project['date'] }}</td>
                                                                               <td><span class="font-ligth-blue">{{ $current_project['status'] }}</span></td>
                                                                               <td>{{ $current_project['total_funds'] }}</td>
-                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-project="delete" data-toggle="modal" data-target="#customModal">Delete</a></td>
+                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-modal-trigger="project" data-modal-value="delete">Delete</a></td>
                                                                         </tr>
                                                                   @endforeach
             								</tbody>

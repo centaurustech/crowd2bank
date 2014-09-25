@@ -18,7 +18,7 @@
                                           <li><strong>Company:</strong> {{ $data['profile']['company'] }}</li>
                                           <li><strong>Total Projects:</strong> {{ $data['profile']['total_projects'] }}</li>
                                           <li><strong>Total Backers:</strong> {{ $data['profile']['total_backers'] }}</li>
-                                          <li><strong>Type of Membership:</strong> {{ $data['profile']['membership'] }} <a href="#">(Upgrade to Premium click here)</a></li>
+                                          <li><strong>Type of Membership:</strong> {{ $data['profile']['membership'] }}</li>
                                           <li>
                                                 <ul class="list-unstyle list-inline">
                                                       <li><a href="#">Edit Profile</a></li>

@@ -28,9 +28,9 @@
 					<label for="inputContactNumber" class="col-sm-2 control-label">Message</label>
 					<div class="col-sm-10">
 <textarea id="textareaIntroductions" class="form-control" rows="6" disabled>
-Bank Name: Chinabank
-Account Name: Andy Lo
-Account Number: 968574213
+Bank Name: Bank of China (H.K.) Limited
+Account Name: Trinity Investment Group (H.K.) Limited 三一投資集團(香港)有限公司
+Account Number: 012-680-1-019368-1
 Branch: Hong Kong
 Country: Hong Kong
 </textarea>

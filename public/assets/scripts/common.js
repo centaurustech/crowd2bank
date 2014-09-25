@@ -2,7 +2,8 @@ define([
 	'jquery',
 	'bootstrap',
     'tinyMCE',
-    'countdown'
+    'countdown',
+    'modal'
 ], function ($) {
    
     console.log('Loaded Common Script');
@@ -129,6 +130,7 @@ define([
 
         });
 
+        // for timer countdown
         $('[data-countdown]').each(function() {
             var $this = $(this),
                 finalDate = $(this).data('countdown');
@@ -151,7 +153,7 @@ define([
 
                     $(this).html(format);
                 });
-        });
+        });       
 
     });
 
