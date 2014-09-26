@@ -24,7 +24,8 @@
                                                       <li><a href="#">Edit Profile</a></li>
                                                       <li><a href="{{ URL::route('create-a-project') }}">Create a Project</a></li>
                                                       <li><a href="#">Members Scope</a></li>
-                                                      <li><a href="#" data-toggle="modal" data-target="#removeAccount">Remove Account</a></li>
+                                                      <li><a href="#" data-modal-trigger="account" data-modal-value="remove">Remove Account</a></li>
+
                                                 </ul>
                                           </li>
                                     </ul>               

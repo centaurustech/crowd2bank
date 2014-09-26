@@ -29,6 +29,9 @@ require.config({
         ],
         countdown: [            
             'vendor/jquery.countdown.min'
+        ],
+        handlebars: [
+            'vendor/handlebars.min'
         ]
     },
     waitSeconds: 0,
@@ -55,6 +58,9 @@ require.config({
         },
         countdown: {
             deps: ['jquery']
+        },
+        handlebars: {
+            exports: 'Handlebars'
         }
     }
 });
