@@ -1,17 +1,12 @@
 define([
 	'jquery',
-	'bootstrap'
-], function ($) {
+	'bootstrap',
+    'config/modal',
+], function ($, Config) {
 
     console.log('Loaded Modal Script');
 
-    $.ajaxSetup({
-        cache: false,
-        dataType: 'json'
-    });
-    $.get('assets/scripts/json/modal.json', function(data) {        
-        console.log(data);
-    });
+    console.log( Config );
 
     var Modal = {
         init: function () {
@@ -30,7 +25,9 @@ define([
             this.$modalTrigger.on('click', this.lauchModal.bind(this));
             this.$modalWrapper.on('hidden.bs.modal', this.closeModal.bind(this));
         },
-        lauchModal: function (e) {                        
+        lauchModal: function (e) {
+            e.preventDefault();
+            
             this.appendModalData(this.setModalData(e));
             this.$modalWrapper.modal('show');
         },

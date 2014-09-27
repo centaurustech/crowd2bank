@@ -22,7 +22,7 @@
                                                                               <td><a href="#">{{ $sponsored_project['project_by'] }}</a></td>
                                                                               <td><span class="font-ligth-blue">{{ $sponsored_project['status'] }}</span></td>
                                                                               <td>{{ $sponsored_project['date'] }}</td>
-                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-toggle="modal" data-target="#customModal">Delete</a></td>
+                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-modal-trigger="project" data-modal-value="delete">Delete</a></td>
                                                                         </tr>
                                                                   @endforeach
             								</tbody>
