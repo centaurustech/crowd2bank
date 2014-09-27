@@ -3,33 +3,15 @@
 require.config({
     baseUrl: '/assets/scripts/',
     paths: {
-        jquery: [
-        	//'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        	'vendor/jquery.min'
-        ],
-        modernizr:[
-        	//'//ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.6.2.js',
-        	'vendor/modernizr.min'
-        ],
-        bootstrap: [
-        	//'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js',
-        	'vendor/bootstrap.min'
-        ],
-        backbone: [
-        	//'//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js',
-        	'vendor/backbone.min'
-        ],
-        underscore: [
-        	//'//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js',
-        	'vendor/underscore.min'
-        ],
-        tinyMCE: [            
-            //'//tinymce.cachefly.net/4.1/tinymce.min.js',
-            '../tinymce/tinymce/tinymce'
-        ],
-        countdown: [            
-            'vendor/jquery.countdown.min'
-        ]
+        jquery: 'vendor/jquery.min',
+        modernizr: 'vendor/modernizr.min',
+        bootstrap: 'vendor/bootstrap.min',
+        backbone: 'vendor/backbone.min',
+        underscore: 'vendor/underscore.min',
+        tinyMCE: '../tinymce/tinymce/tinymce',
+        countdown: 'vendor/jquery.countdown.min',
+        backboneLocalStorage: 'vendor/backbone.localStorage.min',
+        text: 'vendor/requirejs-text/text'
     },
     waitSeconds: 0,
     shim: {
@@ -60,15 +42,7 @@ require.config({
 });
 
 require([
-    'backbone',
-    'views/app',
-    'routers/router'
-], function (Backbone, AppView, Workspace) {
-    /*jshint nonew:false*/
-    // Initialize routing and start Backbone.history()
-    new Workspace();
-    Backbone.history.start();
+    'common'
+], function () {
 
-    // Initialize the application view
-    new AppView();
 });

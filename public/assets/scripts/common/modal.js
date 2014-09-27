@@ -1,12 +1,9 @@
 define([
 	'jquery',
-	'bootstrap',
-    'config/modal',
-], function ($, Config) {
+	'bootstrap'
+], function ($) {
 
-    console.log('Loaded Modal Script');
-
-    console.log( Config );
+    console.log('Loaded common/modal.js');
 
     var Modal = {
         init: function () {

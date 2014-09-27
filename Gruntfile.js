@@ -65,7 +65,7 @@ module.exports = function(grunt) {
                     '<%= globalConfig.scripts %>/vendor/underscore.min.js': ['<%= globalConfig.bower_components %>/underscore/underscore.js'],
                     '<%= globalConfig.scripts %>/vendor/jquery.countdown.min.js': ['<%= globalConfig.bower_components %>/jquery.countdown/dist/jquery.countdown.min.js'],
                     '<%= globalConfig.scripts %>/vendor/require.js': ['<%= globalConfig.bower_components %>/requirejs/require.js'],
-                    '<%= globalConfig.scripts %>/vendor/require-text.js': ['<%= globalConfig.bower_components %>/requirejs-text/test.js'],
+                    '<%= globalConfig.scripts %>/vendor/require-text.js': ['<%= globalConfig.bower_components %>/requirejs-text/text.js'],
                 }
             }
         },

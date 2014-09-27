@@ -2,10 +2,15 @@
 define([
 	'jquery',
 	'backbone',
-], function ($, Backbone) {
+	'collections/modals',
+], function ($, Backbone, Modals) {
 	'use strict';
 
-	var TodoRouter = Backbone.Router.extend({});
+	var AppRouter = Backbone.Router.extend({
+		routes: {
+			'*actions': 'index'
+		},
+	});
 
-	return TodoRouter;
+	return AppRouter;
 });
