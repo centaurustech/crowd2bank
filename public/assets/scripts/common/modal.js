@@ -5,6 +5,36 @@ define([
 
     console.log('Loaded common/modal.js');
 
+    var Data = {
+        load: function () {
+            var data = {
+                    project : {
+                        'delete' : {
+                            title: 'Glass Bread Toaster',
+                            body: '<p>Are you sure you want to delete this item?</p>',
+                            option: '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>' +
+                                    '<button type="button" class="btn btn-primary">Yes</button>',
+                        }
+                    },
+                    account: {
+                        remove: {
+                            title: 'Remove Account',
+                            body: '<p>Are you sure you want to remove your account?</p>',
+                            option: '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>' +
+                                    '<button type="button" class="btn btn-primary">Yes</button>'
+                        },
+                        scope: {
+                            title: 'Member Scope',
+                            body: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur reprehenderit laboriosam expedita, distinctio fugit. Quam nam, amet. Tenetur enim voluptatem repellendus dolore amet doloribus ducimus similique adipisci, placeat cupiditate tempora.</p>',
+                            option: '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
+                        }
+                    }
+            };
+
+            return data;
+        }
+    };
+
     var Modal = {
         init: function () {
             this.cacheElements();
@@ -36,7 +66,7 @@ define([
         setModalData: function (e) {
             var id = this.getDataAttribute(e).modalId,
                 value = this.getDataAttribute(e).modalValue,
-                data = this.getJSONData()[id][value];
+                data = Data.load()[id][value];
                 return data;            
         },
         getDataAttribute: function (e) {
@@ -47,28 +77,6 @@ define([
                 };
 
                 return attr;
-        },
-        getJSONData: function () {
-            var data = {
-                    project : {
-                        'delete' : {
-                            title: 'Glass Bread Toaster',
-                            body: '<p>Are you sure you want to delete this item?</p>',
-                            option: '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>' +
-                                    '<button type="button" class="btn btn-primary">Yes</button>',
-                        }
-                    },
-                    account: {
-                        remove: {
-                            title: 'Remove Account',
-                            body: '<p>Are you sure you want to remove your account?</p>',
-                            option: '<button type="button" class="btn btn-default" data-dismiss="modal">No</button>' +
-                                    '<button type="button" class="btn btn-primary">Yes</button>'
-                        }
-                    }
-            };
-
-            return data;
         },
         closeModal: function () {
             this.$modalTitle.html('');

@@ -23,7 +23,7 @@
                                                 <ul class="list-unstyle list-inline">
                                                       <li><a href="#">Edit Profile</a></li>
                                                       <li><a href="{{ URL::route('create-a-project') }}">Create a Project</a></li>
-                                                      <li><a href="#">Members Scope</a></li>
+                                                      <li><a href="#" data-modal-trigger="account" data-modal-value="scope">Members Scope</a></li>
                                                       <li><a href="#" data-modal-trigger="account" data-modal-value="remove">Remove Account</a></li>
 
                                                 </ul>
