@@ -3,13 +3,13 @@
 @section('content')
                 <div class="row page-category">
                     <div class="col-sm-12 no-padding">
-                        <h2 class="page-title">Glass Bread Toaster<br /><small>project by: <a href="#">Anonymous</a></small></h2>
+                        <h2 class="page-title">{{ $title }} <br /><small>project by: <a href="#">Anonymous</a></small></h2>
                     </div>                
                 </div>
                 <div class="row">
                     <div class="post-content col-sm-8 col-md-8">
                       <div class="post-image-wrap">
-                        <img class="img-responsive" src="https://placeimg.com/800/480/nature">
+                        <img class="img-responsive" src="{{ URL::asset('assets/images') }}/img{{ $id }}.png" style="min-width: 740px;">
                       </div>
                       <div class="inline-social-links">
                         <span class="title">Help by sharing this to your friends:</span>

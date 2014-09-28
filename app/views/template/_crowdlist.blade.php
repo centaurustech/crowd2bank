@@ -35,70 +35,31 @@
                         </div>
                     </div>   
                     @endif                 
-                </div>
-            <?php
-                $title = [
-                    'the rolling bench',
-                    'keyboard food top cover',
-                    'the bookcase chair',
-                    'spacesaver cabinet',
-                ];
-            ?>               
+                </div>            
 			@for ($i = 0; $i < 2; $i++)
                 <div class="row crowd-list">
                 @for ($a = 0; $a < 4; $a++)
                     <div class="col-sm-6 col-md-3 item-display">
                         <div class="crowd-box">
-                        <?php
-                            $date = array('2014/12/15', '2014/09/15');     
-                            $progress_bar = 'progress-bar-blue';
-                            $percentage = rand(1, 99);
-                            $completed = $percentage . '%';
-
-                            $details = [
-                                [
-                                    'bar' => 'progress-bar-danger',
-                                    'status' => 'Uncompleted'
-                                ],
-                                [
-                                    'bar' => 'progress-bar-success',
-                                    'status' => 'Successful'
-                                ]
-                            ];
-
-                            $random = array_rand($date);                           
-
-                            if($category == 'completed')
-                            {
-                                $rand = $details[array_rand($details)];
-
-                                $progress_bar = $rand['bar'];
-                                $completed = $rand['status'];
-                                $percentage = ($progress_bar == 'progress-bar-danger') ? rand(1, 99) : 100;
-
-                            }
-
-
-                        ?>
                             <div class="status-cont">
-                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $date[$random] }}">
+                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="2014/11/15">
                                     <li><strong>Status:</strong></li>                                                                        
                                 </ul>
                             </div>
 
                             <div class="img-wrap">
-                                <a href="{{ URL::to("single-page") }}/{{ $a + 1 }}"><img class="img-responsive" src="{{ URL::asset('assets/images') }}/img{{ $a + 1 }}.png"></a>
+                                <a href="{{ URL::to("single-page") }}/1"><img class="img-responsive" src="{{ URL::asset('assets/images') }}/img1.png"></a>
                             </div>
                             <div class="detailed-cont">
-                                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $a + 1 }}">{{ $title[$a] }}</a></h3>
+                                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/1">title</a></h3>
                                 <p class="box-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nesciunt cumque dolorem, quasi, maxime & repellendus.</p>
                             </div>
                             <div class="footer-cont">
                                 <div class="completed">
-                                    <p>Completed: {{ $completed }}</p>
+                                    <p>Completed: Successful</p>
                                     <div class="progress-plain progress">
-                                        <div class="progress-bar {{ $progress_bar }}" role="progressbar" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $percentage }}%;">
-                                        <span class="hide">{{ $percentage }}%</span>
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                        <span class="hide">100%</span>
                                         </div>
                                     </div>
                                 </div>

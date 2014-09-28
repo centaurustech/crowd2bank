@@ -29,9 +29,7 @@ Route::group(array('before' => 'Sentinel\auth'), function()
 										'as' => 'create-a-project'));
 });
 
-
-
-Route::get('/', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@getProjectsByCurrentCompleted',
+Route::get('/', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@index',
 									'as' => 'home'));
 
 Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@getAllProjects',
@@ -39,6 +37,9 @@ Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\Projec
 
 Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@pledgeAProject',
 									'as' => 'pledge-a-project'));
+
+Route::get('single-page/{id}', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@singlePage',
+									'as' => 'single-page'))->where('id', '[0-9]+');
 
 /*--------------------------------------------------------------------------
  --------------------------------------------------------------------------*/
@@ -51,11 +52,6 @@ Route::get('current-projects', array( 'as' => 'about', function()
 Route::get('about', array( 'as' => 'about', function()
 {
 	return View::make('about');
-}));
-
-Route::get('single-page', array( 'as' => 'single-page', function()
-{
-	return View::make('single-page');
 }));
 
 Route::get('terms-and-conditions', array( 'as' => 'terms-and-conditions', function()
