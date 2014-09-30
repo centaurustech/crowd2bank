@@ -15,16 +15,19 @@ class CreateProjectsTable extends Migration {
 		Schema::create('projects', function($table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->string('short_description');
-			$table->string('full_description');
-			$table->integer('target_fund')->default(0);
-			$table->string('thumbnail');
-			$table->integer('target_fund')->default(0);
-			$table->timestamp('target_date');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
-			$table->timestamp();
+
+			
+			$table->string('title', 80);
+			$table->mediumText('short_description');
+			$table->text('full_description');
+			$table->string('thumbnail', 120);
+
+			$table->integer('target_fund')->default(0);
+			$table->dateTime('target_date');
+
+			$table->timestamps();
 		});
 	}
 
