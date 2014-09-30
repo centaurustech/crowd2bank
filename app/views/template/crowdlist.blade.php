@@ -68,7 +68,7 @@
 
                             $random = array_rand($date);                           
 
-                            if($category == 'completed')
+                            if($random)
                             {
                                 $rand = $details[array_rand($details)];
 

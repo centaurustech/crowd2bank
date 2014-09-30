@@ -14,7 +14,9 @@
 Route::get('test', array( 'as' => 'test', function()
 {
 
+	
 
+/*
 	//return View::make('test');
 	$faker = Faker\Factory::create();
 	echo '<pre>';
@@ -60,9 +62,7 @@ Route::get('test', array( 'as' => 'test', function()
 	    $userUser = Sentry::getUserProvider()->findByLogin($email);
 	    $userGroup = Sentry::getGroupProvider()->findByName('Users');
 	    $userUser->addGroup($userGroup);
-
-
-
+ */
 
 /*
 		$array = [
