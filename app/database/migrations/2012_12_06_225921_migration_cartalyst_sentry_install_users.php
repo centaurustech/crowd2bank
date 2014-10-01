@@ -17,7 +17,7 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MigrationCartalystSentryInstallUsers extends Migration {
@@ -29,8 +29,12 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function($table)
+		Schema::create('users', function(Blueprint $table)
 		{
+			// We'll need to ensure that MySQL uses the InnoDB engine to
+			// support the indexes, other engines aren't affected.
+			$table->engine = 'InnoDB';
+			
 			$table->increments('id');
 			$table->string('email');
 			$table->string('username')->nullable()->unique();
@@ -42,11 +46,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->timestamp('last_login')->nullable();
 			$table->string('persist_code')->nullable();
 			$table->string('reset_password_code')->nullable();
-			$table->timestamps();
-
-			// We'll need to ensure that MySQL uses the InnoDB engine to
-			// support the indexes, other engines aren't affected.
-			$table->engine = 'InnoDB';
+			$table->timestamps();			
 			$table->unique('email');
 			$table->index('activation_code');
 			$table->index('reset_password_code');

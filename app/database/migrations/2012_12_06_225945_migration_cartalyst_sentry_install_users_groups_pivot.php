@@ -17,7 +17,7 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MigrationCartalystSentryInstallUsersGroupsPivot extends Migration {
@@ -29,14 +29,15 @@ class MigrationCartalystSentryInstallUsersGroupsPivot extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users_groups', function($table)
+		Schema::create('users_groups', function(Blueprint $table)
 		{
-			$table->integer('user_id')->unsigned();
-			$table->integer('group_id')->unsigned();
-
 			// We'll need to ensure that MySQL uses the InnoDB engine to
 			// support the indexes, other engines aren't affected.
 			$table->engine = 'InnoDB';
+
+			$table->integer('user_id')->unsigned();
+			$table->integer('group_id')->unsigned();
+			
 			$table->primary(array('user_id', 'group_id'));
 		});
 	}

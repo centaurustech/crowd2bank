@@ -17,7 +17,7 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MigrationCartalystSentryInstallThrottle extends Migration {
@@ -29,8 +29,12 @@ class MigrationCartalystSentryInstallThrottle extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('throttle', function($table)
+		Schema::create('throttle', function(Blueprint $table)
 		{
+			// We'll need to ensure that MySQL uses the InnoDB engine to
+			// support the indexes, other engines aren't affected.
+			$table->engine = 'InnoDB';
+			
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->string('ip_address')->nullable();
@@ -39,11 +43,7 @@ class MigrationCartalystSentryInstallThrottle extends Migration {
 			$table->boolean('banned')->default(0);
 			$table->timestamp('last_attempt_at')->nullable();
 			$table->timestamp('suspended_at')->nullable();
-			$table->timestamp('banned_at')->nullable();
-
-			// We'll need to ensure that MySQL uses the InnoDB engine to
-			// support the indexes, other engines aren't affected.
-			$table->engine = 'InnoDB';
+			$table->timestamp('banned_at')->nullable();			
 			$table->index('user_id');
 		});
 	}

@@ -17,7 +17,7 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MigrationCartalystSentryInstallGroups extends Migration {
@@ -29,17 +29,19 @@ class MigrationCartalystSentryInstallGroups extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('groups', function($table)
+		Schema::create('groups', function(Blueprint $table)
 		{
+			// We'll need to ensure that MySQL uses the InnoDB engine to
+			// support the indexes, other engines aren't affected.
+			$table->engine = 'InnoDB';
+			
+			$table->unique('name');
 			$table->increments('id');
 			$table->string('name');
 			$table->text('permissions')->nullable();
 			$table->timestamps();
+			$table->softDeletes();
 
-			// We'll need to ensure that MySQL uses the InnoDB engine to
-			// support the indexes, other engines aren't affected.
-			$table->engine = 'InnoDB';
-			$table->unique('name');
 		});
 	}
 
