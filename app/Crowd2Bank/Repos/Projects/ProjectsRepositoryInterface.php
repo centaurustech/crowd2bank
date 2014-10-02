@@ -1,8 +1,8 @@
-<?php namespace  Crowd2Bank\Repos\Projects;
+<?php namespace Crowd2Bank\Repos\Projects;
 
 interface ProjectsRepositoryInterface {
 
-	public function getProjects($limit);
+	public function getProjectsByTargetDate($limit, $category);
 
 	public function currentProjects();
 

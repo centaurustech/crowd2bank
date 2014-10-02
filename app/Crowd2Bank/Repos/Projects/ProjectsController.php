@@ -9,14 +9,16 @@ class ProjectsController extends BaseController {
 		
 	public function __construct(Projects $projects)
 	{
-		$this->projects    = $projects;		
+		$this->projects = $projects;
 	}
 
 	public function index()
-	{		
-		dd( $this->projects->getProjects(8) );
-
-		return View::make('index');
+	{	
+		$limit = 8;
+		return [
+			'current' => $this->projects->getProjectsByTargetDate($limit, 'current'),
+			'completed' => $this->projects->getProjectsByTargetDate($limit, 'completed'),
+		];
 	}
 
 	public function getAllProjects()

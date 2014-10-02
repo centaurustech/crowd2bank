@@ -2,15 +2,45 @@
 
 use Projects;
 
+use Exception,
+	Response;
+
 class ProjectsRepository implements ProjectsRepositoryInterface {
 
-	public function getProjects($limit)
-	{
-		$current = Projects::where('target_date', '>=', new \DateTime('today'))
-					->orderBy('id', 'DESC')
-					->take($limit)->get();
+    protected $projects;
 
-		return $current;
+    public function __construct(Projects $projects)
+    {
+        $this->projects = $projects;
+    }
+
+	public function getProjectsByTargetDate($limit, $category)
+	{
+		if ( $category != 'current' && $category != 'completed' )
+		{
+			throw new Exception('$category ' . ' is not given.');
+		}
+		else if (!is_string($category))
+		{
+			throw new Exception('$category ' . ' should be a string.');
+		}
+		else if ( !is_int($limit) )
+		{
+			throw new Exception('error on $limit ' . ' should be an integer');
+		}
+		else
+		{
+			$option = ( $category == 'completed' ) ? '<=' : '>=';
+
+			$project = $this->projects->where('target_date', $option, new \DateTime('today'))
+							->orderBy('id', 'DESC')
+							->take($limit)
+							->get();
+
+			return $project->toJson();
+		}
+		
+
 	}
 
 	public function currentProjects()

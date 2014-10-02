@@ -1,8 +1,8 @@
 <?php namespace Crowd2Bank\Repos\Users;
 
-use Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface as Project;
-use Cartalyst\Sentry\Facades\Laravel\Sentry as Sentry;
-use Response, Session;
+use Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface as Project,
+	Cartalyst\Sentry\Facades\Laravel\Sentry as Sentry,
+	Response, Session;
 
 class UserRepository implements UserRepositoryInterface {
 
