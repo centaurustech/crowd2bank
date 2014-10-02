@@ -13,9 +13,8 @@ class ProjectsController extends BaseController {
 	}
 
 	public function index()
-	{
-		// echo '<pre>';
-		// dd($this->projects->getProjects(['current', 'completed']));
+	{		
+		dd( $this->projects->getProjects(8) );
 
 		return View::make('index');
 	}

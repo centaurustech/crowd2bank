@@ -18,6 +18,7 @@ class CreateUserProfilesTable extends Migration {
 
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
+			$table->index('id');
 			$table->index('user_id');
 
 			$table->text('first_name', 60);

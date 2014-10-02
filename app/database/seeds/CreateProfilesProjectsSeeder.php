@@ -56,7 +56,8 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			return $thumbnail[array_rand($thumbnail)];
 		}
 
-		for ($i = 0; $i < 5; $i++) {
+		// loop for require number of users
+		for ($i = 0; $i < 100; $i++) {
 
 			// create sentry user
 			$first_name = $faker->firstName($gender = null|'male'|'female');
@@ -77,19 +78,6 @@ class CreateProfilesProjectsSeeder extends Seeder {
 		    $userUser->addGroup($userGroup);
 
 		    $user_id = $userUser['attributes']['id'];
-
-			$project = [
-				'title'              => $faker->text($maxNbChars = 25),
-				'short_description'  => $faker->text($maxNbChars = 200),
-				//'full_description' => $faker->text($maxNbChars = 200),
-				'thumbnail'          => getThumbnail(),
-				'target_fund'        => $faker->numberBetween($min = 2500, $max = 9000),
-				'target_date'        => setDate(),
-				'user_id'            => $user_id,
-				'created_at'         => new DateTime,
-				'updated_at'         => new DateTime
-			];
-
 			$user_profiles = [
 				'user_id'        => $user_id,
 				'first_name'     => $first_name,
@@ -99,10 +87,22 @@ class CreateProfilesProjectsSeeder extends Seeder {
 				'created_at'     => new DateTime,
 				'updated_at'     => new DateTime
 			];
-
-			DB::table('projects')->insert($project);
 			DB::table('user_profiles')->insert($user_profiles);
 
+			$random_limit = rand(3, 7);			
+			for ($a = 0; $a < $random_limit; $a++) { 
+				$project = [
+					'title'              => $faker->text($maxNbChars = 25),
+					'short_description'  => $faker->text($maxNbChars = 200),
+					'thumbnail'          => getThumbnail(),
+					'target_fund'        => $faker->numberBetween($min = 2500, $max = 9000),
+					'target_date'        => setDate(),
+					'user_id'            => $user_id,
+					'created_at'         => new DateTime,
+					'updated_at'         => new DateTime
+				];
+				DB::table('projects')->insert($project);	
+			}
 		}
 	}
 

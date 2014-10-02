@@ -13,7 +13,7 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	return [ Projects::all(), Profiles::all() ];
+
 }));
 
 

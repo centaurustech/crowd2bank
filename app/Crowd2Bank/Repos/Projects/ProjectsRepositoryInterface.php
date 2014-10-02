@@ -2,7 +2,7 @@
 
 interface ProjectsRepositoryInterface {
 
-	public function getProjects(array $id);
+	public function getProjects($limit);
 
 	public function currentProjects();
 

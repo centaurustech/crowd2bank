@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
+			$table->index('id');
 			$table->index('user_id');
 
 			$table->string('title', 80);
