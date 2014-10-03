@@ -2,9 +2,9 @@
 
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class Profiles extends Eloquent {
+class Project extends Eloquent {
 
-     protected $table = 'user_profiles';
+     protected $table = 'projects';
      public $timestamps = true;
-     
+
 }

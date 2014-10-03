@@ -14,11 +14,11 @@ class ProjectsController extends BaseController {
 
 	public function index()
 	{	
-		$limit = 8;
-		return [
-			'current' => $this->projects->getProjectsByTargetDate($limit, 'current'),
-			'completed' => $this->projects->getProjectsByTargetDate($limit, 'completed'),
-		];
+		$limit     = 8;
+		$current   = $this->projects->getLatestProjectsByTargetDate($limit, 'current');
+		$completed = $this->projects->getLatestProjectsByTargetDate($limit, 'completed');
+		$projects   = array_merge($current, $completed);		
+		return View::make('index', compact("projects"));
 	}
 
 	public function getAllProjects()

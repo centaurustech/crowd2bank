@@ -1,47 +1,47 @@
 <?php namespace Crowd2Bank\Repos\Projects;
 
-use Projects;
+use Crowd2Bank\Utilities\DateTime,
+	Project;
 
 use Exception,
 	Response;
 
 class ProjectsRepository implements ProjectsRepositoryInterface {
 
-    protected $projects;
+    protected $project;
+    protected $date;
 
-    public function __construct(Projects $projects)
+    public function __construct(Project $project, DateTime $date)
     {
-        $this->projects = $projects;
+		$this->project = $project;
+		$this->date    = $date;
     }
 
-	public function getProjectsByTargetDate($limit, $category)
-	{
-		if ( $category != 'current' && $category != 'completed' )
-		{
-			throw new Exception('$category ' . ' is not given.');
-		}
-		else if (!is_string($category))
-		{
-			throw new Exception('$category ' . ' should be a string.');
-		}
-		else if ( !is_int($limit) )
-		{
-			throw new Exception('error on $limit ' . ' should be an integer');
-		}
-		else
-		{
-			$option = ( $category == 'completed' ) ? '<=' : '>=';
+    public function getLatestProjectsByTargetDate($limit, $target_date = 'current')
+    {
+    	//
+    	$operator = ( $target_date == 'completed' ) ? '<=' : '>=';
 
-			$project = $this->projects->where('target_date', $option, new \DateTime('today'))
-							->orderBy('id', 'DESC')
-							->take($limit)
-							->get();
+    	//
+		$projects = $this->project->where('target_date', $operator, $this->date->today())
+						->orderBy('id', 'DESC')->take($limit)->get();
 
-			return $project->toJson();
+		foreach ($projects as $key => $value) {
+
+			$project_date              = $this->date->toTime($projects[$key]['target_date']);
+			$status                    = $this->date->compareToday($project_date);
+			
+			$data[$key]['product_id']  = $value['id'];			
+			$data[$key]['title']       = $value['title'];
+			$data[$key]['description'] = $value['short_description'];
+			$data[$key]['thumbnail']   = $value['thumbnail'];
+			$data[$key]['target_fund'] = $value['target_fund'];
+			$data[$key]['target_date'] = $value['target_date'];
+
 		}
-		
 
-	}
+		return [$target_date => $data];
+    }
 
 	public function currentProjects()
 	{

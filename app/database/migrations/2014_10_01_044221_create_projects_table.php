@@ -15,9 +15,11 @@ class CreateProjectsTable extends Migration {
 		Schema::create('projects', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
+			
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
 			$table->index('id');
+
+			$table->integer('user_id')->unsigned();
 			$table->index('user_id');
 
 			$table->string('title', 80);

@@ -13,7 +13,7 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-
+	return Fund::find(5)->profiles;
 }));
 
 

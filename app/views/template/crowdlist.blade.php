@@ -1,127 +1,79 @@
-                <div class="row page-category">
-                    <div class="col-sm-6 col-md-8 no-padding">
-                        <h2 class="page-title">{{{ $title }}} <br /><small>{{{ $subtitle or 'support and share new projects or inventions' }}}</small></h2>
-                    </div>
-                    @if( isset($nav) && ($nav == 'all') )
-                    <div class="col-sm-6 col-md-4 no-padding">
-                        <div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Project  By <span class="caret"></span></button>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">All</a></li>
-                                <li><a href="#">Current</a></li>
-                                <li><a href="#">Completed</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category By <span class="caret"></span></button>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Status</a></li>
-                                <li><a href="#">Title</a></li>
-                                <li><a href="#">Funded</a></li>
-                                <li><a href="#">Target Fund</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sorted By <span class="caret"></span></button>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Ascending</a></li>
-                                <li><a href="#">Descending</a></li>
-                              </ul>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn btn-primary" href="#">Sort</a>
-                            </div>
-                        </div>
-                    </div>   
-                    @endif                 
-                </div>
-            <?php
-                $title = [
-                    'the rolling bench',
-                    'keyboard food top cover',
-                    'the bookcase chair',
-                    'spacesaver cabinet',
-                ];
-            ?>               
-			@for ($i = 0; $i < 2; $i++)
-                <div class="row crowd-list">
-                @for ($a = 0; $a < 4; $a++)
-                    <div class="col-sm-6 col-md-3 item-display">
-                        <div class="crowd-box">
-                        <?php
-                            $date = array('2014/12/15', '2014/09/15');     
-                            $progress_bar = 'progress-bar-blue';
-                            $percentage = rand(1, 99);
-                            $completed = $percentage . '%';
-
-                            $details = [
-                                [
-                                    'bar' => 'progress-bar-danger',
-                                    'status' => 'Uncompleted'
-                                ],
-                                [
-                                    'bar' => 'progress-bar-success',
-                                    'status' => 'Successful'
-                                ]
-                            ];
-
-                            $random = array_rand($date);                           
-
-                            if($random)
-                            {
-                                $rand = $details[array_rand($details)];
-
-                                $progress_bar = $rand['bar'];
-                                $completed = $rand['status'];
-                                $percentage = ($progress_bar == 'progress-bar-danger') ? rand(1, 99) : 100;
-
-                            }
-
-
-                        ?>
-                            <div class="status-cont">
-                                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $date[$random] }}">
-                                    <li><strong>Status:</strong></li>                                                                        
-                                </ul>
-                            </div>
-
-                            <div class="img-wrap">
-                                <a href="{{ URL::to("single-page") }}/{{ $a + 1 }}"><img class="img-responsive" src="{{ URL::asset('assets/images') }}/img{{ $a + 1 }}.png"></a>
-                            </div>
-                            <div class="detailed-cont">
-                                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $a + 1 }}">{{ $title[$a] }}</a></h3>
-                                <p class="box-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nesciunt cumque dolorem, quasi, maxime & repellendus.</p>
-                            </div>
-                            <div class="footer-cont">
-                                <div class="completed">
-                                    <p>Completed: {{ $completed }}</p>
-                                    <div class="progress-plain progress">
-                                        <div class="progress-bar {{ $progress_bar }}" role="progressbar" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $percentage }}%;">
-                                        <span class="hide">{{ $percentage }}%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="list-custom list-unstyled">
-                                    <li>
-                                        Target Fund
-                                        <span>US$ 1000</span>
-                                    </li>
-                                    <li>
-                                        Funded
-                                        <span>US$ 280</span>
-                                    </li>
-                                    <li>
-                                        Backers
-                                        <span>15</span>
-                                    </li>
-                                </ul>
-                            </div>
+<div class="row page-category">
+    <div class="col-sm-6 col-md-8 no-padding">
+        <h2 class="page-title">{{{ $title }}} <br /><small>{{{ $subtitle or 'support and share new projects or inventions' }}}</small></h2>
+    </div>
+    @if( isset($nav) && ($nav == 'all') )
+    <div class="col-sm-6 col-md-4 no-padding">
+        <div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Project  By <span class="caret"></span></button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">All</a></li>
+                <li><a href="#">Current</a></li>
+                <li><a href="#">Completed</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category By <span class="caret"></span></button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Status</a></li>
+                <li><a href="#">Title</a></li>
+                <li><a href="#">Funded</a></li>
+                <li><a href="#">Target Fund</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sorted By <span class="caret"></span></button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Ascending</a></li>
+                <li><a href="#">Descending</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+                <a class="btn btn-primary" href="#">Sort</a>
+            </div>
+        </div>
+    </div>   
+    @endif                 
+</div>
+<div class="row crowd-list">
+@for ($i = 0; $i < count($projects); $i++)
+    <div class="col-sm-6 col-md-3 item-display">
+        <div class="crowd-box">
+            <div class="status-cont">
+                <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $projects[$i]['target_date'] }}">
+                    <li><strong>Status:</strong></li>
+                </ul>
+            </div>
+            <div class="img-wrap">
+                <a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}"><img class="img-responsive" src="{{ URL::asset('assets/images') }}/img1.png"></a>
+            </div>
+            <div class="detailed-cont">
+                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}">{{ $projects[$i]['title'] }}</a></h3>
+                <p class="box-paragraph">{{ $projects[$i]['description'] }}</p>
+            </div>
+            <div class="footer-cont">
+                <div class="completed">
+                    <p>Completed: Successful</p>
+                    <div class="progress-plain progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        <span class="hide">100%</span>
                         </div>
                     </div>
-                @endfor
                 </div>
-			@endfor
+                <ul class="list-custom list-unstyled">
+                    <li>Target Fund<span>US$ {{ $projects[$i]['target_fund'] }}</span></li>
+                    <li>Funded<span>US$ 280</span></li>
+                    <li>Backers<span>15</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @if ( ( ($i + 1) % 4) == 0 )
+        </div><div class="row crowd-list">
+    @endif    
+@endfor
+</div> <!-- end of crowdlist -->
                 <div class="row">
                     <div class="col-md-12">
                     @if( isset($nav) && ($nav == 'all') )
