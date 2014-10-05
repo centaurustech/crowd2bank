@@ -1,9 +1,21 @@
 <?php namespace Crowd2Bank\Handlers;
 
-use Cartalyst\Sentry\Sentry;
+use Cartalyst\Sentry\Sentry,
+    Profile, Project;
+
 use Session, Response, Mail;
 
 class UserEventHandler {
+
+    protected $profile;
+    protected $project;
+
+    public function __construct(Profile $profile, Project $project)
+    {
+        $this->profile = $profile;
+        $this->project = $project;
+    }
+
 
     public function subscribe($events)
     {
@@ -11,19 +23,26 @@ class UserEventHandler {
         $events->listen('sentinel.user.login', 'Crowd2Bank\Handlers\UserEventHandler@getSessionLogin');
     }
 
-    public function getSessionLogin($data)
+    public function getSessionLogin($user)
     {
-
-        $first_name = ucfirst($data['first_name']);
-        $last_name  = ucfirst($data['last_name']);
-        $fullname   =  $first_name . ' ' . $last_name;
-
-        Session::put('user.username', $data['username']);
-        Session::put('user.fullname', $fullname);
-        Session::put('user.email', $data['email']);
-        Session::put('user.contact', $data['contact']);
-        Session::put('user.company', $data['company']);
-        
+         $id             = $user->id;
+         $profile        = $this->profile->find($id);
+         $project        = $this->project->find($id);
+         
+         $first_name     = ucfirst($profile->first_name);
+         $last_name      = ucfirst($profile->last_name);
+         $fullname       =  $first_name . ' ' . $last_name;
+         
+         $total_projects = $profile->projects->count();
+         $total_backers  = $project->funds->count();
+         
+         Session::put('user.username', $user['username']);
+         Session::put('user.fullname', $fullname);
+         Session::put('user.email', $user['email']);
+         Session::put('user.contact', $profile->contact_number);
+         Session::put('user.company', $profile->company);
+         Session::put('user.total_projects', $total_projects);
+         Session::put('user.total_backers', $total_backers);
     }
 
     public function notifitionEmailForAdmin($data)

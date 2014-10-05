@@ -13,18 +13,7 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	// return Fund::find(6)->with(['profiles', 'projects'])->take(1)->get();
-	// return Project::find(1)->with(['funds', 'profiles'])->get();
-
-	// $operator = '<=';
-	// $today = new \DateTime('today');
-	// $limit = 3;
-
-	// return Project::with('funds')
-	// 		->where(function($query) use ($operator, $today) {
-	// 			$query->where('projects.target_date', $operator, $today);
-	// 		})
-	// 		->take($limit)->get();
+	return Project::find(2)->funds->count();
 }));
 
 
