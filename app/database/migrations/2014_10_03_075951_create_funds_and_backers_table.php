@@ -26,6 +26,7 @@ class CreateFundsAndBackersTable extends Migration {
 			$table->index('project_id');
 
 			$table->integer('pledge_amount')->unsigned()->default(0);
+			$table->string('account_type');
 			$table->timestamps();
 		});
 

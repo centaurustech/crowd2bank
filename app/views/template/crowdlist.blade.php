@@ -54,17 +54,17 @@
             </div>
             <div class="footer-cont">
                 <div class="completed">
-                    <p>Completed: Successful</p>
+                    <p>Completed: {{ $projects[$i]['status'] }}</p>
                     <div class="progress-plain progress">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        <span class="hide">100%</span>
+                        <div class="progress-bar {{ $projects[$i]['progress_bar'] }}" role="progressbar" aria-valuenow="{{ $projects[$i]['percentage'] }}" aria-valuemin="0" aria-valuemax="{{ $projects[$i]['percentage'] }}" style="width: {{ $projects[$i]['percentage'] }}%;">
+                        <span class="hide">{{ $projects[$i]['percentage'] }}%</span>
                         </div>
                     </div>
                 </div>
                 <ul class="list-custom list-unstyled">
-                    <li>Target Fund<span>US$ {{ $projects[$i]['target_fund'] }}</span></li>
-                    <li>Funded<span>US$ 280</span></li>
-                    <li>Backers<span>15</span></li>
+                    <li>Target Fund<span>{{ $projects[$i]['target_fund'] }}</span></li>
+                    <li>Funded<span>{{ $projects[$i]['funded'] }}</span></li>
+                    <li>Backers<span>{{ $projects[$i]['backers'] }}</span></li>
                 </ul>
             </div>
         </div>

@@ -41,7 +41,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 	    DB::table('user_profiles')->delete();
 
 		// set required limit for users
-		$user_limit = 100;
+		$user_limit = 20;
 
 		// loop for require number of users
 		for ($i = 0; $i < $user_limit; $i++) {
@@ -82,19 +82,23 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			DB::table('user_profiles')->insert($user_profiles);
 
 			// set random limit of projects per user_id
-			$random_limit = rand(3, 9);
+			$random_limit = rand(7, 9);
+
+			$this->command->info('->current number of user (' . $i . '/ ' . $user_limit . ' )'); 
 
 			// set the random limit of projects per user
 			for ($a = 0; $a < $random_limit; $a++) {
+
+				$this->command->info('-->random number of projects per user id (' . $a . '/ ' . $random_limit . ' )'); 
 
 				// prepare data for projects table
 				$project = [
 					'title'             => $faker->text($maxNbChars = 25),
 					'short_description' => $faker->text($maxNbChars = 200),
 					'thumbnail'         => getThumbnail(),
-					'target_fund'       => $faker->numberBetween($min = 2500, $max = 9000),
+					'target_fund'       => $faker->numberBetween($min = 850, $max = 2450),
 					'target_date'       => setDate(),
-					'user_id'   => $user_id,
+					'user_id'           => $user_id,
 					'created_at'        => new DateTime,
 					'updated_at'        => new DateTime
 				];
