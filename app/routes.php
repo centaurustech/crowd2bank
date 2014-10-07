@@ -13,7 +13,48 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	return Project::find(2)->funds->count();
+	function getThumbnail() {		
+		$thumbnail = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-5.jpg',
+						'image-6.jpg', 'image-7.jpg', 'image-8.jpg', 'image-9.jpg' ];
+		return $thumbnail[array_rand($thumbnail)];
+	}
+
+	$dummyDir             = public_path() . '\assets\images\dummy\projects';
+	$mainPath             = public_path() . '\uploads';
+	$randomThumbnail      = getThumbnail();
+	$randomDummyThumbnail = $dummyDir . '\\' . $randomThumbnail;
+	
+	$projects             = $mainPath . '\projects';		
+	$thumbnails           = $mainPath . '\thumbnails';
+	
+	$username             = 'aldren.terante';
+	$newFileName          = date('YmdHis') . '-' .$randomThumbnail;
+	
+	$newDirectory         = $projects . '\\' . $username;
+	$oldFile              = $randomDummyThumbnail;
+	$newFile              = $newDirectory . '\\' . $newFileName;
+	
+	File::makeDirectory($newDirectory, 0777, true, true);
+	File::copy($oldFile, $newFile);
+
+	$link = URL::to('/') . '/uploads/projects/' . $username . '/' . $newFileName;
+	return [
+		'oldFile' => $oldFile,
+		'newFile' => $newFile,
+		'link' => $link
+	];
+
+	// $newDir   = $mainPath . $username;
+	// $requireDir = ['thumbnails', 'projects'];
+	// $limit = count($requireDir);
+
+	// File::cleanDirectory($mainPath);
+
+	// for ($i = 0; $i < $limit; $i++) { 
+	// 	$directory = $newDir . '\\' . $requireDir[$i];		
+	// 	File::makeDirectory($directory, 0777, true, true);
+	// }
+	
 }));
 
 
