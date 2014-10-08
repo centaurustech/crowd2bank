@@ -24,8 +24,13 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			return $date->format('Y-m-d H:i:s');
 		}
 
+		function getToday($date)
+		{
+			return $date->format('YmdHis');
+		}
+
 		// create a dummy image for project
-		function getThumbnail() {
+		function getProjectsThumbnail() {
 			
 			$thumbnail = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg',
 							'image-6.jpg', 'image-7.jpg', 'image-8.jpg', 'image-9.jpg' ];
@@ -81,6 +86,16 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			// insert the data in user profiles
 			DB::table('user_profiles')->insert($user_profiles);
 
+			// dummy thumbnail setup
+			/*-------------------------------------------------------*/
+			$projects    = public_path() . '\uploads\projects';
+			$dummyDir    = public_path() . '\assets\images\dummy\projects';
+
+			// create folder based on username
+			$usernameDir = $projects . '\\' . $username;
+			File::makeDirectory($usernameDir, 0777, true, true);
+			/*-------------------------------------------------------*/
+
 			// set random limit of projects per user_id
 			$random_limit = rand(7, 9);
 
@@ -91,11 +106,16 @@ class CreateProfilesProjectsSeeder extends Seeder {
 
 				$this->command->info('-->random number of projects per user id (' . $a . '/ ' . $random_limit . ' )'); 
 
+				$date = getToday(new DateTime);
+				$thumbnail = getProjectsThumbnail();
+				$link = URL::to('/') . '/uploads/projects/' . $username . '/' . $date . '/' . $thumbnail;
+
+
 				// prepare data for projects table
 				$project = [
 					'title'             => $faker->text($maxNbChars = 25),
 					'short_description' => $faker->text($maxNbChars = 200),
-					'thumbnail'         => getThumbnail(),
+					'thumbnail'         => $link,
 					'target_fund'       => $faker->numberBetween($min = 850, $max = 2450),
 					'target_date'       => setDate(),
 					'user_id'           => $user_id,
@@ -105,6 +125,15 @@ class CreateProfilesProjectsSeeder extends Seeder {
 
 				// insert the data in user profiles
 				DB::table('projects')->insert($project);
+
+				// create directory folder uploads/username/date
+				$newDirectory = $usernameDir . '\\' . $date;
+				File::makeDirectory($newDirectory, 0777, true, true);
+
+				// create a dummy thumbnail for the project
+				$oldFile = $dummyDir . '\\' . $thumbnail;
+				$newFile = $newDirectory . '\\' . $thumbnail;
+				File::copy($oldFile, $newFile);
 
 			}
 		}
