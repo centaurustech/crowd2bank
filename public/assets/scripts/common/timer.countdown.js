@@ -8,7 +8,9 @@ define([
 
     $(document).ready(function(){
         // for timer countdown
-        $('[data-countdown]').each(function() {
+        var $dataCountdown = $('[data-countdown]');
+        
+        $dataCountdown.each(function() {
             var $this = $(this),
                 finalDate = $(this).data('countdown');
 

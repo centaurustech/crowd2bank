@@ -3,6 +3,7 @@
 use Crowd2Bank\Utilities\DateTime,
 	Crowd2Bank\Utilities\Html,
 	Crowd2Bank\Utilities\Math,
+    Profile,
 	Project;
 
 use DB,
@@ -12,11 +13,13 @@ use DB,
 class ProjectsRepository implements ProjectsRepositoryInterface {
 
     protected $project;
+    protected $profile;
     protected $date;
     protected $html;
 
     public function __construct(
     	Project $project,
+        Profile $profile,
     	DateTime $date,
     	Html $html,
     	Math $math
@@ -30,10 +33,8 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 
     public function getLatestProjectsByTargetDate($limit, $target_date = 'current')
     {
-    	//
     	$operator = ( $target_date == 'completed' ) ? '<=' : '>=';
 
-    	//
 		$projects = $this->project
 						->where('target_date', $operator, $this->date->today())
 						->orderBy('target_date', 'DESC')->take($limit)->get();
@@ -64,24 +65,47 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 		return [$target_date => $data];
     }
 
-	public function currentProjects()
+    public function getSingleProject($cat, $id)
+    {
+        $project = $this->project->find($id);
+        $profile = $project->profiles;
+        $funds   = $project->funds;
+               
+
+        $funded  = $funds->sum('pledge_amount');
+        $author  = $profile->first_name . ' ' . $profile->last_name;
+        $average = $this->math->average($funded, $project['target_fund']);
+
+
+        return [ 
+            'title'             => $project['title'],
+            'short_description' => $project['short_description'],
+            'progress_bar'      => $this->html->progressBar($cat, $average),
+            'author'            => $author,
+            'status'            => $this->html->status($cat, $average),
+            'percentage'        => $this->html->percentage($average),
+            'funded'            => $this->html->setCurrency($funded),
+            'thumbnail'         => $project['thumbnail'],
+            'target_fund'       => $this->html->setCurrency($project['target_fund']),
+            'target_date'       => $project['target_date']
+        ];
+    }
+
+	public function getCurrentProjectsByUserId($userId)
 	{
-		return [[
-				'title_project' => 'Glass Bread Toaster',
-				'date'          => 'July 6, 2014',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'total_funds'   => 'US$ 2500'
-			],[
-				'title_project' => 'Glass Bread Toaster',
-				'date'          => 'July 6, 2014',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'total_funds'   => 'US$ 2500'
-			],[
-				'title_project' => 'Glass Bread Toaster',
-				'date'          => 'July 6, 2014',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'total_funds'   => 'US$ 2500'
-		]];
+        $projects    = $this->project->where('user_id', '=', $userId)->get();
+
+        foreach ($projects as $key => $value) {
+
+            $total_funds = $this->project->find($value['id'])->funds->sum('pledge_amount');
+
+            $data[$key]['title_project'] = $value['title'];
+            $data[$key]['date']          = $value['target_date'];
+            $data[$key]['status']        = $value['title'];
+            $data[$key]['total_funds']   = $total_funds . '/' . $value['target_fund'];
+        }
+
+        return $data;
 	}
 
 	public function sponsoredProjects()

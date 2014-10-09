@@ -3,14 +3,16 @@
 @section('content')
                 <div class="row page-category">
                     <div class="col-sm-12 no-padding">
-                        <h2 class="page-title">{{ $title }} <br /><small>project by: <a href="#">Anonymous</a></small></h2>
+                        <h2 class="page-title">{{ $project['title'] }} <br /><small >Project by: <a href="#" class="author">{{ $project['author'] }}</a></small></h2>
                     </div>                
                 </div>
                 <div class="row">
                     <div class="post-content col-sm-8 col-md-8">
                       <div class="post-image-wrap">
-                        <img class="img-responsive" src="{{ URL::asset('assets/images') }}/img{{ $id }}.png" style="min-width: 740px;">
+                        <img class="img-responsive" src="{{ $project['thumbnail'] }}" style="min-width: 740px;">
                       </div>
+                      <?php
+/*
                       <div class="inline-social-links">
                         <span class="title">Help by sharing this to your friends:</span>
                         <ul class="list-inline list-unstyle">
@@ -22,9 +24,13 @@
                           </li>
                         </ul>
                       </div>
+ */
+                      ?>
+
                       <h3 class="page-title">Project Description</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis consequatur, commodi officia, cum ipsum dicta alias modi. Quos totam, aperiam dicta vitae tempora enim mollitia, facilis quis nesciunt voluptate sapiente!</p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis consequatur, commodi officia, cum ipsum dicta alias modi. Quos totam, aperiam dicta vitae tempora enim mollitia, facilis quis nesciunt voluptate sapiente!</p>
+                      {{ $project['short_description'] }}
+                      <?php
+                      /*
                       <h3 class="page-title">How to be part of this project?</h3>
                       <ol class="list-readable">
                         <li>
@@ -70,12 +76,15 @@
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa unde eveniet corporis asperiores totam, alias tempora consequuntur natus sequi, laudantium, sunt officiis omnis nemo quam temporibus, quas dolorum facere sit.</p>
                         </li>
                       </ul>
+                      */
+                      ?>
+
                     </div>
                     <div class="sidebar col-sm-4 col-md-4">
                       <div class="sidebar-wrap">
                         <div class="status-cont text-center">
-                          <p class="page-title-blue">US$ 2800</p>
-                          <ul class="list-custom-inline list-unstyled list-inline" data-countdown="2014/09/15">
+                          <p class="page-title-blue">{{ $project['target_fund'] }}</p>
+                          <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $project['target_date'] }}">
                               <li><strong>Status:</strong></li>
                               <li><span>05 days</span></li>
                               <li><span>3 hours</span></li>
@@ -85,25 +94,27 @@
                         <hr>
                         <div class="footer-cont">
                           <div class="completed">
-                            <p>Completed: 60%</p>
+                            <p>Completed: {{ $project['status'] }}</p>
                             <div class="progress-plain progress">
-                              <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                <span class="hide">60%</span>
+                              <div class="progress-bar {{ $project['progress_bar'] }}" role="progressbar" aria-valuenow="{{ $project['percentage'] }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $project['percentage'] }};">
+                                <span class="hide">{{ $project['percentage'] }}</span>
                               </div>
                             </div>
                           </div>
                           <ul class="list-custom list-unstyled">
                             <li>
                               Target Fund
-                              <span>US$ 1000</span>
+                              <span>{{ $project['target_fund'] }}</span>
                             </li>
                             <li>
                               Funded
-                              <span>US$ 280</span>
+                              <span>{{ $project['funded'] }}</span>
                             </li>
                           </ul>
                         </div>
                         <hr>
+<?php
+/*
                         <div class="support-item">
                           <h3 class="support-title page-title-blue">
                             Support this project
@@ -132,7 +143,8 @@
                           <a class="btn-sidebar" href="{{ URL::route('pledge-a-project')}}">Support this amount</a>
                         </div>                
                       </div>
-
+ */
+?>
                     </div>
                 </div>
 @stop

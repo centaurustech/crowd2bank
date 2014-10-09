@@ -59,7 +59,7 @@
         </div>
     </div>
 	@include('sections/footer')
-	<script data-main="assets/scripts/main" src="{{ URL::asset('assets/scripts/vendor/require.js') }}"></script>
+	<script data-main="{{ URL::to('/') }}/assets/scripts/main" src="{{ URL::asset('assets/scripts/vendor/require.js') }}"></script> 
 </body>
 </html>
 

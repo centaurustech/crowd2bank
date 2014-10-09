@@ -2,7 +2,7 @@
 
 interface ProjectsRepositoryInterface {
 	public function getLatestProjectsByTargetDate($limit, $target_date);
-	public function currentProjects();
-	public function sponsoredProjects();
-
+    public function getSingleProject($cat, $id);
+	public function getCurrentProjectsByUserId($id);
+	public function sponsoredProjects();    
 }

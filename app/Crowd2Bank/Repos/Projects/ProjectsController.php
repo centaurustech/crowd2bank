@@ -14,7 +14,7 @@ class ProjectsController extends BaseController {
 
 	public function index()
 	{	
-		$limit     = 20;
+		$limit     = 8;
 		$current   = $this->projects->getLatestProjectsByTargetDate($limit, 'current');
 		$completed = $this->projects->getLatestProjectsByTargetDate($limit, 'completed');
 		$projects   = array_merge($current, $completed);
@@ -30,22 +30,6 @@ class ProjectsController extends BaseController {
 	{
 		return View::make('pledge-a-project');
 		
-	}
-
-	public function singlePage($id)
-	{
-		$title = [
-			'the rolling bench',
-			'keyboard food top cover',
-			'the bookcase chair',
-			'spacesaver cabinet',
-		];
-
-		$data = [ 
-			'title' => $title[$id - 1],
-			'id' => $id
-		];
-		return View::make('single-page', $data);
 	}
 
 }

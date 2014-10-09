@@ -20,8 +20,9 @@ class UserRepository implements UserRepositoryInterface {
 		$this->profile = $profile;
 	}
 
-	public function getProfile()
+	public function getProfile($id)
 	{
+		$userId = $this->profile->find($id)->user_id;
 		$data = [
 			'profile' => [
 				'username'       => Session::get('user.username'),
@@ -33,7 +34,7 @@ class UserRepository implements UserRepositoryInterface {
 				'total_backers'  => Session::get('user.total_backers'),
 				'membership'     => 'Regular Member'
 			],
-			'current_projects' => $this->project->currentProjects(),
+			'current_projects' => $this->project->getCurrentProjectsByUserId($userId),
 			'sponsored_projects' => $this->project->sponsoredProjects()
 		];
 

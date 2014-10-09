@@ -65,8 +65,8 @@ Route::get('test', array( 'as' => 'test', function()
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
-	Route::get('profile', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
-								'as' => 'profile'));
+	Route::get('profile/{id}', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
+								'as' => 'profile'))->where('id', '[0-9]+');
 
 	Route::get('dashboard', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
 								'as' => 'dashboard'));
@@ -84,7 +84,7 @@ Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\Projec
 Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@pledgeAProject',
 									'as' => 'pledge-a-project'));
 
-Route::get('single-page/{id}', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@singlePage',
+Route::get('single-page/{cat}/{id}', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@singlePage',
 									'as' => 'single-page'))->where('id', '[0-9]+');
 
 /*--------------------------------------------------------------------------

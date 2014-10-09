@@ -46,12 +46,12 @@
                 </ul>
             </div>
             <div class="img-wrap">
-                <a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}">
+                <a href="{{ URL::to("single-page") }}/{{ $category }}/{{ $projects[$i]['product_id'] }}">
                     <img class="img-responsive" src="{{ $projects[$i]['thumbnail'] }}">
                 </a>
             </div>
             <div class="detailed-cont">
-                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}">{{ $projects[$i]['title'] }}</a></h3>
+                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $category }}/{{ $projects[$i]['product_id'] }}">{{ $projects[$i]['title'] }}</a></h3>
                 <p class="box-paragraph">{{ $projects[$i]['description'] }}</p>
             </div>
             <div class="footer-cont">

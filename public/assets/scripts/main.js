@@ -41,8 +41,6 @@ require.config({
     }
 });
 
-require([
-    'common'
-], function () {
-
+require(['common'], function () {
+    console.log('Loaded main.js');
 });

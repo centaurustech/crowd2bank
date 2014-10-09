@@ -1,10 +1,9 @@
 @extends('layouts/master')
 
 @section('content')
-                  
-            	<div class="profile-page">
-            		<div class="container">
-            			<div class="col-sm-8 col-md-8 no-padding">
+                  <div class="profile-page">
+                        <div class="container">
+                              <div class="col-sm-8 col-md-8 no-padding">
                                     <div class="page-category">                                          
                                           <h2 class="page-title">Welcome, {{ $data['profile']['username'] }}</h2>
                                     </div>
@@ -29,20 +28,20 @@
                                                 </ul>
                                           </li>
                                     </ul>               
-            			</div>
+                              </div>
                         @unless (Sentry::check() && Sentry::getUser()->hasAccess('admin'))      
-            			<div class="col-sm-4 col-md-4 no-padding">
-            				<div class="page-category">
-            					<h2 class="page-title-small">Video Introduction<br /><small>an introduction about yourself or project.</small></h2>
-            				</div>
-            				<div class="img-wrap">                      
-            					<div class='responsive-video-wrapper'><iframe src='http://player.vimeo.com/video/99462237' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-            				</div>
-            			</div>
+                              <div class="col-sm-4 col-md-4 no-padding">
+                                    <div class="page-category">
+                                          <h2 class="page-title-small">Video Introduction<br /><small>an introduction about yourself or project.</small></h2>
+                                    </div>
+                                    <div class="img-wrap">                      
+                                          <div class='responsive-video-wrapper'><iframe src='http://player.vimeo.com/video/99462237' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+                                    </div>
+                              </div>
 
                               @include('template/profile-createdlist', array('current_projects' => $data['current_projects']))
                               @include('template/profile-sponsoredlist', array('sponsored_projects' => $data['sponsored_projects']))
                         @endunless
-            		</div>
-            	</div>
+                        </div>
+                  </div>
 @stop
