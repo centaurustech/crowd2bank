@@ -108,7 +108,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 
 				$date = getToday(new DateTime);
 				$thumbnail = getProjectsThumbnail();
-				$link = URL::to('/') . '/uploads/projects/' . $username . '/' . $date . '/' . $thumbnail;
+				$link = URL::asset('uploads/projects/') . '/' . $username . '/' . $date . '/' . $thumbnail;
 
 
 				// prepare data for projects table

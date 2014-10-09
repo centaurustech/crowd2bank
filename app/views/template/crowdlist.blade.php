@@ -46,7 +46,9 @@
                 </ul>
             </div>
             <div class="img-wrap">
-                <a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}"><img class="img-responsive" src="{{ URL::asset('assets/images') }}/img1.png"></a>
+                <a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}">
+                    <img class="img-responsive" src="{{ $projects[$i]['thumbnail'] }}">
+                </a>
             </div>
             <div class="detailed-cont">
                 <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $projects[$i]['product_id'] }}">{{ $projects[$i]['title'] }}</a></h3>
