@@ -45,6 +45,10 @@ class CreateProfilesProjectsSeeder extends Seeder {
 	    DB::table('projects')->delete();
 	    DB::table('user_profiles')->delete();
 
+	    // delete all images folder
+		$directory = public_path() . '\uploads\projects';
+		File::deleteDirectory($directory, true);
+
 		// set required limit for users
 		$user_limit = 20;
 
@@ -91,10 +95,6 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			$projects    = public_path() . '\uploads\projects';
 			$dummyDir    = public_path() . '\assets\images\dummy\projects';
 
-			// create folder based on username
-			$usernameDir = $projects . '\\' . $username;
-			File::makeDirectory($usernameDir, 0777, true, true);
-			/*-------------------------------------------------------*/
 
 			// set random limit of projects per user_id
 			$random_limit = rand(7, 9);
@@ -106,9 +106,15 @@ class CreateProfilesProjectsSeeder extends Seeder {
 
 				$this->command->info('-->random number of projects per user id (' . $a . '/ ' . $random_limit . ' )'); 
 
+				// create folder based on username
+				$usernameDir = $projects;
+				File::makeDirectory($usernameDir, 0777, true, true);
+				/*-------------------------------------------------------*/
+
 				$date = getToday(new DateTime);
 				$thumbnail = getProjectsThumbnail();
-				$link = URL::asset('uploads/projects/') . '/' . $username . '/' . $date . '/' . $thumbnail;
+				$link = URL::asset('uploads/projects') . '/' . $date . '/' . $thumbnail;
+
 
 
 				// prepare data for projects table

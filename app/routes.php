@@ -14,59 +14,13 @@
 Route::get('test', array( 'as' => 'test', function()
 {
 
-	return URL::asset('uploads/projects');
-	exit();
-
-	function getThumbnail() {		
-		$thumbnail = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-5.jpg',
-						'image-6.jpg', 'image-7.jpg', 'image-8.jpg', 'image-9.jpg' ];
-		return $thumbnail[array_rand($thumbnail)];
-	}
-
-		$projects             = public_path() . '\uploads\projects';
-		$dummyDir             = public_path() . '\assets\images\dummy\projects';
-		$date                 = date('YmdHis');
-		
-		$randomThumbnail      = getThumbnail();
-		$randomDummyThumbnail = $dummyDir . '\\' . $randomThumbnail;
-		
-		$username             = 'aldren.terante';
-		$newFileName          = $randomThumbnail;
-		
-		$newDirectory         = $projects . '\\' . $username . '\\' . $date;
-		$oldFile              = $randomDummyThumbnail;
-		$newFile              = $newDirectory . '\\' . $newFileName;
-		$link                 = URL::to('/') . '/uploads/projects/' . $username . '/' . $date . '/' . $newFileName;
-		
-		File::makeDirectory($newDirectory, 0777, true, true);
-		File::copy($oldFile, $newFile);
-
-	
-	return [
-		'oldFile' => $oldFile,
-		'newFile' => $newFile,
-		'link' => $link
-	];
-
-	// $newDir   = $mainPath . $username;
-	// $requireDir = ['thumbnails', 'projects'];
-	// $limit = count($requireDir);
-
-	// File::cleanDirectory($mainPath);
-
-	// for ($i = 0; $i < $limit; $i++) { 
-	// 	$directory = $newDir . '\\' . $requireDir[$i];		
-	// 	File::makeDirectory($directory, 0777, true, true);
-	// }
-	
-
 }));
 
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
-	Route::get('profile/{id}', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
-								'as' => 'profile'))->where('id', '[0-9]+');
+	Route::get('profile', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
+								'as' => 'profile'));
 
 	Route::get('dashboard', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
 								'as' => 'dashboard'));

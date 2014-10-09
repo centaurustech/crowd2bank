@@ -20,8 +20,9 @@ class UserRepository implements UserRepositoryInterface {
 		$this->profile = $profile;
 	}
 
-	public function getProfile($id)
+	public function getProfile()
 	{
+		$id = Session::get('user.id');
 		$userId = $this->profile->find($id)->user_id;
 		$data = [
 			'profile' => [

@@ -7,7 +7,7 @@ interface UserRepositoryInterface {
 	 *
 	 * @return Response
 	 */
-	public function getProfile($id);
+	public function getProfile();
 
 	/**
 	 * Get profile details.

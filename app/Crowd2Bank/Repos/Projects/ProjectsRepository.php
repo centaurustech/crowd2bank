@@ -99,10 +99,10 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 
             $total_funds = $this->project->find($value['id'])->funds->sum('pledge_amount');
 
-            $data[$key]['title_project'] = $value['title'];
-            $data[$key]['date']          = $value['target_date'];
-            $data[$key]['status']        = $value['title'];
-            $data[$key]['total_funds']   = $total_funds . '/' . $value['target_fund'];
+			$data[$key]['title_project'] = $value['title'];           
+			$data[$key]['status']        = $value['target_date'];
+			$data[$key]['target_fund']   = $value['target_fund'];
+			$data[$key]['total_funds']   = $total_funds ;
         }
 
         return $data;

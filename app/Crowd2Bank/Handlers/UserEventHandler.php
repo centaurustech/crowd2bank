@@ -36,6 +36,7 @@ class UserEventHandler {
          $total_projects = $profile->projects->count();
          $total_backers  = $project->funds->count();
          
+         Session::put('user.id', $id);
          Session::put('user.username', $user['username']);
          Session::put('user.fullname', $fullname);
          Session::put('user.email', $user['email']);

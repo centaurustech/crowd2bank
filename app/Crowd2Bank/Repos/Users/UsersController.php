@@ -12,9 +12,9 @@ class UsersController extends BaseController {
 		$this->user    = $user;		
 	}
 
-	public function getProfile($id)
+	public function getProfile()
 	{
-		$data = $this->user->getProfile($id);
+		$data = $this->user->getProfile();
 		if( $this->user->isAdmin() )
 		{
 			return View::make('dashboard')->with('data', $data);
