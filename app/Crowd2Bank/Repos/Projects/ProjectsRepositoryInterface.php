@@ -5,4 +5,5 @@ interface ProjectsRepositoryInterface {
     public function getSingleProject($cat, $id);
 	public function getCurrentProjectsByUserId($id);
 	public function sponsoredProjects($id);    
+    public function browseProjects($count);
 }

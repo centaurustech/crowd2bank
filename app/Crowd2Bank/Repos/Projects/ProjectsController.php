@@ -1,7 +1,7 @@
 <?php namespace Crowd2Bank\Repos\Projects;
 
 use Crowd2Bank\Repos\Projects\ProjectsRepositoryInterface as Projects;
-use BaseController, View, Redirect;
+use Project, BaseController, View, Redirect;
 
 class ProjectsController extends BaseController {
 
@@ -23,7 +23,8 @@ class ProjectsController extends BaseController {
 
 	public function getAllProjects()
 	{
-		return View::make('browse-a-project');
+		$projects['projects'] = $this->projects->browseProjects(8);
+		return View::make('browse-a-project', $projects);
 	}
 
 	public function pledgeAProject()

@@ -119,9 +119,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 	public function sponsoredProjects($userId)
 	{
         $funds = $this->fund->where('user_profile_id', '=', $userId)->get();
-        // echo '<pre>';
-        // dd($funds->toArray());
-
+        
         foreach ($funds as $key => $fund) {
 
             $project = $this->project->find($fund['project_id']);
@@ -144,4 +142,8 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
         return $data;
 	}
 	
+    public function browseProjects($count)
+    {
+        return $this->project->orderBy('id', 'desc')->paginate($count);
+    }
 }
