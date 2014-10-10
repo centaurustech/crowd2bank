@@ -13,6 +13,21 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
+	$id            = Session::get('user.id');
+	$project       = Fund::where('user_profile_id', '=', $id)->get()->first();
+	
+	$user_id       = $project->user_profile_id;
+	$project_id    = $project->project_id;
+		
+	$profile       = Profile::where('user_id', '=', $user_id)->get()->first();
+	$project       = Project::where('id', '=', $project_id)->get()->first();
+	
+	$title_project = $project->title;
+	$status        = $project->target_date;
+	$date          = $project->target_date;
+	$project_by    = $profile->first_name . ' ' . $profile->last_name;
+
+	return [$title_project, $status, $date, $project_by];
 
 }));
 

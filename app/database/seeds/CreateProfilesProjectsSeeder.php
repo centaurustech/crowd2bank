@@ -122,7 +122,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 					'title'             => $faker->text($maxNbChars = 25),
 					'short_description' => $faker->text($maxNbChars = 200),
 					'thumbnail'         => $link,
-					'target_fund'       => $faker->numberBetween($min = 850, $max = 2450),
+					'target_fund'       => $faker->numberBetween($min = 1500, $max = 3500),
 					'target_date'       => setDate(),
 					'user_id'           => $user_id,
 					'created_at'        => new DateTime,

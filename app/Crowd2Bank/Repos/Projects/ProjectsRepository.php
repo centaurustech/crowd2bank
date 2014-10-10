@@ -1,12 +1,17 @@
 <?php namespace Crowd2Bank\Repos\Projects;
 
+// utilities
 use Crowd2Bank\Utilities\DateTime,
 	Crowd2Bank\Utilities\Html,
-	Crowd2Bank\Utilities\Math,
+	Crowd2Bank\Utilities\Math;
+
+// models
+use Fund,
     Profile,
 	Project;
 
 use DB,
+    Session,
 	Exception,
 	Response;
 
@@ -14,21 +19,24 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 
     protected $project;
     protected $profile;
+    protected $fund;
     protected $date;
     protected $html;
 
-    public function __construct(
-    	Project $project,
+    public function __construct(Project $project,
         Profile $profile,
-    	DateTime $date,
-    	Html $html,
-    	Math $math
+        Fund $fund,
+        DateTime $date,
+        Html $html,
+        Math $math
     )
     {
-		$this->project = $project;
-		$this->date    = $date;
-		$this->html    = $html;
-		$this->math    = $math;
+        $this->project = $project;
+        $this->profile = $profile;
+        $this->fund    = $fund;
+        $this->date    = $date;
+        $this->html    = $html;
+        $this->math    = $math;
     }
 
     public function getLatestProjectsByTargetDate($limit, $target_date = 'current')
@@ -108,24 +116,32 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
         return $data;
 	}
 
-	public function sponsoredProjects()
+	public function sponsoredProjects($userId)
 	{
-		return [[
-				'title_project' => 'Glass Bread Toaster',
-				'project_by'    => 'Lady Jane',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'date'          => 'July 6, 2014'
-			],[
-				'title_project' => 'Glass Bread Toaster',
-				'project_by'    => 'Lady Jane',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'date'          => 'July 6, 2014'
-			],[
-				'title_project' => 'Glass Bread Toaster',
-				'project_by'    => 'Lady Jane',
-				'status'        => '5 Days | 3 Hours | 40 Mins',
-				'date'          => 'July 6, 2014'
-		]];
+        $funds = $this->fund->where('user_profile_id', '=', $userId)->get();
+        // echo '<pre>';
+        // dd($funds->toArray());
+
+        foreach ($funds as $key => $fund) {
+
+            $project = $this->project->find($fund['project_id']);
+            $userId  = $project->user_id;
+            
+            $profile = $this->profile->where('user_id', '=', $userId)->get()->first();
+
+            $title                       = $project->title;
+            $date                        = $project->target_date;
+            
+            $project_by                  = $profile->first_name . ' ' . $profile->last_name;
+            $contribution                = '2';
+            
+            $data[$key]['title_project'] = $title;
+            $data[$key]['project_by']    = $project_by;
+            $data[$key]['status']        = $date;
+            $data[$key]['contribution']  = $contribution;
+        }
+
+        return $data;
 	}
 	
 }

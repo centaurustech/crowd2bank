@@ -11,7 +11,7 @@
             										<th>Title Project</th>
             										<th>Project By</th>
             										<th>Status</th>
-            										<th>Date</th>
+            										<th>Contribution</th>
             										<th>Actions</th>
             									</tr>
             								</thead>
@@ -20,8 +20,12 @@
                                                                         <tr>
                                                                               <td><a href="{{ URL::route('single-page') }}">{{ $sponsored_project['title_project'] }}</a></td>
                                                                               <td><a href="#">{{ $sponsored_project['project_by'] }}</a></td>
-                                                                              <td><span class="font-ligth-blue">{{ $sponsored_project['status'] }}</span></td>
-                                                                              <td>{{ $sponsored_project['date'] }}</td>
+                                                                              <td>
+                                                                                  <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $sponsored_project['status'] }}">
+                                                                                      <li><strong>Status:</strong></li>
+                                                                                  </ul>   
+                                                                              </td>
+                                                                              <td>{{ $sponsored_project['contribution'] }}</td>
                                                                               <td><a href="#">Edit</a> | <a href="#" class="font-red" data-modal-trigger="project" data-modal-value="delete">Delete</a></td>
                                                                         </tr>
                                                                   @endforeach

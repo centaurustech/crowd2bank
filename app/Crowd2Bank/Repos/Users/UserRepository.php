@@ -36,7 +36,7 @@ class UserRepository implements UserRepositoryInterface {
 				'membership'     => 'Regular Member'
 			],
 			'current_projects' => $this->project->getCurrentProjectsByUserId($userId),
-			'sponsored_projects' => $this->project->sponsoredProjects()
+			'sponsored_projects' => $this->project->sponsoredProjects($userId)
 		];
 
 		return $data;
