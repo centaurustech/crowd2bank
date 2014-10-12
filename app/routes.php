@@ -13,6 +13,35 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
+	// $activeProjects = Project::where('activated', '=', 1)->get(['id', 'user_id']);
+
+	// foreach ($activeProjects as $key => $value) {
+	// 	$data[$key] = [
+	// 		'project_id' => $value->id,
+	// 		'user_id' => $value->user_id,
+	// 	];
+	// }
+
+	// $totalProjects = count($data) - 1;
+
+	// $randomKey = mt_rand(0, $totalProjects);
+
+	// return $data[$randomKey];
+
+	$notActive = DB::table('funds')
+					->join('projects', 'funds.project_id', '=', 'projects.id')
+					->select('funds.id')
+					->where('projects.activated', '=', 0)
+					->get(['funds.id']);
+
+	echo 'Before Deletion: ' . DB::table('funds')->count();
+
+	foreach ($notActive as $key => $value) {
+		DB::table('funds')->where('funds.id', '=', $value->id)->delete();
+		echo 'deleting fund id number: ' . $value->id;
+	}
+	
+	echo 'After Deletion: ' . DB::table('funds')->count();
 
 }));
 

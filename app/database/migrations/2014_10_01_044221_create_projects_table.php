@@ -26,14 +26,15 @@ class CreateProjectsTable extends Migration {
 			$table->mediumText('short_description');			
 			$table->string('thumbnail', 120);
 			$table->integer('target_fund')->unsigned()->default(0);
+			$table->boolean('activated')->unsigned()->default(0);
 			$table->dateTime('target_date');
 			$table->timestamps();
 		});
 
 		Schema::table('projects', function(Blueprint $table) {			
 			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('cascade')
-						->onUpdate('cascade');
+						->onDelete('no action')
+						->onUpdate('no action');
 		});
 
 	}

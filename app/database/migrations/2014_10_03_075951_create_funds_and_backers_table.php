@@ -33,10 +33,10 @@ class CreateFundsAndBackersTable extends Migration {
 		Schema::table('funds', function(Blueprint $table) {
 
 			$table->foreign('user_profile_id')->references('id')->on('user_profiles')
-				->onDelete('cascade')->onUpdate('cascade');
+				->onDelete('no action')->onUpdate('no action');
 
 			$table->foreign('project_id')->references('id')->on('projects')
-				->onDelete('cascade')->onUpdate('cascade');
+				->onDelete('no action')->onUpdate('no action');
 
 		});
 	}

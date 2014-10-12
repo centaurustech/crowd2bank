@@ -14,14 +14,15 @@ class CreateProfilesProjectsSeeder extends Seeder {
 		//converting string to date;
 		function setDate() {
 
-			$target_date = ['2014-09-01 22:09:01', '2014-10-27 16:52:20', '2014-09-01 12:31:43', '2014-10-18 09:41:39',
-							'2014-09-09 12:32:24','2014-10-15 23:25:59','2014-09-08 01:33:25','2014-10-30 14:11:11',
-							'2014-09-07 11:13:13'];
+			$min_date = '2014-09-01 00:00:00';
+			$max_date = '2014-10-31 00:00:00';
 
-			$random_index = array_rand($target_date);
-			$date = new DateTime($target_date[$random_index]);
+		    $min_epoch = strtotime($min_date);
+		    $max_epoch = strtotime($max_date);
 
-			return $date->format('Y-m-d H:i:s');
+		    $rand_epoch = rand($min_epoch, $max_epoch);
+
+		    return date('Y-m-d H:i:s', $rand_epoch);
 		}
 
 		function getToday($date)
@@ -122,8 +123,10 @@ class CreateProfilesProjectsSeeder extends Seeder {
 					'title'             => $faker->text($maxNbChars = 25),
 					'short_description' => $faker->text($maxNbChars = 200),
 					'thumbnail'         => $link,
-					'target_fund'       => $faker->numberBetween($min = 1500, $max = 3500),
+					'target_fund'       => $faker->numberBetween($min = 500, $max = 3000),
+					'thumbnail'         => $link,
 					'target_date'       => setDate(),
+					'activated'         => rand(0, 1),
 					'user_id'           => $user_id,
 					'created_at'        => new DateTime,
 					'updated_at'        => new DateTime

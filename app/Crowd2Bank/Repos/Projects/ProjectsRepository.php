@@ -44,8 +44,14 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
     	$operator = ( $target_date == 'completed' ) ? '<=' : '>=';
 
 		$projects = $this->project
-						->where('target_date', $operator, $this->date->today())
+                        ->where(function($query) use ($operator){
+                            $query->where('target_date', $operator, $this->date->today())
+                                  ->where('activated', '=', 1);
+                        })						
 						->orderBy('target_date', 'DESC')->take($limit)->get();
+
+        // echo '<pre>';
+        // dd($projects->toArray());
 
 		foreach ($projects as $key => $value) {
 			

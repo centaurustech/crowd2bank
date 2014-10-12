@@ -19,6 +19,10 @@ class Html {
         {
             return ( $average >= 100 ) ? 'sucessful' : 'unsucessful';
         }
+        else if ( $targetDate == 'current' && $average >= 100 )
+        {
+            return 'sucessful';
+        }        
         else
         {
             return $this->percentage($average);
@@ -27,9 +31,33 @@ class Html {
 
     public function progressBar($targetDate, $average)
     {
-    	$not_completed = ( $targetDate == 'current' &&  $average <= 100 ) ? '' : 'progress-bar-danger';
-    	$progress_bar  = ( $targetDate == 'completed' && $average >= 100 ) ? 'progress-bar-success' : $not_completed;
-    	return $progress_bar;
+
+        if ( $targetDate == 'current' )
+        {
+            if( $average >= 100 )
+            {
+                return 'progress-bar-success';
+            }
+            else
+            {
+                return '';
+            }
+        }
+        else if ( $targetDate == 'completed' )
+        {
+            if( $average >= 100 )
+            {
+                return 'progress-bar-success';
+            }
+            else
+            {
+                return 'progress-bar-danger';
+            }
+        }
+        else
+        {
+            return '';
+        }
     }
 
     public function shortDescription($string)

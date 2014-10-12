@@ -30,8 +30,8 @@ class CreateUserProfilesTable extends Migration {
 
 		Schema::table('user_profiles', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('cascade')
-						->onUpdate('cascade');
+						->onDelete('no action')
+						->onUpdate('no action');
 		});
 
 	}
