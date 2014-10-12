@@ -23,6 +23,9 @@ class ProjectsController extends BaseController {
 
 	public function getAllProjects()
 	{
+		return $this->projects->browseProjects(8);
+		exit();
+		
 		$projects['projects'] = $this->projects->browseProjects(8);
 		return View::make('browse-a-project', $projects);
 	}

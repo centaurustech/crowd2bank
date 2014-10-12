@@ -150,6 +150,38 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 	
     public function browseProjects($count)
     {
-        return $this->project->orderBy('id', 'desc')->paginate($count);
+        $projects = $this->project
+                         ->select(DB::raw('
+                            DISTINCT(funds.project_id),
+                            projects.target_date,
+                            projects.thumbnail,
+                            projects.title,
+                            projects.short_description,
+                            projects.target_fund
+                         '),
+                            DB::raw("
+                            (
+                                SELECT SUM(funds.pledge_amount)
+                                FROM funds
+                                WHERE funds.project_id = projects.id
+                            ) as funded"),
+                            DB::raw("
+                            (
+                                SELECT COUNT(funds.user_profile_id)
+                                FROM funds
+                                WHERE funds.project_id = projects.id
+                            ) as backers")
+                         )
+                         ->join(DB::raw('funds'), function($join){
+                            $join->on('projects.id', '=', 'funds.project_id');
+                         })                 
+                         ->where(function($query){
+                            $query->where('projects.activated', '=', 1)
+                                  ->where('projects.target_date', '>=', $this->date->today());
+                         })
+                         ->orderBy('projects.id', 'asc')
+                         ->paginate($count);
+
+        return $projects;
     }
 }

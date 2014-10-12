@@ -25,6 +25,21 @@
                 <h3 class="box-title"><a href="#">{{ $projects[$i]['title'] }}</a></h3>
                 <p class="box-paragraph">{{ $projects[$i]['short_description'] }}</p>
             </div>
+            <div class="footer-cont">
+                <div class="completed">
+                    <p>Completed: </p>
+                    <div class="progress-plain progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        <span class="hide">100%</span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-custom list-unstyled">
+                    <li>Target Fund<span>{{ $projects[$i]['target_fund'] }}</span></li>
+                    <li>Funded<span></span></li>
+                    <li>Backers<span></span></li>
+                </ul>
+            </div>
         </div>
     </div>
 
