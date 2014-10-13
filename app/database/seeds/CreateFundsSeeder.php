@@ -16,8 +16,16 @@ class CreateFundsSeeder extends Seeder {
 
 		DB::table('funds')->delete();
 
-		$count_users    = DB::table('user_profiles')->count();	
-		$count_projects = DB::table('projects')->count();
+		$count_users    = DB::table('user_profiles')->count();
+
+		$activeProject = DB::table('projects')->where('activated', '=', 1);
+		$data = $activeProject->get(['id']);
+
+		foreach ($data as $key => $value) {						
+			$getActiveProjectId[$key] = $value->id;
+		}
+
+		$count_projects = $activeProject->count();
 		
 		$account_type = ['bank', 'paypal'];
 		
@@ -28,9 +36,10 @@ class CreateFundsSeeder extends Seeder {
 			$this->command->info('->project number: ' . $i . ', random limit of users for funds: ' . $random_limit);
 
 
-			for ($x = 0; $x < $random_limit; $x++) { 
+			for ($x = 0; $x < $random_limit; $x++) {
+
 				$random_user_id    = mt_rand(1, $count_users);
-				$random_project_id = mt_rand(1, $count_projects);
+				$random_project_id = $getActiveProjectId[$i];
 
 				$funds = [
 					'user_profile_id' => $random_user_id,

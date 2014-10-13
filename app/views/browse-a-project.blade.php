@@ -36,8 +36,8 @@
                 </div>
                 <ul class="list-custom list-unstyled">
                     <li>Target Fund<span>{{ $projects[$i]['target_fund'] }}</span></li>
-                    <li>Funded<span></span></li>
-                    <li>Backers<span></span></li>
+                    <li>Funded<span>{{ $projects[$i]['funded'] }}</span></li>
+                    <li>Backers<span>{{ $projects[$i]['backers'] }}</span></li>
                 </ul>
             </div>
         </div>

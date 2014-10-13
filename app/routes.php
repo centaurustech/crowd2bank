@@ -13,15 +13,14 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	return DB::table('funds')->select(DB::raw('
-								DISTINCT(project_id),
-								SUM(pledge_amount),
-								COUNT(user_profile_id)
-							'))
-							->where(function($query){
-									$query->where('project_id', '=', 7);
-								})->paginate(1);	
+	// return Project::where('activated', '=', 1)->count();
+	
+	$data = Project::where('activated', '=', 1)->get(['id']);
 
+	foreach ($data as $key => $value) {
+		$projectIdArray[$key] = $value['id'];
+	}
+	return $projectIdArray;
 }));
 
 

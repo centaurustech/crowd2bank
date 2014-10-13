@@ -152,7 +152,6 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
     {
         $projects = $this->project
                          ->select(DB::raw('
-                            DISTINCT(funds.project_id),
                             projects.target_date,
                             projects.thumbnail,
                             projects.title,
@@ -174,12 +173,10 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                          )
                          ->join(DB::raw('funds'), function($join){
                             $join->on('projects.id', '=', 'funds.project_id');
-                         })                 
-                         ->where(function($query){
-                            $query->where('projects.activated', '=', 1)
-                                  ->where('projects.target_date', '>=', $this->date->today());
                          })
-                         ->orderBy('projects.id', 'asc')
+                         ->distinct('projects.id')
+                         ->where('projects.activated', '=', 1)
+                         ->orderBy('projects.id', 'desc')
                          ->paginate($count);
 
         return $projects;
