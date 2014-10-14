@@ -177,8 +177,8 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                          ->distinct('projects.id')
                          ->where('projects.activated', '=', 1)
                          ->orderBy('projects.id', 'desc')
-                         ->paginate($count);
-
+                         ->get();
+    
         return $projects;
     }
 }
