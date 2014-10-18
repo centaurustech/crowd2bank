@@ -24,10 +24,14 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(function()
-{
-	return getenv('APP_ENV') ?: 'local';
-});
+$env = $app->detectEnvironment(array(
+	
+	'local'      => array('http://localhost*'),
+	'dev'        => array('http://dev.crowd2bank.com*'),
+	'production' => array('http://crowd2bank.com*')
+	
+));
+
 
 /*
 |--------------------------------------------------------------------------
