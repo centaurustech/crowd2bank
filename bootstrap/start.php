@@ -24,14 +24,10 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-	
-	'local'      => array('http://localhost*'),
-	'dev'        => array('http://dev.crowd2bank.com*'),
-	'staging'   => array('http://staging.crowd2bank.com*'),
-	'production' => array('http://crowd2bank.com*')
-	
-));
+$env = $app->detectEnvironment(function ()
+{
+	return require __DIR__.'/environment.php';
+});
 
 
 /*

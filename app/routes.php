@@ -13,7 +13,7 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	echo getenv('APP_ENV');
+	return getenv('DB_NAME');
 
 }));
 

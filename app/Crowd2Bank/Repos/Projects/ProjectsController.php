@@ -57,5 +57,10 @@ class ProjectsController extends BaseController {
 		return View::make('pledge-a-project');
 		
 	}
+	public function singlePage()
+	{
+		return View::make('single-page');
+		
+	}
 
 }
