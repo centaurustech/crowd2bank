@@ -28,6 +28,7 @@ $env = $app->detectEnvironment(array(
 	
 	'local'      => array('http://localhost*'),
 	'dev'        => array('http://dev.crowd2bank.com*'),
+	'stagging'   => array('http://stagging.crowd2bank.com*'),
 	'production' => array('http://crowd2bank.com*')
 	
 ));

@@ -13,14 +13,8 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	// return Project::where('activated', '=', 1)->count();
-	
-	$data = Project::where('activated', '=', 1)->get(['id']);
+	echo getenv('APP_ENV');
 
-	foreach ($data as $key => $value) {
-		$projectIdArray[$key] = $value['id'];
-	}
-	return $projectIdArray;
 }));
 
 
