@@ -51,7 +51,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 		File::deleteDirectory($directory, true);
 
 		// set required limit for users
-		$user_limit = 5;
+		$user_limit = 20;
 
 		// loop for require number of users
 		for ($i = 0; $i < $user_limit; $i++) {
