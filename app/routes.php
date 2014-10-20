@@ -13,8 +13,14 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	return getenv('DB_NAME');
-
+		return DB::table('projects')
+					->where('projects.id', '=', 115)
+                    ->join('project_supports', function($join)
+                    {
+                        $join->on('project_supports.project_id', '=', 'projects.id');
+                    })                         
+                    ->orderBy('amount')
+                    ->get(['amount', 'details']);
 }));
 
 
@@ -39,7 +45,7 @@ Route::get('browse-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\Projec
 Route::get('pledge-a-project', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@pledgeAProject',
 									'as' => 'pledge-a-project'));
 
-Route::get('single-page/{cat}/{id}', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@singlePage',
+Route::get('single-page/{id}', array('uses' => 'Crowd2Bank\Repos\Projects\ProjectsController@singlePage',
 									'as' => 'single-page'))->where('id', '[0-9]+');
 
 /*--------------------------------------------------------------------------

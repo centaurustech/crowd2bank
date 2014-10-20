@@ -79,30 +79,134 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 		return [$target_date => $data];
     }
 
-    public function getSingleProject($cat, $id)
+    public function getSingleProject($id)
     {
-        $project = $this->project->find($id);
-        $profile = $project->profiles;
-        $funds   = $project->funds;
-               
+        // $query = $this->project
+        //                  ->select(DB::raw('
+        //                     projects.target_date,
+        //                     projects.thumbnail,
+        //                     projects.title,
+        //                     projects.target_fund,
+        //                     projects.user_id AS author_id                            
+        //                  '),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             SUM(funds.pledge_amount)
+        //                         FROM
+        //                             funds
+        //                         WHERE
+        //                             funds.project_id = projects.id
+        //                     ) AS funded"),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             CONCAT(user_profiles.first_name, Char(32), user_profiles.last_name)
+        //                         FROM
+        //                             user_profiles
+        //                         WHERE
+        //                             user_profiles.user_id = projects.user_id
+        //                     ) AS author"),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             CASE
+        //                                 WHEN DATE(projects.target_date) < NOW() THEN 'completed'
+        //                                 ELSE 'current'
+        //                             END
+        //                     ) AS category"),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             project_details.full_description
+        //                         FROM
+        //                             project_details
+        //                         WHERE
+        //                             project_details.projects_id = projects.id
+        //                     ) AS full_description"),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             project_details.facebook_count
+        //                         FROM
+        //                             project_details
+        //                         WHERE
+        //                             project_details.projects_id = projects.id
+        //                     ) AS facebook_count"),
+        //                     DB::raw("
+        //                     (
+        //                         SELECT
+        //                             project_details.twitter_count
+        //                         FROM
+        //                             project_details
+        //                         WHERE
+        //                             project_details.projects_id = projects.id
+        //                     ) AS twitter_count")
+        //                  )                    
+        //                 ->where('id', '=', $id)->first();
 
-        $funded  = $funds->sum('pledge_amount');
-        $author  = $profile->first_name . ' ' . $profile->last_name;
-        $average = $this->math->average($funded, $project['target_fund']);
+        $single = $this->project              
+                    ->where('projects.id', '=', $id)
+                    ->join('project_details', function($join)
+                    {
+                        $join->on('project_details.project_id', '=', 'projects.id');
+                    })
+                    ->join('funds', function($join)
+                    {
+                        $join->on('funds.project_id', '=', 'projects.id');
+                    })
+                    ->select(
+                            'projects.target_date',
+                            'projects.thumbnail',
+                            'projects.title',
+                            'projects.target_fund',
+                            'projects.user_id AS author_id',
 
+                            'project_details.full_description',
+                            'project_details.facebook_count',
+                            'project_details.twitter_count',
+                            DB::raw("
+                            (
+                                SELECT
+                                    SUM(funds.pledge_amount)
+                                FROM
+                                    funds
+                                WHERE
+                                    funds.project_id = projects.id
+                            ) AS funded"),
+                            DB::raw("
+                            (
+                                SELECT
+                                    CONCAT(user_profiles.first_name, Char(32), user_profiles.last_name)
+                                FROM
+                                    user_profiles
+                                WHERE
+                                    user_profiles.user_id = projects.user_id
+                            ) AS author"),
+                            DB::raw("
+                            (
+                                SELECT
+                                    CASE
+                                        WHEN DATE(projects.target_date) < NOW() THEN 'completed'
+                                        ELSE 'current'
+                                    END
+                            ) AS category")
+                    )
+                    ->first();
 
-        return [ 
-            'title'             => $project['title'],
-            'short_description' => $project['short_description'],
-            'progress_bar'      => $this->html->progressBar($cat, $average),
-            'author'            => $author,
-            'status'            => $this->html->status($cat, $average),
-            'percentage'        => $this->html->percentage($average),
-            'funded'            => $this->html->setCurrency($funded),
-            'thumbnail'         => $project['thumbnail'],
-            'target_fund'       => $this->html->setCurrency($project['target_fund']),
-            'target_date'       => $project['target_date']
-        ];
+        $support = $this->project
+                        ->where('projects.id', '=', $id)
+                        ->join('project_supports', function($join)
+                        {
+                            $join->on('project_supports.project_id', '=', 'projects.id');
+                        })                         
+                        ->orderBy('amount')
+                        ->get(['amount', 'details']);
+
+        $project['single']  = $single->toArray();
+        $project['support'] = $support->toArray();
+
+        return $project;
     }
 
 	public function getCurrentProjectsByUserId($userId)
@@ -152,6 +256,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
     {
         $projects = $this->project
                          ->select(DB::raw('
+                            projects.id,
                             projects.target_date,
                             projects.thumbnail,
                             projects.title,
@@ -163,13 +268,23 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                                 SELECT SUM(funds.pledge_amount)
                                 FROM funds
                                 WHERE funds.project_id = projects.id
-                            ) as funded"),
+                            ) AS funded"),
                             DB::raw("
                             (
                                 SELECT COUNT(funds.user_profile_id)
                                 FROM funds
                                 WHERE funds.project_id = projects.id
-                            ) as backers")
+                            ) AS backers"),
+                            DB::raw("
+                            (
+                                SELECT
+                                    CASE
+                                        WHEN DATE(projects.target_date) < NOW() THEN 'completed'
+                                        ELSE 'current'
+                                    END
+                                FROM projects
+                                WHERE funds.project_id = projects.id
+                            ) AS category")
                          )
                          ->join(DB::raw('funds'), function($join){
                             $join->on('projects.id', '=', 'funds.project_id');
@@ -178,7 +293,8 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                          ->where('projects.activated', '=', 1)
                          ->orderBy('projects.id', 'desc')
                          ->get();
-    
+        // echo '<pre>';
+        // dd($projects->toArray());
         return $projects;
     }
 }

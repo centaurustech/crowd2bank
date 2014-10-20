@@ -57,10 +57,10 @@ class ProjectsController extends BaseController {
 		return View::make('pledge-a-project');
 		
 	}
-	public function singlePage()
+	public function singlePage($id)
 	{
-		return View::make('single-page');
-		
+		$project = $this->projects->getSingleProject($id);
+		return View::make('single-page', ['project' => $project]);
 	}
 
 }

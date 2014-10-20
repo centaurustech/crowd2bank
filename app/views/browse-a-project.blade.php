@@ -17,20 +17,66 @@
                 </ul>
             </div>
             <div class="img-wrap">
-                <a href="#">
+                <a href="{{ URL::to("single-page") }}/{{ $projects[$i]['id'] }}">
                     <img class="img-responsive" src="{{ $projects[$i]['thumbnail'] }}">
                 </a>
             </div>
             <div class="detailed-cont">
-                <h3 class="box-title"><a href="#">{{ $projects[$i]['title'] }}</a></h3>
+                <h3 class="box-title"><a href="{{ URL::to("single-page") }}/{{ $projects[$i]['id'] }}">{{ $projects[$i]['title'] }}</a></h3>                
                 <p class="box-paragraph">{{ $projects[$i]['short_description'] }}</p>
             </div>
             <div class="footer-cont">
                 <div class="completed">
-                    <p>Completed: </p>
+                <?php
+                    $round = round ( ( $projects[$i]['funded'] / $projects[$i]['target_fund'] ) * 100 );
+                    $average = ( $round < 100 ) ? $round : 100;
+
+                    $targetDate =  $projects[$i]['category'];
+                    if ( $targetDate == 'completed' )
+                    {
+                        $completed = ( $average >= 100 ) ? 'sucessful' : 'unsucessful';
+                    }
+                    else if ( $targetDate == 'current' && $average >= 100 )
+                    {
+                        $completed = 'sucessful';
+                    }        
+                    else
+                    {
+                        $completed = $average;
+                    }                
+
+                    if ( $targetDate == 'current' )
+                    {
+                        if( $average >= 100 )
+                        {
+                            $progressBar = 'progress-bar-success';
+                        }
+                        else
+                        {
+                            $progressBar = '';
+                        }
+                    }
+                    else if ( $targetDate == 'completed' )
+                    {
+                        if( $average >= 100 )
+                        {
+                            $progressBar = 'progress-bar-success';
+                        }
+                        else
+                        {
+                            $progressBar = 'progress-bar-danger';
+                        }
+                    }
+                    else
+                    {
+                        $progressBar = '';
+                    }
+
+                ?>
+                    <p>Completed: {{ $completed }}</p>
                     <div class="progress-plain progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        <span class="hide">100%</span>
+                        <div class="progress-bar {{ $progressBar }}" role="progressbar" aria-valuenow="{{ $average }}" aria-valuemin="0" aria-valuemax="{{ $average }}" style="width: {{ $average }}%;">
+                        <span class="hide">{{ $average }}%</span>
                         </div>
                     </div>
                 </div>
