@@ -18,7 +18,10 @@ class CreateFundsSeeder extends Seeder {
 
 		$count_users    = DB::table('user_profiles')->count();
 
-		$activeProject = DB::table('projects')->where('activated', '=', 1);
+		$activeProject = DB::table('projects')
+								->where('status', '=', 1)
+								->orWhere('status', '=', 5);
+							
 		$data = $activeProject->get(['id']);
 
 		foreach ($data as $key => $value) {						
@@ -34,7 +37,6 @@ class CreateFundsSeeder extends Seeder {
 			$random_limit = rand(5, 15);
 
 			$this->command->info('->project number: ' . $i . ', random limit of users for funds: ' . $random_limit);
-
 
 			for ($x = 0; $x < $random_limit; $x++) {
 

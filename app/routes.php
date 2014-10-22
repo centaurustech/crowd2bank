@@ -13,22 +13,12 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-		return DB::table('projects')
-					->where('projects.id', '=', 115)
-                    ->join('project_supports', function($join)
-                    {
-                        $join->on('project_supports.project_id', '=', 'projects.id');
-                    })                         
-                    ->orderBy('amount')
-                    ->get(['amount', 'details']);
+
 }));
 
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
-	Route::get('profile', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
-								'as' => 'profile'));
-
 	Route::get('dashboard', array('uses' => 'Crowd2Bank\Repos\Users\UsersController@getProfile',
 								'as' => 'dashboard'));
 

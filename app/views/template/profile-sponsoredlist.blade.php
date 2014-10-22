@@ -12,7 +12,6 @@
             										<th>Project By</th>
             										<th>Status</th>
             										<th>Contribution</th>
-            										<th>Actions</th>
             									</tr>
             								</thead>
             								<tbody>
@@ -26,7 +25,6 @@
                                                                                   </ul>   
                                                                               </td>
                                                                               <td>{{ $sponsored_project['contribution'] }}</td>
-                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-modal-trigger="project" data-modal-value="delete">Delete</a></td>
                                                                         </tr>
                                                                   @endforeach
             								</tbody>

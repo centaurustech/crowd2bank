@@ -14,9 +14,9 @@ class CustomSentryUserSeeder extends Seeder {
 		DB::table('users')->delete();
 
 	    Sentry::getUserProvider()->create(array(
-			'email'      => 'aldren.terante@gmail.com',
-			'username'   => 'aldren.terante',
-			'password'   => 'aldren.terante',
+			'email'      => 'admin@admin.com',
+			'username'   => 'admin@admin.com',
+			'password'   => 'admin@admin.com',
 			'activated'  => 1,
 	    ));
 	}

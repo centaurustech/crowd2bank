@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder {
 		$this->call('CustomSentryGroupSeeder');
 		$this->call('CustomSentryUserSeeder');
 		$this->call('CustomSentryUserGroupSeeder');
-		$this->call('CreateProfilesProjectsSeeder');
-		$this->call('CreateFundsSeeder');
-		$this->call('CreateProjectsDetailsSupports');
+
+		$this->call('CreateProjectStatusSeeder');
+		$this->call('CreateProfilesProjectsSeeder');		
+		$this->call('CreateFundsSeeder');		
+		$this->call('CreateProjectsDetailsSupports');		
 
 	}
 

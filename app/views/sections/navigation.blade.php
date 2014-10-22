@@ -30,7 +30,7 @@
                         <li class="{{ Request::is( 'create-a-project') ? 'active' : '' }}"><a href="{{ URL::route("create-a-project") }}">Create A Project</a></li>
                         <li class="{{ Request::is( 'about') ? 'active' : '' }}"><a href="{{ URL::route("about") }}">About</a></li>                  
                         @if (Sentry::check())                        
-                        <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ URL::route('profile') }}">Profile</a></li>
+                        <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="{{ URL::route('dashboard') }}">Dashboard</a></li>
                         @else
                         <li {{ (Request::is('login') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\login') }}">Login</a></li>
                         <li {{ (Request::is('register') ? 'class="active"' : '') }}><a href="{{ URL::route('Sentinel\register') }}">Register</a></li>

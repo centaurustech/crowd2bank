@@ -59,7 +59,7 @@ class ProjectsController extends BaseController {
 	}
 	public function singlePage($id)
 	{
-		$project = $this->projects->getSingleProject($id);
+		$project = $this->projects->getSingleProject($id);		
 		return View::make('single-page', ['project' => $project]);
 	}
 

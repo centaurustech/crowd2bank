@@ -1,17 +1,18 @@
 @extends('layouts/master')
 
 @section('content')
-                <div class="row page-category">
-                    <div class="col-sm-12 no-padding">
-                        <h2 class="page-title"> {{ $project['single']['title'] }}<br /><small >Project by: <a href="#" class="author">{{ $project['single']['author'] }}</a></small></h2>
-                    </div>                
-                </div>
+    <div class="row page-category">
+        <div class="col-sm-12 no-padding">
+            <h2 class="page-title"> {{ $project['single']['title'] }}<br /><small >Project by: <a href="#" class="author">{{ $project['single']['author'] }}</a></small></h2>
+        </div>                
+    </div>
                 <div class="row">
                     <div class="post-content col-sm-8 col-md-8">
                       <div class="post-image-wrap">
                         <img class="img-responsive" src="{{ $project['single']['thumbnail'] }}" style="min-width: 740px;">
                       </div>
 
+                      @if ( $project['single']['status'] == 1 ) 
                       <div class="inline-social-links">
                         <span class="title">Help by sharing this to your friends:</span>
                         <ul class="list-inline list-unstyle">
@@ -23,7 +24,7 @@
                           </li>
                         </ul>
                       </div>
-
+                      @endif
 
                       <h3 class="page-title">Project Description</h3>
                       {{ $project['single']['full_description'] }}
@@ -33,9 +34,16 @@
                       <div class="sidebar-wrap">
                         <div class="status-cont text-center">
                           <p class="page-title-blue"></p>
+                          @if ( $project['single']['status'] == 1 )
                           <ul class="list-custom-inline list-unstyled list-inline" data-countdown="{{ $project['single']['target_date'] }}">
                               <li><strong>Status:</strong></li>
                           </ul>
+                          @else
+                          <ul class="list-custom-inline list-unstyled list-inline">
+                              <li><strong>Status:</strong></li>
+                              <li><strong>{{ $project['single']['status'] }}</strong></li>
+                          </ul>
+                          @endif
                         </div>
                         <hr>
                         <div class="footer-cont">
@@ -123,7 +131,8 @@
                           <a class="btn-sidebar" href="{{ URL::route('pledge-a-project') }}">Support this amount</a>
                         </div> 
                         @endforeach
-                      </div>
+                      </div>                    
                     </div>
+
                 </div>
 @stop

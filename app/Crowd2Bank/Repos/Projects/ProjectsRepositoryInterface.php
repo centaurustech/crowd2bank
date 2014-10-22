@@ -6,4 +6,7 @@ interface ProjectsRepositoryInterface {
 	public function getCurrentProjectsByUserId($id);
 	public function sponsoredProjects($id);    
     public function browseProjects($count);
+    public function getAllActiveProjects();
+    public function getAllEndProjects();
+    public function getAllNewProjects();
 }

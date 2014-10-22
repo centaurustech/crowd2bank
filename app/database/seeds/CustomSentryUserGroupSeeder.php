@@ -14,7 +14,7 @@ class CustomSentryUserGroupSeeder extends Seeder {
 		DB::table('users_groups')->delete();
 
 
-		$adminUser = Sentry::getUserProvider()->findByLogin('aldren.terante@gmail.com');
+		$adminUser = Sentry::getUserProvider()->findByLogin('admin@admin.com');
 
 		$userGroup = Sentry::getGroupProvider()->findByName('Users');
 		$adminGroup = Sentry::getGroupProvider()->findByName('Admins');

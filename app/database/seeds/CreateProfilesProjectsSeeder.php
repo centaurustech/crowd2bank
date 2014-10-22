@@ -51,7 +51,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 		File::deleteDirectory($directory, true);
 
 		// set required limit for users
-		$user_limit = 20;
+		$user_limit = Config::get('config.user_limit');
 
 		// loop for require number of users
 		for ($i = 0; $i < $user_limit; $i++) {
@@ -126,7 +126,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 					'target_fund'       => $faker->numberBetween($min = 500, $max = 3000),
 					'thumbnail'         => $link,
 					'target_date'       => setDate(),
-					'activated'         => rand(0, 1),
+					'status'            => rand(0, 5),
 					'user_id'           => $user_id,
 					'created_at'        => new DateTime,
 					'updated_at'        => new DateTime

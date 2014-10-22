@@ -28,7 +28,12 @@
                                                                               </td>
                                                                               <td>{{ $current_project['total_funds'] }}</td>
                                                                               <td>{{ $current_project['target_fund'] }}</td>
-                                                                              <td><a href="#">Edit</a> | <a href="#" class="font-red" data-modal-trigger="project" data-modal-value="delete">Delete</a></td>
+                                                                              <td>
+                                                                                    <div class="btn-group">
+                                                                                      <button type="button" class="btn btn-default">Approve</button>
+                                                                                      <button type="button" class="btn btn-default">Reject</button>
+                                                                                    </div>
+                                                                              </td>
                                                                         </tr>
                                                                   @endforeach
             								</tbody>

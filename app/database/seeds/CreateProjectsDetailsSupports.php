@@ -18,18 +18,21 @@ class CreateProjectsDetailsSupports extends Seeder {
 	    DB::table('project_details')->delete();
 	    DB::table('project_supports')->delete();
 
-		$projects = Project::where('activated', '=', 1)->get(['id']);		
+		$projects = Project::get(['id']);		
 		$this->command->info('Total active projects: ' . count($projects));
 
 		foreach ($projects as $key => $project) {
 			$projectId = $project->id;
 			$this->command->info('Project id number: ' . $projectId);
+
+			$status = Project::find($projectId)->status;
+
 			DB::table('project_details')->insert(
 			    array(
-						'project_id'      => $projectId,
+						'project_id'       => $projectId,
 						'full_description' => $faker->realText($maxNbChars = 1000, $indexSize = 2),
-						'facebook_count'   => rand(20, 200),
-						'twitter_count'    => rand(20, 100),
+						'facebook_count'   => ( $status == 1 || $status == 5 ) ? rand(20, 200) : 0,
+						'twitter_count'    => ( $status == 1 || $status == 5 ) ? rand(20, 200) : 0,
 						'created_at'       => new DateTime,
 						'updated_at'       => new DateTime
 			    	)

@@ -44,7 +44,7 @@ return array(
 	| 
 	*/
 
-	'post_login' 	=> 'profile',
+	'post_login' 	=> 'dashboard',
 
 	'post_logout' 	=> 'home',
 
