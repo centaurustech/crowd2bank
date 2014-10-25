@@ -55,10 +55,7 @@ class UserEventHandler {
 
         $view_data = array(
             'name'     => ucfirst($data->first_name) . ' ' . ucfirst($data->last_name),
-            'contact'  => $data->contact,
-            'company'  => $data->company,
-            'email'    => $data->email,
-            'username' => $data->username,
+            'email'    => $data->email
         );
 
         Mail::queue('emails.admin-notification-register', $view_data, function($message) use ($email_data) {

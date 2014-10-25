@@ -130,10 +130,7 @@ return array(
 
 	'additional_user_fields' => array(
 		'first_name' => 'required',
-		'last_name' => 'required',
-		'contact' => 'required',
-		'company' => 'required',
-		'username' => 'required'
+		'last_name' => 'required'
 	),
 
 	/*
@@ -147,6 +144,6 @@ return array(
 	| 
 	*/
 
-	'allow_usernames' => true,
+	'allow_usernames' => false,
 	
 );
