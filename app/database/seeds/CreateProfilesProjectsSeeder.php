@@ -64,7 +64,7 @@ class CreateProfilesProjectsSeeder extends Seeder {
 			// create sentry user
 		    Sentry::getUserProvider()->create(array(
 		        'email'    => $email,
-		        'username' => $username,
+		        //'username' => $username,
 		        'password' => 'sentrytest',
 		        'activated' => 1,
 		    ));

@@ -21,25 +21,25 @@ Register
                         <p class="col-sm-2 control-label"><strong>Personal Information</strong></p>
                     </div>
 
-                    <div class="form-group {{ ($errors->has('first_name')) ? 'has-error' : '' }}">
-                        <label for="inputFirstName" class="col-sm-2 control-label">First Name</label>
-                        <div class="col-sm-5">
-                            {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
-                        </div>
-                        <div class="col-sm-5">
-                            <p class="text-danger">{{ ($errors->has('first_name') ? $errors->first('first_name') : '') }}</p>
-                        </div>
-                    </div>
+                    {{--<div class="form-group {{ ($errors->has('first_name')) ? 'has-error' : '' }}">
+                                                                <label for="inputFirstName" class="col-sm-2 control-label">First Name</label>
+                                                                <div class="col-sm-5">
+                                                                    {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <p class="text-danger">{{ ($errors->has('first_name') ? $errors->first('first_name') : '') }}</p>
+                                                                </div>
+                                                            </div>--}}
 
-                    <div class="form-group {{ ($errors->has('last_name')) ? 'has-error' : '' }}">
-                        <label for="inputLastName" class="col-sm-2 control-label">Last Name</label>
-                        <div class="col-sm-5">
-                            {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}                            
-                        </div>    
-                        <div class="col-sm-5">
-                            <div class="text-danger">{{ ($errors->has('last_name') ? $errors->first('last_name') : '') }}</div>
-                        </div>
-                    </div>
+                    {{--<div class="form-group {{ ($errors->has('last_name')) ? 'has-error' : '' }}">
+                                                                <label for="inputLastName" class="col-sm-2 control-label">Last Name</label>
+                                                                <div class="col-sm-5">
+                                                                    {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}                            
+                                                                </div>    
+                                                                <div class="col-sm-5">
+                                                                    <div class="text-danger">{{ ($errors->has('last_name') ? $errors->first('last_name') : '') }}</div>
+                                                                </div>
+                                                            </div>--}}
 
                     {{--<div class="form-group {{ ($errors->has('contact')) ? 'has-error' : '' }}">
                         <label for="inputContact" class="col-sm-2 control-label">Contact</label>

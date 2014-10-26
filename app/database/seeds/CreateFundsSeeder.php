@@ -34,7 +34,7 @@ class CreateFundsSeeder extends Seeder {
 		
 		for ($i = 0; $i < $count_projects; $i++) {
 
-			$random_limit = rand(5, 15);
+			$random_limit = rand(3, 7);
 
 			$this->command->info('->project number: ' . $i . ', random limit of users for funds: ' . $random_limit);
 
@@ -46,7 +46,7 @@ class CreateFundsSeeder extends Seeder {
 				$funds = [
 					'user_profile_id' => $random_user_id,
 					'project_id'      => $random_project_id,
-					'pledge_amount'   => $faker->numberBetween($min = 70, $max = 200),
+					'pledge_amount'   => $faker->numberBetween($min = 200, $max = 500),
 					'account_type'    => $account_type[array_rand($account_type)],
 					'created_at'      => new DateTime,
 					'updated_at'      => new DateTime

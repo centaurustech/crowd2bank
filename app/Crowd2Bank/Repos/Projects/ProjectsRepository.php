@@ -43,6 +43,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                         })						
 						->orderBy('target_date', 'DESC')->take($limit)->get();
 
+
 		foreach ($projects as $key => $value) {
 			
 			$funds                      = $this->project->find($value['id'])->funds;
@@ -146,41 +147,58 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 	public function getCurrentProjectsByUserId($userId)
 	{
         $projects    = $this->project->where('user_id', '=', $userId)->get();
+        $data = [];
 
-        foreach ($projects as $key => $value) {
+        if ( $projects != NULL ) {
 
-            $total_funds = $this->project->find($value['id'])->funds->sum('pledge_amount');
+            foreach ($projects as $key => $value) {
 
-			$data[$key]['title_project'] = $value['title'];           
-			$data[$key]['status']        = $value['target_date'];
-			$data[$key]['target_fund']   = $value['target_fund'];
-			$data[$key]['total_funds']   = $total_funds;
+                $total_funds = $this->project->find($value['id'])->funds->sum('pledge_amount');
+
+                $data[$key]['title_project'] = $value['title'];           
+                $data[$key]['status']        = $value['status'];
+                $data[$key]['target_fund']   = $value['target_fund'];
+                $data[$key]['total_funds']   = $total_funds;
+            }
+
         }
-
+        else
+        {
+            $data = 0;
+        }
         return $data;
-	}
+	}  
 
 	public function sponsoredProjects($userId)
 	{
         $funds = $this->fund->where('user_profile_id', '=', $userId)->get();
-        
-        foreach ($funds as $key => $fund) {
+        $data = [];
 
-            $project = $this->project->find($fund['project_id']);
-            $userId  = $project->user_id;
+        if ( $funds != NULL ) {
             
-            $profile = $this->profile->where('user_id', '=', $userId)->get()->first();
+            foreach ($funds as $key => $fund) {
 
-            $title                       = $project->title;
-            $date                        = $project->target_date;
-            
-            $project_by                  = $profile->first_name . ' ' . $profile->last_name;
-            $contribution                = $fund->pledge_amount;
-            
-            $data[$key]['title_project'] = $title;
-            $data[$key]['project_by']    = $project_by;
-            $data[$key]['status']        = $date;
-            $data[$key]['contribution']  = $contribution;
+                $project = $this->project->find($fund['project_id']);
+                $userId  = $project->user_id;
+                
+                $profile = $this->profile->where('user_id', '=', $userId)->get()->first();
+
+                $title                       = $project->title;
+                $date                        = $project->target_date;
+                
+                $project_by                  = $profile->first_name . ' ' . $profile->last_name;
+                $contribution                = $fund->pledge_amount;
+                
+                $data[$key]['title_project'] = $title;
+                $data[$key]['project_by']    = $project_by;
+                $data[$key]['status']        = $date;
+                $data[$key]['contribution']  = $contribution;
+            }        
+
+        }
+        else
+        {
+                $data = 0;
         }
 
         return $data;

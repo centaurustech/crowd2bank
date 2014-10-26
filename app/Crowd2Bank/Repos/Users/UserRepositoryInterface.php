@@ -10,6 +10,13 @@ interface UserRepositoryInterface {
 	public function getProfile();
 
 	/**
+	 * Check if the user is complete thier profile list
+	 *
+	 * @return Response
+	 */
+	public function profileExist($id);
+
+	/**
 	 * Get profile details.
 	 *
 	 * @return Response

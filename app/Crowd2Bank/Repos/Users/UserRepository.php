@@ -24,12 +24,10 @@ class UserRepository implements UserRepositoryInterface {
 	{		
 		if ( !$this->isAdmin() )
 		{			
-			$id = Session::get('user.id');
-			$userId = $this->profile->find($id)->user_id;			
+			$id = Session::get('user.id');		
 
 			$data = [
 				'profile' => [
-					'username'       => Session::get('user.username'),
 					'fullname'       => Session::get('user.fullname'),
 					'email'          => Session::get('user.email'),
 					'contact'        => Session::get('user.contact'),
@@ -38,8 +36,8 @@ class UserRepository implements UserRepositoryInterface {
 					'total_backers'  => Session::get('user.total_backers'),
 					'membership'     => 'Regular Member'
 				],
-				'current_projects' => $this->project->getCurrentProjectsByUserId($userId),
-				'sponsored_projects' => $this->project->sponsoredProjects($userId)
+				'current_projects' => $this->project->getCurrentProjectsByUserId($id),
+				'sponsored_projects' => $this->project->sponsoredProjects($id)
 			];			
 		}
 		else
@@ -57,6 +55,38 @@ class UserRepository implements UserRepositoryInterface {
 
 		return $data;
 		
+	}
+
+	public function profileExist($id) {
+
+		$user = $this->profile->where('user_id', '=', $id)->get(['first_name', 'last_name', 'contact_number', 'company']);
+		
+		if ( isset($user[0]) ) // check if session id is exist on profiles database
+		{
+			// set the object to array 
+			$user = $user[0]->toArray();
+			$data = [];
+
+			// push all array value to a array
+			foreach ($user as $key => $value) {
+				array_push($data, $value);
+			}
+
+			if (in_array('', $data)) // check if all require fields are completed
+			{
+				// please complete your profile information first'
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else //check if session id is not exist on profiles database
+		{
+			// please complete your profile information first'
+			return false;
+		}
 	}
 
 	public function isAdmin()

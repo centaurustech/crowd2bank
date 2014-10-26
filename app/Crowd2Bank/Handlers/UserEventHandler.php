@@ -1,6 +1,6 @@
 <?php namespace Crowd2Bank\Handlers;
 
-use Cartalyst\Sentry\Sentry,
+use Cartalyst\Sentry\Facades\Laravel\Sentry as Sentry,
     Profile, Project;
 
 use Session, Response, Mail;
@@ -25,25 +25,50 @@ class UserEventHandler {
 
     public function getSessionLogin($user)
     {
-         $id             = $user->id;
-         $profile        = $this->profile->find($id);
-         $project        = $this->project->find($id);
-         
-         $first_name     = ucfirst($profile->first_name);
-         $last_name      = ucfirst($profile->last_name);
-         $fullname       =  $first_name . ' ' . $last_name;
-         
-         $total_projects = $profile->projects->count();
-         $total_backers  = $project->funds->count();
-         
-         Session::put('user.id', $id);
-         Session::put('user.username', $user['username']);
-         Session::put('user.fullname', $fullname);
-         Session::put('user.email', $user['email']);
-         Session::put('user.contact', $profile->contact_number);
-         Session::put('user.company', $profile->company);
-         Session::put('user.total_projects', $total_projects);
-         Session::put('user.total_backers', $total_backers);
+
+        $id             = $user->id;
+        $profile        = $this->profile->find($id);
+        $project        = $this->project->where('user_id', '=', $id)->first();
+
+        if ( !Sentry::getUser()->hasAccess('admin') )
+        {
+            if ( $profile == NULL )
+            {
+                $first_name     = '';
+                $last_name      = '';
+
+                $fullname       =  '';
+                
+                $total_projects = 0;
+                $total_backers  = 0;
+                $contact_number = '';
+                $company        = '';
+            }
+            else
+            {
+                $first_name     = ucfirst($profile->first_name);
+                $last_name      = ucfirst($profile->last_name);
+
+                $fullname       =  $first_name . ' ' . $last_name;   
+            
+                $total_projects = $profile->projects->count();
+                $total_backers  = $project->funds->count();
+
+                $contact_number = $profile->contact_number;
+                $company        = $profile->company;
+            }
+
+
+            Session::put('user.id', $id);
+            Session::put('user.username', $user['username']);
+            Session::put('user.fullname', $fullname);
+            Session::put('user.email', $user['email']);
+            Session::put('user.contact', $contact_number);
+            Session::put('user.company', $company);
+            Session::put('user.total_projects', $total_projects);
+            Session::put('user.total_backers', $total_backers);
+        }
+
     }
 
     public function notifitionEmailForAdmin($data)

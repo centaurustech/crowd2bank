@@ -128,10 +128,7 @@ return array(
 	| 
 	*/
 
-	'additional_user_fields' => array(
-		'first_name' => 'required',
-		'last_name' => 'required'
-	),
+	'additional_user_fields' => array(),
 
 	/*
 	|--------------------------------------------------------------------------

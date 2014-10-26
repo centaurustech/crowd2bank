@@ -18,12 +18,18 @@
 }
 
 .profile-page {
-	.img-wrap-thumbnail {
+	.img-thumbnail-warp {
+		float: left;
+		text-align: center;
+		.img-responsive { margin-bottom: 10px; }
+		#upload-image {
+			margin-bottom: 8px;
+		}
+	}
+	.img-thumbnail {
 		margin-bottom: 15px;
 		margin-right: 15px;
-		background-color: @light-blue;
-		max-width: 200px;
-		float: left;
+		max-width: 200px;		
 	}
 	.profile-list { overflow: hidden; }
 }

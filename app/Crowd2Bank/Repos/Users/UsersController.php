@@ -1,7 +1,7 @@
 <?php namespace Crowd2Bank\Repos\Users;
 
 use Crowd2Bank\Repos\Users\UserRepositoryInterface as User;
-use BaseController, View, Redirect;
+use BaseController, View, Redirect, Session;
 
 class UsersController extends BaseController {
 
@@ -20,7 +20,9 @@ class UsersController extends BaseController {
 
 	public function createProject()
 	{
-		return View::make('create-a-project');
+		$id = Session::get('user.id');
+		$exist = $this->user->profileExist($id);
+		return View::make('create-a-project', ['exist' => $exist]);
 	}
 
 }
