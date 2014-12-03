@@ -31,30 +31,64 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
         $this->math    = $math;
     }
 
+    public function getLatestProjectsByStatus( $limit = 8, $status = 2 ) {
+        $projects = $this->project
+                        ->join('funds', 'projects.id', '=', 'funds.project_id')
+                        ->select(
+                            DB::raw('
+                                projects.id,
+                                projects.target_date,
+                                projects.thumbnail,
+                                projects.title,
+                                projects.short_description,
+                                projects.target_fund,
+                                projects.target_date,
+                                projects.created_at'),
+                            DB::raw("
+                                (
+                                    SELECT SUM(funds.pledge_amount)
+                                    FROM funds
+                                    WHERE funds.project_id = projects.id
+                                ) AS funded"),
+                            DB::raw("
+                                (
+                                    SELECT COUNT(funds.user_profile_id)
+                                    FROM funds
+                                    WHERE funds.project_id = projects.id
+                                ) AS backers"))
+                        ->where('projects.status', '=', 1)
+                        ->distinct('projects.id')
+                        ->orderBy('projects.id', 'desc')
+                        ->take(8)
+                        ->get()
+                        ->toArray();
+
+        return $projects;
+    }
+
     public function getLatestProjectsByTargetDate($limit, $target_date = 'current')
     {
-    	$operator = ( $target_date == 'completed' ) ? '<=' : '>=';
-        $status = ( $target_date == 'completed' ) ? 5 : 1;
+        $operator = ( $target_date == 'completed' ) ? '<=' : '>=';
+        $status   = ( $target_date == 'completed' ) ? 5 : 1;
 
-		$projects = $this->project
+        $projects = $this->project
                         ->where(function($query) use ($operator, $status){
                             $query->where('target_date', $operator, $this->date->today())
                                   ->where('status', '=', $status);
-                        })						
+                        })
 						->orderBy('target_date', 'DESC')->take($limit)->get();
 
-
 		foreach ($projects as $key => $value) {
-			
+
 			$funds                      = $this->project->find($value['id'])->funds;
 			$funded                     = $funds->sum('pledge_amount');
 			$backers                    = $funds->count();
-			
+
 			$average                    = $this->math->average($funded, $value['target_fund']);
-			
-			$data[$key]['product_id']   = $value['id'];			
+
+			$data[$key]['product_id']   = $value['id'];
 			$data[$key]['title']        = $value['title'];
-			
+
 			$data[$key]['description']  = $this->html->shortDescription($value['short_description']);
 			$data[$key]['thumbnail']    = $value['thumbnail'];
 			$data[$key]['target_fund']  = $this->html->setCurrency($value['target_fund']);
@@ -64,16 +98,15 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 			$data[$key]['progress_bar'] = $this->html->progressBar($target_date, $average);
 			$data[$key]['backers']      = $backers;
 			$data[$key]['target_date']  = $value['target_date'];
-
 		}
 
-		return [$target_date => $data];
+		// return [$target_date => $data];
     }
 
     public function getSingleProject($id)
     {
 
-        $single = $this->project              
+        $single = $this->project
                     ->where('projects.id', '=', $id)
                     ->join('project_details', function($join)
                     {
@@ -84,7 +117,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                             'projects.thumbnail',
                             'projects.title',
                             'projects.target_fund',
-                            'projects.user_id AS author_id',                            
+                            'projects.user_id AS author_id',
 
                             'project_details.full_description',
                             'project_details.facebook_count',
@@ -132,8 +165,8 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                         ->join('project_supports', function($join)
                         {
                             $join->on('project_supports.project_id', '=', 'projects.id');
-                        })                         
-                        ->orderBy('amount')                        
+                        })
+                        ->orderBy('amount')
                         ->get();
 
 
@@ -155,7 +188,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 
                 $total_funds = $this->project->find($value['id'])->funds->sum('pledge_amount');
 
-                $data[$key]['title_project'] = $value['title'];           
+                $data[$key]['title_project'] = $value['title'];
                 $data[$key]['status']        = $value['status'];
                 $data[$key]['target_fund']   = $value['target_fund'];
                 $data[$key]['total_funds']   = $total_funds;
@@ -167,7 +200,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
             $data = 0;
         }
         return $data;
-	}  
+	}
 
 	public function sponsoredProjects($userId)
 	{
@@ -175,25 +208,25 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
         $data = [];
 
         if ( $funds != NULL ) {
-            
+
             foreach ($funds as $key => $fund) {
 
                 $project = $this->project->find($fund['project_id']);
                 $userId  = $project->user_id;
-                
+
                 $profile = $this->profile->where('user_id', '=', $userId)->get()->first();
 
                 $title                       = $project->title;
                 $date                        = $project->target_date;
-                
+
                 $project_by                  = $profile->first_name . ' ' . $profile->last_name;
                 $contribution                = $fund->pledge_amount;
-                
+
                 $data[$key]['title_project'] = $title;
                 $data[$key]['project_by']    = $project_by;
                 $data[$key]['status']        = $date;
                 $data[$key]['contribution']  = $contribution;
-            }        
+            }
 
         }
         else
@@ -203,7 +236,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
 
         return $data;
 	}
-	
+
     public function browseProjects($count)
     {
         $projects = $this->project
@@ -256,7 +289,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                      ->select(DB::raw('
                         projects.id,
                         projects.title,
-                        projects.created_at as start_date,                        
+                        projects.created_at as start_date,
                         projects.target_date
                      '),DB::raw("
                         (
@@ -280,7 +313,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                      ->select(DB::raw('
                         projects.id,
                         projects.title,
-                        projects.created_at as start_date,                        
+                        projects.created_at as start_date,
                         projects.target_date
                      '),DB::raw("
                         (
@@ -313,7 +346,7 @@ class ProjectsRepository implements ProjectsRepositoryInterface {
                                 user_profiles
                             WHERE
                                 user_profiles.user_id = projects.user_id
-                        ) AS author"))            
+                        ) AS author"))
                     ->where('target_date', '>', $this->date->today())
                     ->where('status', '=', 2)
                     ->paginate(10);

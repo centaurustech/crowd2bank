@@ -2,6 +2,6 @@
 
 return array(
 
-    'user_limit' => 10,
+    'user_limit' => 100,
 
 );

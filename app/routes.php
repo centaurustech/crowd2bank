@@ -13,35 +13,6 @@
 
 Route::get('test', array( 'as' => 'test', function()
 {
-	$id = 12;
-	$user = Profile::where('user_id', '=', $id)->get(['first_name', 'last_name', 'contact_number', 'company']);
-	
-
-	if ( isset($user[0]) ) // check if session id is exist on profiles database
-	{
-		// set the object to array 
-		$user = $user[0]->toArray();
-		$data = [];
-
-		// push all array value to a array
-		foreach ($user as $key => $value) {
-			array_push($data, $value);
-		}
-
-		if (in_array('', $data)) // check if all require fields are completed
-		{
-		    echo 'please complete your profile information first';
-		}
-		else
-		{
-			echo 'true';
-		}
-	}
-	else //check if session id is not exist on profiles database
-	{
-		echo 'please complete your profile information first';
-	}
-
 
 }));
 
